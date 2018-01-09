@@ -179,7 +179,7 @@ func NewTransport(tlsConfig *tls.Config) *http.Transport {
 		Dial:                direct.Dial,
 		TLSHandshakeTimeout: 10 * time.Second,
 		TLSClientConfig:     tlsConfig,
-		// TODO(dmcgowan): Call close idle connections when complete and use keep alive
+		// TODO (dmcgowan): Call close idle connections when complete and use keep alive id:293 gh:294
 		DisableKeepAlives: true,
 	}
 

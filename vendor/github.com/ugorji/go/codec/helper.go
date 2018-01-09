@@ -151,7 +151,7 @@ const (
 	// if resetSliceElemToZeroValue, then on decoding a slice, reset the element to a zero value first.
 	// Only concern is that, if the slice already contained some garbage, we will decode into that garbage.
 	// The chances of this are slim, so leave this "optimization".
-	// TODO: should this be true, to ensure that we always decode into a "zero" "empty" value?
+	// TODO: should this be true, to ensure that we always decode into a "zero" "empty" value? id:968 gh:969
 	resetSliceElemToZeroValue bool = false
 )
 

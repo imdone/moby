@@ -147,7 +147,7 @@ func diffDirChanges(ctx context.Context, changeFn ChangeFunc, base string, o *di
 			return nil
 		}
 
-		// TODO: handle opaqueness, start new double walker at this
+		// TODO: handle opaqueness, start new double walker at this id:477 gh:478
 		// location to get deletes, and skip tree in single walker
 
 		if o.skipChange != nil {

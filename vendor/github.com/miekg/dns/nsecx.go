@@ -71,8 +71,8 @@ func (rr *NSEC) Match(name string) bool {
 
 // Cover implements the Denialer interface.
 func (rr *NSEC3) Cover(name string) bool {
-	// FIXME(miek): check if the zones match
-	// FIXME(miek): check if we're not dealing with parent nsec3
+	// FIXME (miek): check if the zones match id:954 gh:955
+	// FIXME (miek): check if we're not dealing with parent nsec3 id:654 gh:655
 	hname := HashName(name, rr.Hash, rr.Iterations, rr.Salt)
 	labels := Split(rr.Hdr.Name)
 	if len(labels) < 2 {
@@ -85,7 +85,7 @@ func (rr *NSEC3) Cover(name string) bool {
 	if hash > rr.NextDomain { // last name, points to apex
 		// hname > hash
 		// hname > rr.NextDomain
-		// TODO(miek)
+		// TODO (miek) id:542 gh:543
 	}
 	if hname <= hash {
 		return false
@@ -98,7 +98,7 @@ func (rr *NSEC3) Cover(name string) bool {
 
 // Match implements the Denialer interface.
 func (rr *NSEC3) Match(name string) bool {
-	// FIXME(miek): Check if we are in the same zone
+	// FIXME (miek): Check if we are in the same zone id:1037 gh:1038
 	hname := HashName(name, rr.Hash, rr.Iterations, rr.Salt)
 	labels := Split(rr.Hdr.Name)
 	if len(labels) < 2 {

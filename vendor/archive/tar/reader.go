@@ -4,7 +4,7 @@
 
 package tar
 
-// TODO(dsymonds):
+// TODO (dsymonds): id:322 gh:323
 //   - pax extensions
 
 import (
@@ -476,7 +476,7 @@ func (tr *Reader) readHeader() (*Header, *block, error) {
 		var prefix string
 		switch format {
 		case formatUSTAR, formatGNU:
-			// TODO(dsnet): Do not use the prefix field for the GNU format!
+			// TODO (dsnet): Do not use the prefix field for the GNU format! id:339 gh:340
 			// See golang.org/issues/12594
 			ustar := tr.blk.USTAR()
 			prefix = p.parseString(ustar.Prefix())

@@ -93,7 +93,7 @@ func (ce *ConstraintEnforcer) rejectNoncompliantTasks(node *api.Node) {
 
 	removeTasks := make(map[string]*api.Task)
 
-	// TODO(aaronl): The set of tasks removed will be
+	// TODO (aaronl): The set of tasks removed will be id:483 gh:484
 	// nondeterministic because it depends on the order of
 	// the slice returned from FindTasks. We could do
 	// a separate pass over the tasks for each type of

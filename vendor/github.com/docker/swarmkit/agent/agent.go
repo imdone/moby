@@ -264,7 +264,7 @@ func (a *Agent) run(ctx context.Context) {
 		case <-leaving:
 			leaving = nil
 
-			// TODO(stevvooe): Signal to the manager that the node is leaving.
+			// TODO (stevvooe): Signal to the manager that the node is leaving. id:451 gh:452
 
 			// when leaving we remove all assignments.
 			if err := a.worker.Assign(ctx, nil); err != nil {
@@ -310,7 +310,7 @@ func (a *Agent) run(ctx context.Context) {
 
 			subCtx, subCancel := context.WithCancel(ctx)
 			subscriptions[sub.ID] = subCancel
-			// TODO(dperny) we're tossing the error here, that seems wrong
+			// TODO (dperny) we're tossing the error here, that seems wrong id:511 gh:512
 			go a.worker.Subscribe(subCtx, sub)
 		case <-registered:
 			log.G(ctx).Debugln("agent: registered")
@@ -325,7 +325,7 @@ func (a *Agent) run(ctx context.Context) {
 			backoff = 0      // reset backoff
 			sessionq = a.sessionq
 		case err := <-session.errs:
-			// TODO(stevvooe): This may actually block if a session is closed
+			// TODO (stevvooe): This may actually block if a session is closed id:455 gh:455
 			// but no error was sent. This must be the only place
 			// session.close is called in response to errors, for this to work.
 			if err != nil {
@@ -376,7 +376,7 @@ func (a *Agent) run(ctx context.Context) {
 			// periodically check to see whether the node information has changed, and if so, restart the session
 			updateNode()
 		case <-a.stopped:
-			// TODO(stevvooe): Wait on shutdown and cleanup. May need to pump
+			// TODO (stevvooe): Wait on shutdown and cleanup. May need to pump id:920 gh:921
 			// this loop a few times.
 			return
 		case <-ctx.Done():
@@ -522,7 +522,7 @@ func (a *Agent) UpdateTaskStatus(ctx context.Context, taskID string, status *api
 // as well as a cancel function that should be called when the log stream
 // is completed.
 func (a *Agent) Publisher(ctx context.Context, subscriptionID string) (exec.LogPublisher, func(), error) {
-	// TODO(stevvooe): The level of coordination here is WAY too much for logs.
+	// TODO (stevvooe): The level of coordination here is WAY too much for logs. id:576 gh:577
 	// These should only be best effort and really just buffer until a session is
 	// ready. Ideally, they would use a separate connection completely.
 

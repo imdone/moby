@@ -115,7 +115,7 @@ func New(ic *plugin.InitContext) (interface{}, error) {
 		return nil, err
 	}
 
-	// TODO: need to add the tasks to the monitor
+	// TODO: need to add the tasks to the monitor id:487 gh:488
 	for _, t := range tasks {
 		if err := r.tasks.AddWithNamespace(t.namespace, t); err != nil {
 			return nil, err

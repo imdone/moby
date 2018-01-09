@@ -67,7 +67,7 @@ func Parse(env []string) ([]Constraint, error) {
 			if matched == false {
 				return nil, fmt.Errorf("value '%s' is invalid", part1)
 			}
-			// TODO(dongluochen): revisit requirements to see if globing or regex are useful
+			// TODO (dongluochen): revisit requirements to see if globing or regex are useful id:475 gh:476
 			exprs = append(exprs, Constraint{key: part0, operator: i, exp: part1})
 
 			found = true

@@ -119,7 +119,7 @@ Double pointer to a uint8:
 ```
 	  %v: <**>5
 	 %+v: <**>(0xf8400420d0->0xf8400420c8)5
-	 %#v: (**uint8)5
+	 %#v: (**uint8)5 id:426 gh:427
 	%#+v: (**uint8)(0xf8400420d0->0xf8400420c8)5
 ```
 
@@ -127,7 +127,7 @@ Pointer to circular struct with a uint8 field and a pointer to itself:
 ```
 	  %v: <*>{1 <*><shown>}
 	 %+v: <*>(0xf84003e260){ui8:1 c:<*>(0xf84003e260)<shown>}
-	 %#v: (*main.circular){ui8:(uint8)1 c:(*main.circular)<shown>}
+	 %#v: (*main.circular){ui8:(uint8)1 c:(*main.circular)<shown>} id:432 gh:433
 	%#+v: (*main.circular)(0xf84003e260){ui8:(uint8)1 c:(*main.circular)(0xf84003e260)<shown>}
 ```
 

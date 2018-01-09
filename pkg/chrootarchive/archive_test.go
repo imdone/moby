@@ -170,7 +170,7 @@ func compareFiles(src string, dest string) error {
 }
 
 func TestChrootTarUntarWithSymlink(t *testing.T) {
-	// TODO Windows: Figure out why this is failing
+	// TODO Windows: Figure out why this is failing id:247 gh:248
 	if runtime.GOOS == "windows" {
 		t.Skip("Failing on Windows")
 	}
@@ -196,7 +196,7 @@ func TestChrootTarUntarWithSymlink(t *testing.T) {
 }
 
 func TestChrootCopyWithTar(t *testing.T) {
-	// TODO Windows: Figure out why this is failing
+	// TODO Windows: Figure out why this is failing id:254 gh:255
 	if runtime.GOOS == "windows" {
 		t.Skip("Failing on Windows")
 	}
@@ -289,7 +289,7 @@ func TestChrootCopyFileWithTar(t *testing.T) {
 }
 
 func TestChrootUntarPath(t *testing.T) {
-	// TODO Windows: Figure out why this is failing
+	// TODO Windows: Figure out why this is failing id:867 gh:868
 	if runtime.GOOS == "windows" {
 		t.Skip("Failing on Windows")
 	}

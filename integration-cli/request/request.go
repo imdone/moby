@@ -146,7 +146,7 @@ func New(host, endpoint string, modifiers ...func(*http.Request) error) (*http.R
 
 // NewHTTPClient creates an http client for the specific host
 func NewHTTPClient(host string) (*http.Client, error) {
-	// FIXME(vdemeester) 10*time.Second timeout of SockRequest… ?
+	// FIXME (vdemeester) 10*time.Second timeout of SockRequest… ? id:264 gh:265
 	proto, addr, _, err := dclient.ParseHost(host)
 	if err != nil {
 		return nil, err
@@ -181,7 +181,7 @@ func NewClientForHost(host string) (dclient.APIClient, error) {
 	return dclient.NewClient(host, api.DefaultVersion, httpClient, nil)
 }
 
-// FIXME(vdemeester) httputil.ClientConn is deprecated, use http.Client instead (closer to actual client)
+// FIXME (vdemeester) httputil.ClientConn is deprecated, use http.Client instead (closer to actual client) id:300 gh:301
 // Deprecated: Use New instead of NewRequestClient
 // Deprecated: use request.Do (or Get, Delete, Post) instead
 func newRequestClient(method, endpoint string, data io.Reader, ct, daemon string, modifiers ...func(*http.Request)) (*http.Request, *httputil.ClientConn, error) {

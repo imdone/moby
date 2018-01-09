@@ -652,7 +652,7 @@ func (s *Server) CreateService(ctx context.Context, request *api.CreateServiceRe
 		return nil, err
 	}
 
-	// TODO(aluzzardi): Consider using `Name` as a primary key to handle
+	// TODO (aluzzardi): Consider using `Name` as a primary key to handle id:476 gh:477
 	// duplicate creations. See #65
 	service := &api.Service{
 		ID:          identity.NewID(),

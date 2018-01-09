@@ -270,7 +270,7 @@ func DisplayJSONMessagesStream(in io.Reader, out io.Writer, terminalFd uintptr, 
 		if jm.ID != "" && (jm.Progress != nil || jm.ProgressMessage != "") {
 			line, ok := ids[jm.ID]
 			if !ok {
-				// NOTE: This approach of using len(id) to
+				// NOTE: This approach of using len(id) to id:331 gh:332
 				// figure out the number of lines of history
 				// only works as long as we clear the history
 				// when we output something that's not

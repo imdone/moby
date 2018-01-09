@@ -634,7 +634,7 @@ type ContainerSpec_PullOptions struct {
 	// RegistryAuth is the registry auth token obtained from the client, required
 	// to pull private images. This is the unmodified JSON used as part of
 	// the `X-Registry-Auth` header.
-	// TODO(nishanttotla): This field will later be deprecated
+	// TODO (nishanttotla): This field will later be deprecated id:462 gh:463
 	RegistryAuth string `protobuf:"bytes,64,opt,name=registry_auth,json=registryAuth,proto3" json:"registry_auth,omitempty"`
 }
 
@@ -647,7 +647,7 @@ func (*ContainerSpec_PullOptions) Descriptor() ([]byte, []int) {
 // DNSConfig specifies DNS related configurations in resolver configuration file (resolv.conf)
 // Detailed documentation is available in:
 // http://man7.org/linux/man-pages/man5/resolv.conf.5.html
-// TODO: domain is not supported yet
+// TODO: domain is not supported yet id:517 gh:517
 type ContainerSpec_DNSConfig struct {
 	// Nameservers specifies the IP addresses of the name servers
 	Nameservers []string `protobuf:"bytes,1,rep,name=nameservers" json:"nameservers,omitempty"`
@@ -834,7 +834,7 @@ func (*SecretSpec) Descriptor() ([]byte, []int) { return fileDescriptorSpecs, []
 type ConfigSpec struct {
 	Annotations Annotations `protobuf:"bytes,1,opt,name=annotations" json:"annotations"`
 	// Data is the config payload - the maximum size is 500KB (that is, 500*1024 bytes)
-	// TODO(aaronl): Do we want to revise this to include multiple payloads in a single
+	// TODO (aaronl): Do we want to revise this to include multiple payloads in a single id:466 gh:467
 	// ConfigSpec? Define this to be a tar? etc...
 	Data []byte `protobuf:"bytes,2,opt,name=data,proto3" json:"data,omitempty"`
 	// Templating controls whether and how to evaluate the secret payload as

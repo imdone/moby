@@ -427,7 +427,7 @@ func (c *serverConn) run(sctx context.Context) {
 
 			active--
 		case err := <-recvErr:
-			// TODO(stevvooe): Not wildly clear what we should do in this
+			// TODO (stevvooe): Not wildly clear what we should do in this id:553 gh:554
 			// branch. Basically, it means that we are no longer receiving
 			// requests due to a terminal error.
 			recvErr = nil // connection is now "closing"

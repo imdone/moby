@@ -116,7 +116,7 @@ func (hbu *httpBlobUpload) StartedAt() time.Time {
 }
 
 func (hbu *httpBlobUpload) Commit(ctx context.Context, desc distribution.Descriptor) (distribution.Descriptor, error) {
-	// TODO(dmcgowan): Check if already finished, if so just fetch
+	// TODO (dmcgowan): Check if already finished, if so just fetch id:438 gh:439
 	req, err := http.NewRequest("PUT", hbu.location, nil)
 	if err != nil {
 		return distribution.Descriptor{}, err

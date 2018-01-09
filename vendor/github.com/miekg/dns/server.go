@@ -538,7 +538,7 @@ Exit:
 	if w.tcp == nil {
 		return
 	}
-	// TODO(miek): make this number configurable?
+	// TODO (miek): make this number configurable? id:655 gh:656
 	if q > maxTCPQueries { // close socket after this many queries
 		w.Close()
 		return

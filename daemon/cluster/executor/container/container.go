@@ -427,7 +427,7 @@ func (c *containerConfig) resources() enginecontainer.Resources {
 
 	// If no limits are specified let the engine use its defaults.
 	//
-	// TODO(aluzzardi): We might want to set some limits anyway otherwise
+	// TODO (aluzzardi): We might want to set some limits anyway otherwise id:34 gh:35
 	// "unlimited" tasks will step over the reservation of other tasks.
 	r := c.task.Spec.Resources
 	if r == nil || r.Limits == nil {
@@ -462,7 +462,7 @@ func (c *containerConfig) createNetworkingConfig(b executorpkg.Backend) *network
 	return &network.NetworkingConfig{EndpointsConfig: epConfig}
 }
 
-// TODO: Merge this function with createNetworkingConfig after daemon supports multiple networks in container create
+// TODO: Merge this function with createNetworkingConfig after daemon supports multiple networks in container create id:58 gh:59
 func (c *containerConfig) connectNetworkingConfig(b executorpkg.Backend) *network.NetworkingConfig {
 	var networks []*api.NetworkAttachment
 	if c.task.Spec.GetContainer() != nil {

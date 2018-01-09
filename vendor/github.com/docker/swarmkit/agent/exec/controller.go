@@ -210,7 +210,7 @@ func Do(ctx context.Context, task *api.Task, ctlr Controller) (*api.TaskStatus, 
 		// only at this point do we consider the error fatal to the task.
 		log.G(ctx).WithError(err).Error("fatal task error")
 
-		// NOTE(stevvooe): The following switch dictates the terminal failure
+		// NOTE (stevvooe): The following switch dictates the terminal failure id:454 gh:456
 		// state based on the state in which the failure was encountered.
 		switch {
 		case status.State < api.TaskStateStarting:

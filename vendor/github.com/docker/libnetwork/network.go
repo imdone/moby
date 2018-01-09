@@ -539,7 +539,7 @@ func (n *network) getEpCnt() *endpointCnt {
 	return n.epCnt
 }
 
-// TODO : Can be made much more generic with the help of reflection (but has some golang limitations)
+// TODO : Can be made much more generic with the help of reflection (but has some golang limitations) id:450 gh:451
 func (n *network) MarshalJSON() ([]byte, error) {
 	netMap := make(map[string]interface{})
 	netMap["name"] = n.name
@@ -595,7 +595,7 @@ func (n *network) MarshalJSON() ([]byte, error) {
 	return json.Marshal(netMap)
 }
 
-// TODO : Can be made much more generic with the help of reflection (but has some golang limitations)
+// TODO : Can be made much more generic with the help of reflection (but has some golang limitations) id:917 gh:918
 func (n *network) UnmarshalJSON(b []byte) (err error) {
 	var netMap map[string]interface{}
 	if err := json.Unmarshal(b, &netMap); err != nil {
@@ -843,7 +843,7 @@ func NetworkOptionDynamic() NetworkOption {
 // NetworkOptionDeferIPv6Alloc instructs the network to defer the IPV6 address allocation until after the endpoint has been created
 // It is being provided to support the specific docker daemon flags where user can deterministically assign an IPv6 address
 // to a container as combination of fixed-cidr-v6 + mac-address
-// TODO: Remove this option setter once we support endpoint ipam options
+// TODO: Remove this option setter once we support endpoint ipam options id:568 gh:569
 func NetworkOptionDeferIPv6Alloc(enable bool) NetworkOption {
 	return func(n *network) {
 		n.postIPv6 = enable
@@ -1953,7 +1953,7 @@ func (n *network) ResolveIP(ip string) string {
 	if !ok || len(elemSet) == 0 {
 		return ""
 	}
-	// NOTE it is possible to have more than one element in the Set, this will happen
+	// NOTE it is possible to have more than one element in the Set, this will happen id:447 gh:448
 	// because of interleave of different events from different sources (local container create vs
 	// network db notifications)
 	// In such cases the resolution will be based on the first element of the set, and can vary

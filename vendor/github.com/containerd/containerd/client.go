@@ -334,7 +334,7 @@ func (c *Client) Push(ctx context.Context, ref string, desc ocispec.Descriptor, 
 	for i := len(manifestStack) - 1; i >= 0; i-- {
 		_, err := pushHandler(ctx, manifestStack[i])
 		if err != nil {
-			// TODO(estesp): until we have a more complete method for index push, we need to report
+			// TODO (estesp): until we have a more complete method for index push, we need to report id:368 gh:369
 			// missing dependencies in an index/manifest list by sensing the "400 Bad Request"
 			// as a marker for this problem
 			if (manifestStack[i].MediaType == ocispec.MediaTypeImageIndex ||
@@ -584,7 +584,7 @@ func resolveExportOpt(opts ...ExportOpt) (exportOpts, error) {
 // Export exports an image to a Tar stream.
 // OCI format is used by default.
 // It is up to caller to put "org.opencontainers.image.ref.name" annotation to desc.
-// TODO(AkihiroSuda): support exporting multiple descriptors at once to a single archive stream.
+// TODO (AkihiroSuda): support exporting multiple descriptors at once to a single archive stream. id:349 gh:350
 func (c *Client) Export(ctx context.Context, exporter images.Exporter, desc ocispec.Descriptor, opts ...ExportOpt) (io.ReadCloser, error) {
 	_, err := resolveExportOpt(opts...) // unused now
 	if err != nil {

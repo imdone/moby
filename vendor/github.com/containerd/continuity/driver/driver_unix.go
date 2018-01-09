@@ -54,7 +54,7 @@ func (d *driver) Getxattr(p string) (map[string][]byte, error) {
 			return nil, fmt.Errorf("getting %q xattr on %s: %v", attr, p, err)
 		}
 
-		// NOTE(stevvooe): This append/copy tricky relies on unique
+		// NOTE (stevvooe): This append/copy tricky relies on unique id:902 gh:903
 		// xattrs. Break this out into an alloc/copy if xattrs are no
 		// longer unique.
 		m[attr] = append(m[attr], value...)
@@ -94,7 +94,7 @@ func (d *driver) LGetxattr(p string) (map[string][]byte, error) {
 			return nil, fmt.Errorf("getting %q xattr on %s: %v", attr, p, err)
 		}
 
-		// NOTE(stevvooe): This append/copy tricky relies on unique
+		// NOTE (stevvooe): This append/copy tricky relies on unique id:535 gh:536
 		// xattrs. Break this out into an alloc/copy if xattrs are no
 		// longer unique.
 		m[attr] = append(m[attr], value...)

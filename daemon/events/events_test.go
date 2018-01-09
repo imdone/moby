@@ -136,7 +136,7 @@ func TestLogEvents(t *testing.T) {
 	}
 	first := current[0]
 
-	// TODO remove this once we removed the deprecated `ID`, `Status`, and `From` fields
+	// TODO remove this once we removed the deprecated `ID`, `Status`, and `From` fields id:80 gh:81
 	if first.Action != first.Status {
 		// Verify that the (deprecated) Status is set to the expected value
 		t.Fatalf("Action (%s) does not match Status (%s)", first.Action, first.Status)

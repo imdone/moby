@@ -358,13 +358,13 @@ func (r *dockerBase) retryRequest(ctx context.Context, req *http.Request, respon
 		// Support registries which have not properly implemented the HEAD method for
 		// manifests endpoint
 		if strings.Contains(req.URL.Path, "/manifests/") {
-			// TODO: copy request?
+			// TODO: copy request? id:402 gh:403
 			req.Method = http.MethodGet
 			return copyRequest(req)
 		}
 	}
 
-	// TODO: Handle 50x errors accounting for attempt history
+	// TODO: Handle 50x errors accounting for attempt history id:395 gh:396
 	return nil, nil
 }
 
@@ -459,7 +459,7 @@ func (r *dockerBase) fetchTokenWithOAuth(ctx context.Context, to tokenOptions) (
 	form := url.Values{}
 	form.Set("scope", strings.Join(to.scopes, " "))
 	form.Set("service", to.service)
-	// TODO: Allow setting client_id
+	// TODO: Allow setting client_id id:396 gh:397
 	form.Set("client_id", "containerd-dist-tool")
 
 	if r.username == "" {
@@ -487,7 +487,7 @@ func (r *dockerBase) fetchTokenWithOAuth(ctx context.Context, to tokenOptions) (
 			"status": resp.Status,
 			"body":   string(b),
 		}).Debugf("token request failed")
-		// TODO: handle error body and write debug output
+		// TODO: handle error body and write debug output id:899 gh:900
 		return "", errors.Errorf("unexpected status: %s", resp.Status)
 	}
 
@@ -539,7 +539,7 @@ func (r *dockerBase) getToken(ctx context.Context, to tokenOptions) (string, err
 	defer resp.Body.Close()
 
 	if resp.StatusCode < 200 || resp.StatusCode >= 400 {
-		// TODO: handle error body and write debug output
+		// TODO: handle error body and write debug output id:507 gh:508
 		return "", errors.Errorf("unexpected status: %s", resp.Status)
 	}
 

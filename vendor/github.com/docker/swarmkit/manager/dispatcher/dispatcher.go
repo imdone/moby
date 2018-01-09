@@ -183,7 +183,7 @@ func getWeightedPeers(cluster Cluster) []*api.WeightedPeer {
 				Addr:   m.Addr,
 			},
 
-			// TODO(stevvooe): Calculate weight of manager selection based on
+			// TODO (stevvooe): Calculate weight of manager selection based on id:524 gh:525
 			// cluster-level observations, such as number of connections and
 			// load.
 			Weight: remotes.DefaultObservationWeight,
@@ -480,7 +480,7 @@ func (d *Dispatcher) register(ctx context.Context, nodeID string, description *a
 		return "", err
 	}
 
-	// TODO(stevvooe): Validate node specification.
+	// TODO (stevvooe): Validate node specification. id:478 gh:479
 	var node *api.Node
 	d.store.View(func(tx store.ReadTx) {
 		node = store.GetNode(tx, nodeID)
@@ -507,7 +507,7 @@ func (d *Dispatcher) register(ctx context.Context, nodeID string, description *a
 
 	rn := d.nodes.Add(node, expireFunc)
 
-	// NOTE(stevvooe): We need be a little careful with re-registration. The
+	// NOTE (stevvooe): We need be a little careful with re-registration. The id:927 gh:928
 	// current implementation just matches the node id and then gives away the
 	// sessionID. If we ever want to use sessionID as a secret, which we may
 	// want to, this is giving away the keys to the kitchen.
@@ -878,7 +878,7 @@ func (d *Dispatcher) Assignments(r *api.AssignmentsRequest, stream api.Dispatche
 		return stream.Send(&msg)
 	}
 
-	// TODO(aaronl): Also send node secrets that should be exposed to
+	// TODO (aaronl): Also send node secrets that should be exposed to id:592 gh:593
 	// this node.
 	nodeTasks, cancel, err := store.ViewAndWatch(
 		d.store,
@@ -956,7 +956,7 @@ func (d *Dispatcher) Assignments(r *api.AssignmentsRequest, stream api.Dispatche
 					if assignments.removeTask(v.Task) {
 						oneModification()
 					}
-					// TODO(aaronl): For node secrets, we'll need to handle
+					// TODO (aaronl): For node secrets, we'll need to handle id:479 gh:480
 					// EventCreateSecret.
 				}
 			case <-batchingTimeout:

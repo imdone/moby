@@ -37,7 +37,7 @@ const (
 // Used to control GELF chunking.  Should be less than (MTU - len(UDP
 // header)).
 //
-// TODO: generate dynamically using Path MTU Discovery?
+// TODO: generate dynamically using Path MTU Discovery? id:307 gh:308
 const (
 	ChunkSize        = 1420
 	chunkedHeaderLen = 12

@@ -225,7 +225,7 @@ func (m *Http) GetRules() []*HttpRule {
 //
 // The syntax `**` matches zero or more path segments. It follows the semantics
 // of [RFC 6570](https://tools.ietf.org/html/rfc6570) Section 3.2.3 Reserved
-// Expansion. NOTE: it must be the last segment in the path except the Verb.
+// Expansion. NOTE: it must be the last segment in the path except the Verb. id:763 gh:764
 //
 // The syntax `LITERAL` matches literal text in the URL path.
 //
@@ -234,7 +234,7 @@ func (m *Http) GetRules() []*HttpRule {
 // matches a single path segment, its template may be omitted, e.g. `{var}`
 // is equivalent to `{var=*}`.
 //
-// NOTE: the field paths in variables and in the `body` must not refer to
+// NOTE: the field paths in variables and in the `body` must not refer to id:1001 gh:1002
 // repeated fields or map fields.
 //
 // Use CustomHttpPattern to specify any HTTP method that is not included in the
@@ -260,7 +260,7 @@ type HttpRule struct {
 	Pattern isHttpRule_Pattern `protobuf_oneof:"pattern"`
 	// The name of the request field whose value is mapped to the HTTP body, or
 	// `*` for mapping all fields not captured by the path pattern to the HTTP
-	// body. NOTE: the referred field must not be a repeated field and must be
+	// body. NOTE: the referred field must not be a repeated field and must be id:776 gh:777
 	// present at the top-level of request message type.
 	Body string `protobuf:"bytes,7,opt,name=body" json:"body,omitempty"`
 	// Additional HTTP bindings for the selector. Nested bindings must

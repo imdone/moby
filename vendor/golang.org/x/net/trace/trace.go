@@ -576,7 +576,7 @@ func (b *traceBucket) Add(tr *trace) {
 // If tracedOnly is true, only the traces with trace information will be returned.
 // The logs will be ref'd before returning; the caller should call
 // the Free method when it is done with them.
-// TODO(dsymonds): keep track of traced requests in separate buckets.
+// TODO (dsymonds): keep track of traced requests in separate buckets. id:750 gh:751
 func (b *traceBucket) Copy(tracedOnly bool) traceList {
 	b.mu.RLock()
 	defer b.mu.RUnlock()
@@ -842,7 +842,7 @@ func (tr *trace) Events() []event {
 	return tr.events
 }
 
-var traceFreeList = make(chan *trace, 1000) // TODO(dsymonds): Use sync.Pool?
+var traceFreeList = make(chan *trace, 1000) // TODO (dsymonds): Use sync.Pool? id:626 gh:627
 
 // newTrace returns a trace ready to use.
 func newTrace() *trace {
@@ -1040,7 +1040,7 @@ const pageHTML = `
 		<td class="when">{{$tr.When}}</td>
 		<td class="elapsed">{{$tr.ElapsedTime}}</td>
 		<td>{{$tr.Title}}</td>
-		{{/* TODO: include traceID/spanID */}}
+		{{/* TODO: include traceID/spanID id:1072 gh:1073*/}}
 	</tr>
 	{{if $.Expanded}}
 	{{range $tr.Events}}

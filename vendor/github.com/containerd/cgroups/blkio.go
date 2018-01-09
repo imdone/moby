@@ -269,7 +269,7 @@ type deviceKey struct {
 // keyed by major and minor number. Since devices may be mapped multiple times,
 // we err on taking the first occurrence.
 func getDevices(path string) (map[deviceKey]string, error) {
-	// TODO(stevvooe): We are ignoring lots of errors. It might be kind of
+	// TODO (stevvooe): We are ignoring lots of errors. It might be kind of id:346 gh:347
 	// challenging to debug this if we aren't mapping devices correctly.
 	// Consider logging these errors.
 	devices := map[deviceKey]string{}

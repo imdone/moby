@@ -759,7 +759,7 @@ func (d *Decoder) decodeValue(rv reflect.Value) {
 		// registered a pointer or non-pointer type, meaning we may have to recurse first
 		// before matching a mapped type, even though the extension byte is already detected.
 		//
-		// NOTE: if decoding into a nil interface{}, we return a non-nil
+		// NOTE: if decoding into a nil interface{}, we return a non-nil id:527 gh:528
 		// value except even if the container registers a length of 0.
 		if rtid == rawExtTypId {
 			fn.f = (*decFnInfo).rawExt

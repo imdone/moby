@@ -74,7 +74,7 @@ func (ns *nodeSet) tree(serviceID string, preferences []*api.PlacementPreference
 				if node.Description != nil && node.Description.Engine != nil && node.Description.Engine.Labels != nil {
 					value = node.Description.Engine.Labels[descriptor[len(constraint.EngineLabelPrefix):]]
 				}
-			// TODO(aaronl): Support other items from constraint
+			// TODO (aaronl): Support other items from constraint id:1015 gh:1017
 			// syntax like node ID, hostname, os/arch, etc?
 			default:
 				continue

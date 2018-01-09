@@ -65,7 +65,7 @@ type IPv6Addr struct {
 // with a `/128` mask), an IPv6 CIDR (e.g. `2001:4860:0:2001::68/64`, which has
 // its IP port initialized to zero).  ipv6Str can not be a hostname.
 //
-// NOTE: Many net.*() routines will initialize and return an IPv4 address.
+// NOTE: Many net.*() routines will initialize and return an IPv4 address. id:1032 gh:1033
 // Always test to make sure the address returned cannot be converted to a 4 byte
 // array using To4().
 func NewIPv6Addr(ipv6Str string) (IPv6Addr, error) {

@@ -127,7 +127,7 @@ func (m *ContainerCreate) Field(fieldpath []string) (string, bool) {
 	case "image":
 		return string(m.Image), len(m.Image) > 0
 	case "runtime":
-		// NOTE(stevvooe): This is probably not correct in many cases.
+		// NOTE (stevvooe): This is probably not correct in many cases. id:350 gh:351
 		// We assume that the target message also implements the Field
 		// method, which isn't likely true in a lot of cases.
 		//

@@ -124,7 +124,7 @@ func (cs *contentStore) Walk(ctx context.Context, fn content.WalkFunc, fs ...str
 		return err
 	}
 
-	// TODO: Batch results to keep from reading all info into memory
+	// TODO: Batch results to keep from reading all info into memory id:383 gh:384
 	var infos []content.Info
 	if err := view(ctx, cs.db, func(tx *bolt.Tx) error {
 		bkt := getBlobsBucket(tx, ns)
@@ -216,7 +216,7 @@ func (cs *contentStore) ListStatuses(ctx context.Context, fs ...string) ([]conte
 		}
 
 		return bkt.ForEach(func(k, v []byte) error {
-			// TODO(dmcgowan): match name and potentially labels here
+			// TODO (dmcgowan): match name and potentially labels here id:372 gh:373
 			brefs[string(k)] = string(v)
 			return nil
 		})
@@ -364,7 +364,7 @@ func (cs *contentStore) Writer(ctx context.Context, ref string, size int64, expe
 		return nil, err
 	}
 
-	// TODO: keep the expected in the writer to use on commit
+	// TODO: keep the expected in the writer to use on commit id:371 gh:372
 	// when no expected is provided there.
 	return &namespacedWriter{
 		Writer:    w,

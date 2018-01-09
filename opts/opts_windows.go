@@ -1,6 +1,6 @@
 package opts
 
-// TODO Windows. Identify bug in GOLang 1.5.1+ and/or Windows Server 2016 TP5.
+// TODO Windows. Identify bug in GOLang 1.5.1+ and/or Windows Server 2016 TP5. id:315 gh:316
 // @jhowardmsft, @swernli.
 //
 // On Windows, this mitigates a problem with the default options of running

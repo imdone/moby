@@ -15,7 +15,7 @@ import (
 	"golang.org/x/sys/unix"
 )
 
-// TODO(mlaventure): move to runc package?
+// TODO (mlaventure): move to runc package? id:890 gh:891
 func getLastRuntimeError(r *runc.Runc) (string, error) {
 	if r.Log == "" {
 		return "", nil

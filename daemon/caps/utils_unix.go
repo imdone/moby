@@ -87,7 +87,7 @@ func TweakCapabilities(basics, adds, drops []string) ([]string, error) {
 		allCaps = GetAllCapabilities()
 	)
 
-	// FIXME(tonistiigi): docker format is without CAP_ prefix, oci is with prefix
+	// FIXME (tonistiigi): docker format is without CAP_ prefix, oci is with prefix id:55 gh:56
 	// Currently they are mixed in here. We should do conversion in one place.
 
 	// look for invalid cap in the drop list

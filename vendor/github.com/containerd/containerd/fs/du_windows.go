@@ -13,7 +13,7 @@ func diskUsage(roots ...string) (Usage, error) {
 		size int64
 	)
 
-	// TODO(stevvooe): Support inodes (or equivalent) for windows.
+	// TODO (stevvooe): Support inodes (or equivalent) for windows. id:377 gh:378
 
 	for _, root := range roots {
 		if err := filepath.Walk(root, func(path string, fi os.FileInfo, err error) error {

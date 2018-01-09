@@ -272,13 +272,13 @@ func (t *Transformer) advance(s []byte) (n int, ok bool) {
 				if sz == 1 {
 					// We always consider invalid UTF-8 to be invalid, even if
 					// the string has not yet been determined to be RTL.
-					// TODO: is this correct?
+					// TODO: is this correct? id:996 gh:997
 					return n, false
 				}
 				return n, true // incomplete UTF-8 encoding
 			}
 		}
-		// TODO: using CompactClass would result in noticeable speedup.
+		// TODO: using CompactClass would result in noticeable speedup. id:764 gh:765
 		// See unicode/bidi/prop.go:Properties.CompactClass.
 		c := uint16(1 << e.Class())
 		t.seen |= c
@@ -317,7 +317,7 @@ func (t *Transformer) advanceString(s string) (n int, ok bool) {
 				return n, true // incomplete UTF-8 encoding
 			}
 		}
-		// TODO: using CompactClass results in noticeable speedup.
+		// TODO: using CompactClass results in noticeable speedup. id:646 gh:647
 		// See unicode/bidi/prop.go:Properties.CompactClass.
 		c := uint16(1 << e.Class())
 		t.seen |= c

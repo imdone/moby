@@ -456,7 +456,7 @@ func (th *tokenHandler) fetchToken(params map[string]string, scopes []string) (t
 		return "", time.Time{}, errors.New("no realm specified for token auth challenge")
 	}
 
-	// TODO(dmcgowan): Handle empty scheme and relative realm
+	// TODO (dmcgowan): Handle empty scheme and relative realm id:560 gh:561
 	realmURL, err := url.Parse(realm)
 	if err != nil {
 		return "", time.Time{}, fmt.Errorf("invalid token auth challenge realm: %s", err)

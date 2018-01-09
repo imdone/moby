@@ -162,7 +162,7 @@ func (md *MetaData) unify(data interface{}, rv reflect.Value) error {
 	}
 
 	// Special case. Handle time.Time values specifically.
-	// TODO: Remove this code when we decide to drop support for Go 1.1.
+	// TODO: Remove this code when we decide to drop support for Go 1.1. id:328 gh:329
 	// This isn't necessary in Go 1.2 because time.Time satisfies the encoding
 	// interfaces.
 	if rv.Type().AssignableTo(rvalue(time.Time{}).Type()) {

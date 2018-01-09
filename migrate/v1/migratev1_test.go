@@ -63,7 +63,7 @@ func TestMigrateRefs(t *testing.T) {
 }
 
 func TestMigrateContainers(t *testing.T) {
-	// TODO Windows: Figure out why this is failing
+	// TODO Windows: Figure out why this is failing id:228 gh:229
 	if runtime.GOOS == "windows" {
 		t.Skip("Failing on Windows")
 	}
@@ -141,7 +141,7 @@ func TestMigrateContainers(t *testing.T) {
 }
 
 func TestMigrateImages(t *testing.T) {
-	// TODO Windows: Figure out why this is failing
+	// TODO Windows: Figure out why this is failing id:860 gh:861
 	if runtime.GOOS == "windows" {
 		t.Skip("Failing on Windows")
 	}

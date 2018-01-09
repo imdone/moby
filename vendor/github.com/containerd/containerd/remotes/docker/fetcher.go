@@ -68,7 +68,7 @@ func (r dockerFetcher) open(ctx context.Context, u, mediatype string, offset int
 	req.Header.Set("Accept", strings.Join([]string{mediatype, `*`}, ", "))
 
 	if offset > 0 {
-		// TODO(stevvooe): Only set this header in response to the
+		// TODO (stevvooe): Only set this header in response to the id:497 gh:498
 		// "Accept-Ranges: bytes" header.
 		req.Header.Set("Range", fmt.Sprintf("bytes=%d-", offset))
 	}
@@ -79,7 +79,7 @@ func (r dockerFetcher) open(ctx context.Context, u, mediatype string, offset int
 	}
 
 	if resp.StatusCode > 299 {
-		// TODO(stevvooe): When doing a offset specific request, we should
+		// TODO (stevvooe): When doing a offset specific request, we should id:394 gh:395
 		// really distinguish between a 206 and a 200. In the case of 200, we
 		// can discard the bytes, hiding the seek behavior from the
 		// implementation.

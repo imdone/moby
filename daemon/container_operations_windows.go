@@ -42,7 +42,7 @@ func (daemon *Daemon) setupConfigDir(c *container.Container) (setupErr error) {
 	}
 
 	for _, configRef := range c.ConfigReferences {
-		// TODO (ehazlett): use type switch when more are supported
+		// TODO (ehazlett): use type switch when more are supported id:70 gh:71
 		if configRef.File == nil {
 			logrus.Error("config target type is not a file target")
 			continue
@@ -67,7 +67,7 @@ func (daemon *Daemon) setupConfigDir(c *container.Container) (setupErr error) {
 
 // getSize returns real size & virtual size
 func (daemon *Daemon) getSize(containerID string) (int64, int64) {
-	// TODO Windows
+	// TODO Windows id:71 gh:72
 	return 0, 0
 }
 
@@ -75,7 +75,7 @@ func (daemon *Daemon) setupIpcDirs(container *container.Container) error {
 	return nil
 }
 
-// TODO Windows: Fix Post-TP5. This is a hack to allow docker cp to work
+// TODO Windows: Fix Post-TP5. This is a hack to allow docker cp to work id:813 gh:814
 // against containers which have volumes. You will still be able to cp
 // to somewhere on the container drive, but not to any mounted volumes
 // inside the container. Without this fix, docker cp is broken to any
@@ -115,7 +115,7 @@ func (daemon *Daemon) setupSecretDir(c *container.Container) (setupErr error) {
 	}
 
 	for _, s := range c.SecretReferences {
-		// TODO (ehazlett): use type switch when more are supported
+		// TODO (ehazlett): use type switch when more are supported id:72 gh:73
 		if s.File == nil {
 			logrus.Error("secret target type is not a file target")
 			continue

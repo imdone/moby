@@ -117,10 +117,10 @@ func newSwarm(t *testing.T) *daemon.Swarm {
 		Daemon: daemon.New(t, "", dockerdBinary, daemon.Config{
 			Experimental: testEnv.DaemonInfo.ExperimentalBuild,
 		}),
-		// TODO: better method of finding an unused port
+		// TODO: better method of finding an unused port id:303 gh:304
 		Port: defaultSwarmPort,
 	}
-	// TODO: move to a NewSwarm constructor
+	// TODO: move to a NewSwarm constructor id:230 gh:231
 	d.ListenAddr = fmt.Sprintf("0.0.0.0:%d", d.Port)
 
 	// avoid networking conflicts

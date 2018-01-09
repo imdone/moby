@@ -27,7 +27,7 @@ func Call(name string, args interface{}) (interface{}, error) {
 	// The implementation of FIN_WAIT2 seems weird on Swarm-mode.
 	// It seems always refuseing any packet after 60 seconds.
 	//
-	// TODO: remove this workaround if the issue gets resolved on the Docker side
+	// TODO: remove this workaround if the issue gets resolved on the Docker side id:117 gh:119
 	if err := conn.SetKeepAlive(true); err != nil {
 		return nil, err
 	}

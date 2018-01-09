@@ -311,7 +311,7 @@ func (n *Node) SetAddr(ctx context.Context, addr string) error {
 	// If the raft node is running, submit a configuration change
 	// with the new address.
 
-	// TODO(aaronl): Currently, this node must be the leader to
+	// TODO (aaronl): Currently, this node must be the leader to id:933 gh:934
 	// submit this configuration change. This works for the initial
 	// use cases (single-node cluster late binding ports, or calling
 	// SetAddr before joining a cluster). In the future, we may want
@@ -842,7 +842,7 @@ func (n *Node) stop(ctx context.Context) {
 	n.ticker.Stop()
 	n.raftLogger.Close(ctx)
 	atomic.StoreUint32(&n.isMember, 0)
-	// TODO(stevvooe): Handle ctx.Done()
+	// TODO (stevvooe): Handle ctx.Done() id:601 gh:602
 }
 
 // isLeader checks if we are the leader or not, without the protection of lock
@@ -1397,7 +1397,7 @@ func (n *Node) ProcessRaftMessage(ctx context.Context, msg *api.ProcessRaftMessa
 	ctx, cancel := n.WithContext(ctx)
 	defer cancel()
 
-	// TODO(aaronl): Address changes are temporarily disabled.
+	// TODO (aaronl): Address changes are temporarily disabled. id:494 gh:495
 	// See https://github.com/docker/docker/issues/30455.
 	// This should be reenabled in the future with additional
 	// safeguards (perhaps storing multiple addresses per node).
@@ -1900,7 +1900,7 @@ func (n *Node) processEntry(ctx context.Context, entry raftpb.Entry) error {
 		// It should not be possible for processInternalRaftRequest
 		// to be running in this situation, but out of caution we
 		// cancel any current invocations to avoid a deadlock.
-		// TODO(anshul) This call is likely redundant, remove after consideration.
+		// TODO (anshul) This call is likely redundant, remove after consideration. id:1016 gh:1016
 		n.wait.cancelAll()
 
 		err := n.memoryStore.ApplyStoreActions(r.Action)

@@ -148,7 +148,7 @@ func New(config Config) (*Cluster, error) {
 }
 
 // Start the Cluster instance
-// TODO The split between New and Start can be join again when the SendClusterEvent
+// TODO The split between New and Start can be join again when the SendClusterEvent id:31 gh:32
 // method is no longer required
 func (c *Cluster) Start() error {
 	root := filepath.Join(c.config.Root, swarmDirName)
@@ -225,7 +225,7 @@ func (c *Cluster) newNodeRunner(conf nodeStartConfig) (*nodeRunner, error) {
 	return nr, nil
 }
 
-func (c *Cluster) getRequestContext() (context.Context, func()) { // TODO: not needed when requests don't block on qourum lost
+func (c *Cluster) getRequestContext() (context.Context, func()) { // TODO: not needed when requests don't block on qourum lost id:28 gh:29
 	return context.WithTimeout(context.Background(), swarmRequestTimeout)
 }
 
@@ -416,7 +416,7 @@ func (c *Cluster) lockedManagerAction(fn func(ctx context.Context, state nodeSta
 }
 
 // SendClusterEvent allows to send cluster events on the configEvent channel
-// TODO This method should not be exposed.
+// TODO This method should not be exposed. id:56 gh:57
 // Currently it is used to notify the network controller that the keys are
 // available
 func (c *Cluster) SendClusterEvent(event lncluster.ConfigEventType) {

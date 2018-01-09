@@ -591,7 +591,7 @@ func (m *Memberlist) GetHealthScore() int {
 // ProtocolVersion returns the protocol version currently in use by
 // this memberlist.
 func (m *Memberlist) ProtocolVersion() uint8 {
-	// NOTE: This method exists so that in the future we can control
+	// NOTE: This method exists so that in the future we can control id:951 gh:952
 	// any locking if necessary, if we change the protocol version at
 	// runtime, etc.
 	return m.config.ProtocolVersion

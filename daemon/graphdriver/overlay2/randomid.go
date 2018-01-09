@@ -32,7 +32,7 @@ func generateID(l int) string {
 		size         = (l*5 + 7) / 8
 		u            = make([]byte, size)
 	)
-	// TODO: Include time component, counter component, random component
+	// TODO: Include time component, counter component, random component id:89 gh:90
 
 	for {
 		// This should never block but the read may fail. Because of this,

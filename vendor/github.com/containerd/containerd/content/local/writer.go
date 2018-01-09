@@ -82,7 +82,7 @@ func (w *writer) Commit(ctx context.Context, size int64, expected digest.Digest,
 	//
 	// This removes write and exec, only allowing read per the creation umask.
 	//
-	// NOTE: Windows does not support this operation
+	// NOTE: Windows does not support this operation id:474 gh:475
 	if runtime.GOOS != "windows" {
 		if err := w.fp.Chmod((fi.Mode() & os.ModePerm) &^ 0333); err != nil {
 			return errors.Wrap(err, "failed to change ingest file permissions")

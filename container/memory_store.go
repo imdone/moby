@@ -68,7 +68,7 @@ func (c *memoryStore) First(filter StoreFilter) *Container {
 
 // ApplyAll calls the reducer function with every container in the store.
 // This operation is asynchronous in the memory store.
-// NOTE: Modifications to the store MUST NOT be done by the StoreReducer.
+// NOTE: Modifications to the store MUST NOT be done by the StoreReducer. id:802 gh:803
 func (c *memoryStore) ApplyAll(apply StoreReducer) {
 	wg := new(sync.WaitGroup)
 	for _, cont := range c.all() {

@@ -18,7 +18,7 @@ func getSwarm(ctx context.Context, c swarmapi.ControlClient) (*swarmapi.Cluster,
 		return nil, errors.WithStack(errNoSwarm)
 	}
 
-	// TODO: assume one cluster only
+	// TODO: assume one cluster only id:41 gh:42
 	return rl.Clusters[0], nil
 }
 

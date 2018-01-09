@@ -665,7 +665,7 @@ func getRealPath(path string) (string, error) {
 	if system.IsIoTCore() {
 		// Due to https://github.com/golang/go/issues/20506, path expansion
 		// does not work correctly on the default IoT Core configuration.
-		// TODO @darrenstahlmsft remove this once golang/go/20506 is fixed
+		// TODO @darrenstahlmsft remove this once golang/go/20506 is fixed id:77 gh:78
 		return path, nil
 	}
 	return fileutils.ReadSymlinkedDirectory(path)

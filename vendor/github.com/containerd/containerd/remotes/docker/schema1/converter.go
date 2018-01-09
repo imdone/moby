@@ -235,8 +235,8 @@ tryit:
 			return err
 		}
 
-		// TODO: Check if blob -> diff id mapping already exists
-		// TODO: Check if blob empty label exists
+		// TODO: Check if blob -> diff id mapping already exists id:404 gh:405
+		// TODO: Check if blob empty label exists id:398 gh:399
 
 		ra, err := c.contentStore.ReaderAt(ctx, desc.Digest)
 		if err != nil {

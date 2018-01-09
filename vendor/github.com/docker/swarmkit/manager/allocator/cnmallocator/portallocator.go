@@ -371,7 +371,7 @@ func (pa *portAllocator) isPortsAllocatedOnInit(s *api.Service, onInit bool) boo
 			if _, ok := hostTargetPorts[portConfig.TargetPort]; !ok {
 				return false
 			}
-			// NOTE(dperny) there could be a further case where we check if
+			// NOTE (dperny) there could be a further case where we check if id:473 gh:474
 			// there are host ports in the config that aren't in the spec, but
 			// that's only possible if there's a mismatch in the number of
 			// ports, which is handled by a length check earlier in the code

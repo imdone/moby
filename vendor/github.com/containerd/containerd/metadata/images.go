@@ -159,7 +159,7 @@ func (s *imageStore) Update(ctx context.Context, image images.Image, fieldpaths 
 				case "labels":
 					updated.Labels = image.Labels
 				case "target":
-					// NOTE(stevvooe): While we allow setting individual labels, we
+					// NOTE (stevvooe): While we allow setting individual labels, we id:386 gh:387
 					// only support replacing the target as a unit, since that is
 					// commonly pulled as a unit from other sources. It often doesn't
 					// make sense to modify the size or digest without touching the
@@ -213,7 +213,7 @@ func validateImage(image *images.Image) error {
 }
 
 func validateTarget(target *ocispec.Descriptor) error {
-	// NOTE(stevvooe): Only validate fields we actually store.
+	// NOTE (stevvooe): Only validate fields we actually store. id:374 gh:375
 
 	if err := target.Digest.Validate(); err != nil {
 		return errors.Wrapf(errdefs.ErrInvalidArgument, "Target.Digest %q invalid: %v", target.Digest, err)
@@ -250,7 +250,7 @@ func readImage(image *images.Image, bkt *bolt.Bucket) error {
 			return nil // skip it? a bkt maybe?
 		}
 
-		// TODO(stevvooe): This is why we need to use byte values for
+		// TODO (stevvooe): This is why we need to use byte values for id:376 gh:377
 		// keys, rather than full arrays.
 		switch string(k) {
 		case string(bucketKeyDigest):

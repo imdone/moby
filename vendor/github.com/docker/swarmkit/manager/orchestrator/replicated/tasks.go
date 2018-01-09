@@ -48,7 +48,7 @@ func (r *Orchestrator) tickTasks(ctx context.Context) {
 		err := r.store.Batch(func(batch *store.Batch) error {
 			for taskID := range r.restartTasks {
 				err := batch.Update(func(tx store.Tx) error {
-					// TODO(aaronl): optimistic update?
+					// TODO (aaronl): optimistic update? id:595 gh:596
 					t := store.GetTask(tx, taskID)
 					if t != nil {
 						if t.DesiredState > api.TaskStateRunning {

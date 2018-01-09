@@ -51,7 +51,7 @@ func init() {
 // mask), or an IPv4 CIDR (e.g. `1.2.3.4/24`, which has its IP port
 // initialized to zero).  ipv4Str can not be a hostname.
 //
-// NOTE: Many net.*() routines will initialize and return an IPv6 address.
+// NOTE: Many net.*() routines will initialize and return an IPv6 address. id:640 gh:641
 // To create uint32 values from net.IP, always test to make sure the address
 // returned can be converted to a 4 byte array using To4().
 func NewIPv4Addr(ipv4Str string) (IPv4Addr, error) {
@@ -146,7 +146,7 @@ func (ipv4 IPv4Addr) AddressHexString() string {
 // Broadcast is an IPv4Addr-only method that returns the broadcast address of
 // the network.
 //
-// NOTE: IPv6 only supports multicast, so this method only exists for
+// NOTE: IPv6 only supports multicast, so this method only exists for id:529 gh:530
 // IPv4Addr.
 func (ipv4 IPv4Addr) Broadcast() IPAddr {
 	// Nothing should listen on a broadcast address.

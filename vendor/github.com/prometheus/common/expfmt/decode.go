@@ -120,7 +120,7 @@ type textDecoder struct {
 
 // Decode implements the Decoder interface.
 func (d *textDecoder) Decode(v *dto.MetricFamily) error {
-	// TODO(fabxc): Wrap this as a line reader to make streaming safer.
+	// TODO (fabxc): Wrap this as a line reader to make streaming safer. id:960 gh:961
 	if len(d.fams) == 0 {
 		// No cached metric families, read everything and parse metrics.
 		fams, err := d.p.TextToMetricFamilies(d.r)

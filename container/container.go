@@ -270,7 +270,7 @@ func (container *Container) WriteHostConfig() (*containertypes.HostConfig, error
 
 // SetupWorkingDirectory sets up the container's working directory as set in container.Config.WorkingDir
 func (container *Container) SetupWorkingDirectory(rootIDs idtools.IDPair) error {
-	// TODO @jhowardmsft, @gupta-ak LCOW Support. This will need revisiting.
+	// TODO @jhowardmsft, @gupta-ak LCOW Support. This will need revisiting. id:18 gh:19
 	// We will need to do remote filesystem operations here.
 	if container.OS != runtime.GOOS {
 		return nil
@@ -307,7 +307,7 @@ func (container *Container) SetupWorkingDirectory(rootIDs idtools.IDPair) error 
 // particular path inside the container as though you were a process in that
 // container.
 //
-// NOTE: The returned path is *only* safely scoped inside the container's BaseFS
+// NOTE: The returned path is *only* safely scoped inside the container's BaseFS id:19 gh:20
 //       if no component of the returned path changes (such as a component
 //       symlinking to a different path) between using this method and using the
 //       path. See symlink.FollowSymlinkInScope for more details.
@@ -333,7 +333,7 @@ func (container *Container) GetResourcePath(path string) (string, error) {
 // Only use this method to safely access the container's `container.json` or
 // other metadata files. If in doubt, use container.GetResourcePath.
 //
-// NOTE: The returned path is *only* safely scoped inside the container's root
+// NOTE: The returned path is *only* safely scoped inside the container's root id:47 gh:48
 //       if no component of the returned path changes (such as a component
 //       symlinking to a different path) between using this method and using the
 //       path. See symlink.FollowSymlinkInScope for more details.

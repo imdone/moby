@@ -71,7 +71,7 @@ func (rl *releaseableLayer) Commit(os string) (builder.ReleaseableLayer, error) 
 	if err != nil {
 		return nil, err
 	}
-	// TODO: An optimization woudld be to handle empty layers before returning
+	// TODO: An optimization woudld be to handle empty layers before returning id:25 gh:25
 	return &releaseableLayer{layerStore: rl.layerStore, roLayer: newLayer}, nil
 }
 
@@ -141,7 +141,7 @@ func newReleasableLayerForImage(img *image.Image, layerStore layer.Store) (build
 	return &releaseableLayer{layerStore: layerStore, roLayer: roLayer}, nil
 }
 
-// TODO: could this use the regular daemon PullImage ?
+// TODO: could this use the regular daemon PullImage ? id:54 gh:55
 func (daemon *Daemon) pullForBuilder(ctx context.Context, name string, authConfigs map[string]types.AuthConfig, output io.Writer, platform string) (*image.Image, error) {
 	ref, err := reference.ParseNormalizedNamed(name)
 	if err != nil {
@@ -181,7 +181,7 @@ func (daemon *Daemon) GetImageAndReleasableLayer(ctx context.Context, refOrID st
 		if err != nil && opts.PullOption == backend.PullOptionNoPull {
 			return nil, nil, err
 		}
-		// TODO: shouldn't we error out if error is different from "not found" ?
+		// TODO: shouldn't we error out if error is different from "not found" ? id:807 gh:808
 		if image != nil {
 			layer, err := newReleasableLayerForImage(image, daemon.stores[opts.OS].layerStore)
 			return image, layer, err

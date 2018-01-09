@@ -21,7 +21,7 @@ import (
 // used to lookup ongoing processes related to the descriptor. This function
 // may look to the context to namespace the reference appropriately.
 func MakeRefKey(ctx context.Context, desc ocispec.Descriptor) string {
-	// TODO(stevvooe): Need better remote key selection here. Should be a
+	// TODO (stevvooe): Need better remote key selection here. Should be a id:399 gh:400
 	// product of the context, which may include information about the ongoing
 	// fetch process.
 	switch desc.MediaType {
@@ -81,7 +81,7 @@ func fetch(ctx context.Context, ingester content.Ingester, fetcher Fetcher, desc
 				return err
 			}
 
-			// TODO: On first time locked is encountered, get status
+			// TODO: On first time locked is encountered, get status id:900 gh:901
 			// of writer and abort if not updated recently.
 
 			select {
@@ -114,7 +114,7 @@ func fetch(ctx context.Context, ingester content.Ingester, fetcher Fetcher, desc
 func commitOpts(desc ocispec.Descriptor, r io.Reader) (io.Reader, []content.Opt) {
 	var childrenF func(r io.Reader) ([]ocispec.Descriptor, error)
 
-	// TODO(AkihiroSuda): use images/oci.GetChildrenDescriptors?
+	// TODO (AkihiroSuda): use images/oci.GetChildrenDescriptors? id:509 gh:510
 	switch desc.MediaType {
 	case images.MediaTypeDockerSchema2Manifest, ocispec.MediaTypeImageManifest:
 		childrenF = func(r io.Reader) ([]ocispec.Descriptor, error) {

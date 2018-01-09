@@ -497,7 +497,7 @@ func (t *Transport) newClientConn(c net.Conn, singleUse bool) (*ClientConn, erro
 	cc.cond = sync.NewCond(&cc.mu)
 	cc.flow.add(int32(initialWindowSize))
 
-	// TODO: adjust this writer size to account for frame size +
+	// TODO: adjust this writer size to account for frame size + id:1064 gh:1065
 	// MTU + crypto/tls record padding.
 	cc.bw = bufio.NewWriter(stickyErrWriter{c, &cc.werr})
 	cc.br = bufio.NewReader(c)
@@ -505,7 +505,7 @@ func (t *Transport) newClientConn(c net.Conn, singleUse bool) (*ClientConn, erro
 	cc.fr.ReadMetaHeaders = hpack.NewDecoder(initialHeaderTableSize, nil)
 	cc.fr.MaxHeaderListSize = t.maxHeaderListSize()
 
-	// TODO: SetMaxDynamicTableSize, SetMaxDynamicTableSizeLimit on
+	// TODO: SetMaxDynamicTableSize, SetMaxDynamicTableSizeLimit on id:730 gh:731
 	// henc in response to SETTINGS frames?
 	cc.henc = hpack.NewEncoder(&cc.hbuf)
 
@@ -593,7 +593,7 @@ func (cc *ClientConn) closeIfIdle() {
 	}
 	cc.closed = true
 	nextID := cc.nextStreamID
-	// TODO: do clients send GOAWAY too? maybe? Just Close:
+	// TODO: do clients send GOAWAY too? maybe? Just Close: id:982 gh:983
 	cc.mu.Unlock()
 
 	if VerboseLogs {
@@ -728,7 +728,7 @@ func (cc *ClientConn) RoundTrip(req *http.Request) (*http.Response, error) {
 	hasBody := body != nil
 	contentLen := actualContentLength(req)
 
-	// TODO(bradfitz): this is a copy of the logic in net/http. Unify somewhere?
+	// TODO (bradfitz): this is a copy of the logic in net/http. Unify somewhere? id:736 gh:737
 	var requestedGzip bool
 	if !cc.t.disableCompression() &&
 		req.Header.Get("Accept-Encoding") == "" &&
@@ -910,7 +910,7 @@ func (cc *ClientConn) writeHeaders(streamID uint32, endStream bool, hdrs []byte)
 			cc.fr.WriteContinuation(streamID, endHeaders, chunk)
 		}
 	}
-	// TODO(bradfitz): this Flush could potentially block (as
+	// TODO (bradfitz): this Flush could potentially block (as id:603 gh:604
 	// could the WriteHeaders call(s) above), which means they
 	// wouldn't respond to Request.Cancel being readable. That's
 	// rare, but this should probably be in a goroutine.
@@ -935,7 +935,7 @@ func (cs *clientStream) writeRequestBody(body io.Reader, bodyCloser io.Closer) (
 
 	defer func() {
 		traceWroteRequest(cs.trace, err)
-		// TODO: write h12Compare test showing whether
+		// TODO: write h12Compare test showing whether id:1065 gh:1067
 		// Request.Body is closed by the Transport,
 		// and in multiple cases: server replies <=299 and >299
 		// while still writing request body
@@ -977,7 +977,7 @@ func (cs *clientStream) writeRequestBody(body io.Reader, bodyCloser io.Closer) (
 			sentEnd = sawEOF && len(remain) == 0 && !hasTrailers
 			err = cc.fr.WriteData(cs.ID, sentEnd, data)
 			if err == nil {
-				// TODO(bradfitz): this flush is for latency, not bandwidth.
+				// TODO (bradfitz): this flush is for latency, not bandwidth. id:731 gh:732
 				// Most requests won't need this. Make this opt-in or
 				// opt-out?  Use some heuristic on the body type? Nagel-like
 				// timers?  Based on 'n'? Only last chunk of this for loop,
@@ -1306,7 +1306,7 @@ func (rl *clientConnReadLoop) cleanup() {
 	}
 
 	// Close any response bodies if the server closes prematurely.
-	// TODO: also do this if we've written the headers but not
+	// TODO: also do this if we've written the headers but not id:983 gh:984
 	// gotten a response yet.
 	err := cc.readerErr
 	cc.mu.Lock()
@@ -1416,7 +1416,7 @@ func (rl *clientConnReadLoop) processHeaders(f *MetaHeadersFrame) error {
 	}
 	if !cs.firstByte {
 		if cs.trace != nil {
-			// TODO(bradfitz): move first response byte earlier,
+			// TODO (bradfitz): move first response byte earlier, id:738 gh:739
 			// when we first read the 9 byte header, not waiting
 			// until all the HEADERS+CONTINUATION frames have been
 			// merged. This works for now.
@@ -1514,11 +1514,11 @@ func (rl *clientConnReadLoop) handleResponse(cs *clientStream, f *MetaHeadersFra
 			if clen64, err := strconv.ParseInt(clens[0], 10, 64); err == nil {
 				res.ContentLength = clen64
 			} else {
-				// TODO: care? unlike http/1, it won't mess up our framing, so it's
+				// TODO: care? unlike http/1, it won't mess up our framing, so it's id:607 gh:608
 				// more safe smuggling-wise to ignore.
 			}
 		} else if len(clens) > 1 {
-			// TODO: care? unlike http/1, it won't mess up our framing, so it's
+			// TODO: care? unlike http/1, it won't mess up our framing, so it's id:1066 gh:1066
 			// more safe smuggling-wise to ignore.
 		}
 	}
@@ -1556,7 +1556,7 @@ func (rl *clientConnReadLoop) processTrailers(cs *clientStream, f *MetaHeadersFr
 	}
 	if len(f.PseudoFields()) > 0 {
 		// No pseudo header fields are defined for trailers.
-		// TODO: ConnectionError might be overly harsh? Check.
+		// TODO: ConnectionError might be overly harsh? Check. id:732 gh:733
 		return ConnectionError(ErrCodeProtocol)
 	}
 
@@ -1685,7 +1685,7 @@ func (rl *clientConnReadLoop) processData(f *DataFrame) error {
 			return ConnectionError(ErrCodeProtocol)
 		}
 		// We probably did ask for this, but canceled. Just ignore it.
-		// TODO: be stricter here? only silently ignore things which
+		// TODO: be stricter here? only silently ignore things which id:984 gh:985
 		// we canceled, but not things which were closed normally
 		// by the peer? Tough without accumulating too much state.
 
@@ -1742,7 +1742,7 @@ func (rl *clientConnReadLoop) processData(f *DataFrame) error {
 var errInvalidTrailers = errors.New("http2: invalid trailers")
 
 func (rl *clientConnReadLoop) endStream(cs *clientStream) {
-	// TODO: check that any declared content-length matches, like
+	// TODO: check that any declared content-length matches, like id:740 gh:741
 	// server.go's (*stream).endStream method.
 	rl.endStreamError(cs, nil)
 }
@@ -1779,7 +1779,7 @@ func (rl *clientConnReadLoop) processGoAway(f *GoAwayFrame) error {
 	cc := rl.cc
 	cc.t.connPool().MarkDead(cc)
 	if f.ErrCode != 0 {
-		// TODO: deal with GOAWAY more. particularly the error code
+		// TODO: deal with GOAWAY more. particularly the error code id:610 gh:611
 		cc.vlogf("transport got GOAWAY with error code = %v", f.ErrCode)
 	}
 	cc.setGoAway(f)
@@ -1825,7 +1825,7 @@ func (rl *clientConnReadLoop) processSettings(f *SettingsFrame) error {
 
 			cc.initialWindowSize = s.Val
 		default:
-			// TODO(bradfitz): handle more settings? SETTINGS_HEADER_TABLE_SIZE probably.
+			// TODO (bradfitz): handle more settings? SETTINGS_HEADER_TABLE_SIZE probably. id:1067 gh:1068
 			cc.vlogf("Unhandled Setting: %v", s)
 		}
 		return nil
@@ -1866,7 +1866,7 @@ func (rl *clientConnReadLoop) processWindowUpdate(f *WindowUpdateFrame) error {
 func (rl *clientConnReadLoop) processResetStream(f *RSTStreamFrame) error {
 	cs := rl.cc.streamByID(f.StreamID, true)
 	if cs == nil {
-		// TODO: return error if server tries to RST_STEAM an idle stream
+		// TODO: return error if server tries to RST_STEAM an idle stream id:733 gh:734
 		return nil
 	}
 	select {
@@ -1959,7 +1959,7 @@ func (rl *clientConnReadLoop) processPushPromise(f *PushPromiseFrame) error {
 }
 
 func (cc *ClientConn) writeStreamReset(streamID uint32, code ErrCode, err error) {
-	// TODO: map err to more interesting error codes, once the
+	// TODO: map err to more interesting error codes, once the id:985 gh:986
 	// HTTP community comes up with some. But currently for
 	// RST_STREAM there's no equivalent to GOAWAY frame's debug
 	// data, and the error codes are all pretty vague ("cancel").

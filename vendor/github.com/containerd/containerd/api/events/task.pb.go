@@ -165,7 +165,7 @@ func (m *TaskCreate) Field(fieldpath []string) (string, bool) {
 	case "bundle":
 		return string(m.Bundle), len(m.Bundle) > 0
 	case "io":
-		// NOTE(stevvooe): This is probably not correct in many cases.
+		// NOTE (stevvooe): This is probably not correct in many cases. id:884 gh:885
 		// We assume that the target message also implements the Field
 		// method, which isn't likely true in a lot of cases.
 		//

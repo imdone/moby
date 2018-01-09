@@ -138,7 +138,7 @@ func (c *client) Create(_ context.Context, id string, spec *specs.Spec, runtimeO
 	// temporary workaround due to LCOW requiring layer folder paths,
 	// which are stored under spec.Windows.
 	//
-	// TODO: @darrenstahlmsft fix this once the OCI spec is updated to
+	// TODO: @darrenstahlmsft fix this once the OCI spec is updated to id:233 gh:234
 	// support layer folder paths for LCOW
 	if spec.Linux == nil {
 		return c.createWindows(id, spec, runtimeOptions)
@@ -223,7 +223,7 @@ func (c *client) createWindows(id string, spec *specs.Spec, runtimeOptions inter
 
 	if configuration.HvPartition {
 		// We don't currently support setting the utility VM image explicitly.
-		// TODO @swernli/jhowardmsft circa RS3/4, this may be re-locatable.
+		// TODO @swernli/jhowardmsft circa RS3/4, this may be re-locatable. id:226 gh:227
 		if spec.Windows.HyperV.UtilityVMPath != "" {
 			return errors.New("runtime does not support an explicit utility VM path for Hyper-V containers")
 		}
@@ -1048,7 +1048,7 @@ func (c *client) Stats(_ context.Context, containerID string) (*Stats, error) {
 func (c *client) Restore(ctx context.Context, id string, attachStdio StdioCallback) (bool, int, error) {
 	c.logger.WithField("container", id).Debug("restore()")
 
-	// TODO Windows: On RS1, a re-attach isn't possible.
+	// TODO Windows: On RS1, a re-attach isn't possible. id:859 gh:860
 	// However, there is a scenario in which there is an issue.
 	// Consider a background container. The daemon dies unexpectedly.
 	// HCS will still have the compute service alive and running.

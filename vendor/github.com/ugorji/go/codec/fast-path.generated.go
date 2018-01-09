@@ -1734,7 +1734,7 @@ func fastpathEncodeTypeSwitch(iv interface{}, e *Encoder) bool {
 		fastpathTV.EncMapBoolBoolV(*v, fastpathCheckNilTrue, e)
 
 	default:
-		_ = v // TODO: workaround https://github.com/golang/go/issues/12927 (remove after go 1.6 release)
+		_ = v // TODO: workaround https://github.com/golang/go/issues/12927 (remove after go 1.6 release) id:966 gh:968
 		return false
 	}
 	return true
@@ -1822,7 +1822,7 @@ func fastpathEncodeTypeSwitchSlice(iv interface{}, e *Encoder) bool {
 		fastpathTV.EncSliceBoolV(*v, fastpathCheckNilTrue, e)
 
 	default:
-		_ = v // TODO: workaround https://github.com/golang/go/issues/12927 (remove after go 1.6 release)
+		_ = v // TODO: workaround https://github.com/golang/go/issues/12927 (remove after go 1.6 release) id:677 gh:678
 		return false
 	}
 	return true
@@ -3115,7 +3115,7 @@ func fastpathEncodeTypeSwitchMap(iv interface{}, e *Encoder) bool {
 		fastpathTV.EncMapBoolBoolV(*v, fastpathCheckNilTrue, e)
 
 	default:
-		_ = v // TODO: workaround https://github.com/golang/go/issues/12927 (remove after go 1.6 release)
+		_ = v // TODO: workaround https://github.com/golang/go/issues/12927 (remove after go 1.6 release) id:563 gh:564
 		return false
 	}
 	return true
@@ -17663,7 +17663,7 @@ func fastpathDecodeTypeSwitch(iv interface{}, d *Decoder) bool {
 		}
 
 	default:
-		_ = v // TODO: workaround https://github.com/golang/go/issues/12927 (remove after go 1.6 release)
+		_ = v // TODO: workaround https://github.com/golang/go/issues/12927 (remove after go 1.6 release) id:1049 gh:1050
 		return false
 	}
 	return true

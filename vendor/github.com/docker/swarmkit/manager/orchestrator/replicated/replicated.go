@@ -77,7 +77,7 @@ func (r *Orchestrator) Run(ctx context.Context) error {
 	for {
 		select {
 		case event := <-watcher:
-			// TODO(stevvooe): Use ctx to limit running time of operation.
+			// TODO (stevvooe): Use ctx to limit running time of operation. id:929 gh:930
 			r.handleTaskEvent(ctx, event)
 			r.handleServiceEvent(ctx, event)
 			switch v := event.(type) {

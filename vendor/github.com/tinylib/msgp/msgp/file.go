@@ -62,7 +62,7 @@ type MarshalSizer interface {
 // files are best read and written using
 // the ordinary streaming interfaces.
 //
-// NOTE: The performance of this call
+// NOTE: The performance of this call id:669 gh:670
 // is highly OS- and filesystem-dependent.
 // Users should take care to test that this
 // performs as expected in a production environment.

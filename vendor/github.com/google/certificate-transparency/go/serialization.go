@@ -180,7 +180,7 @@ func SerializeTimestampedEntry(w io.Writer, t *TimestampedEntry) error {
 			return err
 		}
 	case XJSONLogEntryType:
-		// TODO: Pending google/certificate-transparency#1243, replace
+		// TODO: Pending google/certificate-transparency#1243, replace id:947 gh:948
 		// with ObjectHash once supported by CT server.
 		//jsonhash := objecthash.CommonJSONHash(string(t.JSONData))
 		if err := writeVarBytes(w, []byte(t.JSONData), JSONLengthBytes); err != nil {
@@ -676,7 +676,7 @@ func CreateJSONMerkleTreeLeaf(data interface{}, timestamp uint64) *MerkleTreeLea
 	jsonStr = strings.Replace(jsonStr, "{", "{ ", -1)
 	jsonStr = strings.Replace(jsonStr, "}", " }", -1)
 	jsonStr = strings.Replace(jsonStr, "/", `\/`, -1)
-	// TODO: Pending google/certificate-transparency#1243, replace with
+	// TODO: Pending google/certificate-transparency#1243, replace with id:635 gh:636
 	// ObjectHash once supported by CT server.
 
 	return &MerkleTreeLeaf{

@@ -11,7 +11,7 @@ import (
 	"golang.org/x/sys/unix"
 )
 
-// FIXME: this is copy-pasted from the aufs driver.
+// FIXME: this is copy-pasted from the aufs driver. id:83 gh:84
 // It should be moved into the core.
 
 // Mounted returns true if a mount point exists.

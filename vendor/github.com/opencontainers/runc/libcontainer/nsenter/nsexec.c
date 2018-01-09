@@ -39,7 +39,7 @@ enum sync_t {
 	SYNC_GRANDCHILD  = 0x44, /* The grandchild is ready to run. */
 	SYNC_CHILD_READY = 0x45, /* The child or grandchild is ready to return. */
 
-	/* XXX: This doesn't help with segfaults and other such issues. */
+	/* XXX: This doesn't help with segfaults and other such issues. id:1040 gh:1041*/
 	SYNC_ERR = 0xFF, /* Fatal error, no turning back. The error code follows. */
 };
 
@@ -126,10 +126,10 @@ int setns(int fd, int nstype)
 }
 #endif
 
-/* XXX: This is ugly. */
+/* XXX: This is ugly. id:679 gh:680*/
 static int syncfd = -1;
 
-/* TODO(cyphar): Fix this so it correctly deals with syncT. */
+/* TODO (cyphar): Fix this so it correctly deals with syncT. id:958 gh:959*/
 #define bail(fmt, ...)								\
 	do {									\
 		int ret = __COUNTER__ + 1;					\
@@ -580,7 +580,7 @@ void nsexec(void)
 	if (socketpair(AF_LOCAL, SOCK_STREAM, 0, sync_grandchild_pipe) < 0)
 		bail("failed to setup sync pipe between parent and grandchild");
 
-	/* TODO: Currently we aren't dealing with child deaths properly. */
+	/* TODO: Currently we aren't dealing with child deaths properly. id:661 gh:662*/
 
 	/*
 	 * Okay, so this is quite annoying.
@@ -857,7 +857,7 @@ void nsexec(void)
 			}
 
 			/*
-			 * TODO: What about non-namespace clone flags that we're dropping here?
+			 * TODO: What about non-namespace clone flags that we're dropping here? id:547 gh:548
 			 *
 			 * We fork again because of PID namespace, setns(2) or unshare(2) don't
 			 * change the PID namespace of the calling process, because doing so

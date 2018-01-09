@@ -162,7 +162,7 @@ func loginV2(authConfig *types.AuthConfig, endpoint APIEndpoint, userAgent strin
 		return "Login Succeeded", credentialAuthConfig.IdentityToken, nil
 	}
 
-	// TODO(dmcgowan): Attempt to further interpret result, status code and error code string
+	// TODO (dmcgowan): Attempt to further interpret result, status code and error code string id:271 gh:272
 	err = errors.Errorf("login attempt to %s failed with status: %d %s", endpointStr, resp.StatusCode, http.StatusText(resp.StatusCode))
 	if !foundV2 {
 		err = fallbackError{err: err}

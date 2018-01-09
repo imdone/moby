@@ -25,7 +25,7 @@ func (s *DockerSuite) TestAPIGetEnabledCORS(c *check.C) {
 	c.Assert(err, checker.IsNil)
 	c.Assert(res.StatusCode, checker.Equals, http.StatusOK)
 	body.Close()
-	// TODO: @runcom incomplete tests, why old integration tests had this headers
+	// TODO: @runcom incomplete tests, why old integration tests had this headers id:137 gh:138
 	// and here none of the headers below are in the response?
 	//c.Log(res.Header)
 	//c.Assert(res.Header.Get("Access-Control-Allow-Origin"), check.Equals, "*")

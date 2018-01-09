@@ -682,7 +682,7 @@ func removeCurrentIfEmpty(head **sequence, previous, current *sequence) {
 
 // Given a pointer to a sequence, it checks if it can be merged with any following sequences
 // It stops when no more merging is possible.
-// TODO: Optimization: only attempt merge from start to end sequence, no need to scan till the end of the list
+// TODO: Optimization: only attempt merge from start to end sequence, no need to scan till the end of the list id:448 gh:449
 func mergeSequences(seq *sequence) {
 	if seq != nil {
 		// Merge all what possible from seq

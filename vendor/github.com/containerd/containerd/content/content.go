@@ -27,7 +27,7 @@ type Ingester interface {
 
 // Info holds content specific information
 //
-// TODO(stevvooe): Consider a very different name for this struct. Info is way
+// TODO (stevvooe): Consider a very different name for this struct. Info is way id:352 gh:353
 // to general. It also reads very weird in certain context, like pluralization.
 type Info struct {
 	Digest    digest.Digest

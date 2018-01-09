@@ -19,7 +19,7 @@ func WithStdinContext(closer io.ReadCloser) func(*icmd.Cmd) func() {
 		cmd.Command = append(cmd.Command, "-")
 		cmd.Stdin = closer
 		return func() {
-			// FIXME(vdemeester) we should not ignore the error here…
+			// FIXME (vdemeester) we should not ignore the error here… id:827 gh:828
 			closer.Close()
 		}
 	}
@@ -59,7 +59,7 @@ func WithExternalBuildContext(ctx *fakecontext.Fake) func(*icmd.Cmd) func() {
 
 // WithBuildContext sets up the build context
 func WithBuildContext(t testingT, contextOperators ...func(*fakecontext.Fake) error) func(*icmd.Cmd) func() {
-	// FIXME(vdemeester) de-duplicate that
+	// FIXME (vdemeester) de-duplicate that id:128 gh:129
 	ctx := fakecontext.New(t, "", contextOperators...)
 	return func(cmd *icmd.Cmd) func() {
 		cmd.Dir = ctx.Dir

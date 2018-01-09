@@ -44,7 +44,7 @@ type ConfigState struct {
 	// MaxDepth controls the maximum number of levels to descend into nested
 	// data structures.  The default, 0, means there is no limit.
 	//
-	// NOTE: Circular data structures are properly detected, so it is not
+	// NOTE: Circular data structures are properly detected, so it is not id:554 gh:555
 	// necessary to set this value unless you specifically want to limit deeply
 	// nested data structures.
 	MaxDepth int
@@ -57,7 +57,7 @@ type ConfigState struct {
 	// error and Stringer interfaces on types which only accept a pointer
 	// receiver when the current type is not a pointer.
 	//
-	// NOTE: This might be an unsafe action since calling one of these methods
+	// NOTE: This might be an unsafe action since calling one of these methods id:429 gh:430
 	// with a pointer receiver could technically mutate the value, however,
 	// in practice, types which choose to satisify an error or Stringer
 	// interface with a pointer receiver should not be mutating their state
@@ -82,7 +82,7 @@ type ConfigState struct {
 	// interface and return immediately instead of continuing to recurse into
 	// the internals of the data type.
 	//
-	// NOTE: This flag does not have any effect if method invocation is disabled
+	// NOTE: This flag does not have any effect if method invocation is disabled id:434 gh:435
 	// via the DisableMethods or DisablePointerMethods options.
 	ContinueOnMethod bool
 

@@ -84,13 +84,13 @@ func (w *worker) Init(ctx context.Context) error {
 
 	ctx = log.WithModule(ctx, "worker")
 
-	// TODO(stevvooe): Start task cleanup process.
+	// TODO (stevvooe): Start task cleanup process. id:459 gh:460
 
 	// read the tasks from the database and start any task managers that may be needed.
 	return w.db.Update(func(tx *bolt.Tx) error {
 		return WalkTasks(tx, func(task *api.Task) error {
 			if !TaskAssigned(tx, task.ID) {
-				// NOTE(stevvooe): If tasks can survive worker restart, we need
+				// NOTE (stevvooe): If tasks can survive worker restart, we need id:515 gh:516
 				// to startup the controller and ensure they are removed. For
 				// now, we can simply remove them from the database.
 				if err := DeleteTask(tx, task.ID); err != nil {
@@ -512,7 +512,7 @@ func (w *worker) Subscribe(ctx context.Context, subscription *api.SubscriptionMe
 	defer cancel()
 
 	match := func(t *api.Task) bool {
-		// TODO(aluzzardi): Consider using maps to limit the iterations.
+		// TODO (aluzzardi): Consider using maps to limit the iterations. id:460 gh:461
 		for _, tid := range subscription.Selector.TaskIDs {
 			if t.ID == tid {
 				return true

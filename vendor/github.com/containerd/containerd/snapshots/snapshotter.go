@@ -91,7 +91,7 @@ type Usage struct {
 func (u *Usage) Add(other Usage) {
 	u.Size += other.Size
 
-	// TODO(stevvooe): assumes independent inodes, but provides and upper
+	// TODO (stevvooe): assumes independent inodes, but provides and upper id:533 gh:534
 	// bound. This should be pretty close, assuming the inodes for a
 	// snapshot are roughly unique to it. Don't trust this assumption.
 	u.Inodes += other.Inodes

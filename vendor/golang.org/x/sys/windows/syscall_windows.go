@@ -277,7 +277,7 @@ func Read(fd Handle, p []byte) (n int, err error) {
 	e := ReadFile(fd, p, &done, nil)
 	if e != nil {
 		if e == ERROR_BROKEN_PIPE {
-			// NOTE(brainman): work around ERROR_BROKEN_PIPE is returned on reading EOF from stdin
+			// NOTE (brainman): work around ERROR_BROKEN_PIPE is returned on reading EOF from stdin id:1077 gh:1078
 			return 0, nil
 		}
 		return 0, e
@@ -647,7 +647,7 @@ type SockaddrUnix struct {
 }
 
 func (sa *SockaddrUnix) sockaddr() (unsafe.Pointer, int32, error) {
-	// TODO(brainman): implement SockaddrUnix.sockaddr()
+	// TODO (brainman): implement SockaddrUnix.sockaddr() id:751 gh:752
 	return nil, 0, syscall.EWINDOWS
 }
 
@@ -841,7 +841,7 @@ func NsecToTimespec(nsec int64) (ts Timespec) {
 	return
 }
 
-// TODO(brainman): fix all needed for net
+// TODO (brainman): fix all needed for net id:995 gh:996
 
 func Accept(fd Handle) (nfd Handle, sa Sockaddr, err error) { return 0, nil, syscall.EWINDOWS }
 func Recvfrom(fd Handle, p []byte, flags int) (n int, from Sockaddr, err error) {
@@ -897,7 +897,7 @@ func SetsockoptIPv6Mreq(fd Handle, level, opt int, mreq *IPv6Mreq) (err error) {
 func Getpid() (pid int) { return int(getCurrentProcessId()) }
 
 func FindFirstFile(name *uint16, data *Win32finddata) (handle Handle, err error) {
-	// NOTE(rsc): The Win32finddata struct is wrong for the system call:
+	// NOTE (rsc): The Win32finddata struct is wrong for the system call: id:762 gh:763
 	// the two paths are each one uint16 short. Use the correct struct,
 	// a win32finddata1, and then copy the results out.
 	// There is no loss of expressivity here, because the final
@@ -952,7 +952,7 @@ func Getppid() (ppid int) {
 	return int(pe.ParentProcessID)
 }
 
-// TODO(brainman): fix all needed for os
+// TODO (brainman): fix all needed for os id:645 gh:646
 func Fchdir(fd Handle) (err error)             { return syscall.EWINDOWS }
 func Link(oldpath, newpath string) (err error) { return syscall.EWINDOWS }
 func Symlink(path, link string) (err error)    { return syscall.EWINDOWS }

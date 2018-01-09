@@ -192,11 +192,11 @@ type Client struct {
 }
 
 // IsAlive returns true if the shim can be contacted.
-// NOTE: a negative answer doesn't mean that the process is gone.
+// NOTE: a negative answer doesn't mean that the process is gone. id:381 gh:382
 func (c *Client) IsAlive(ctx context.Context) (bool, error) {
 	_, err := c.ShimInfo(ctx, empty)
 	if err != nil {
-		// TODO(stevvooe): There are some error conditions that need to be
+		// TODO (stevvooe): There are some error conditions that need to be id:369 gh:370
 		// handle with unix sockets existence to give the right answer here.
 		return false, err
 	}

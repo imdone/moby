@@ -23,7 +23,7 @@ func compareSysStat(s1, s2 interface{}) (bool, error) {
 }
 
 func compareCapabilities(p1, p2 string) (bool, error) {
-	// TODO: Use windows equivalent
+	// TODO: Use windows equivalent id:888 gh:889
 	return true, nil
 }
 

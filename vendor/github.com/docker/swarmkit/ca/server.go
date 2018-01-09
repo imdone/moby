@@ -26,7 +26,7 @@ const (
 )
 
 // Server is the CA and NodeCA API gRPC server.
-// TODO(aaronl): At some point we may want to have separate implementations of
+// TODO (aaronl): At some point we may want to have separate implementations of id:472 gh:473
 // CA, NodeCA, and other hypothetical future CA services. At the moment,
 // breaking it apart doesn't seem worth it.
 type Server struct {
@@ -629,7 +629,7 @@ func (s *Server) isRunning() bool {
 func filterExternalCAURLS(ctx context.Context, desiredCert, defaultCert []byte, apiExternalCAs []*api.ExternalCA) (urls []string) {
 	desiredCert = NormalizePEMs(desiredCert)
 
-	// TODO(aaronl): In the future, this will be abstracted with an ExternalCA interface that has different
+	// TODO (aaronl): In the future, this will be abstracted with an ExternalCA interface that has different id:925 gh:926
 	// implementations for different CA types. At the moment, only CFSSL is supported.
 	for i, extCA := range apiExternalCAs {
 		// We want to support old external CA specifications which did not have a CA cert.  If there is no cert specified,

@@ -16,6 +16,6 @@ func DefaultSpec() specs.Platform {
 	return specs.Platform{
 		OS:           runtime.GOOS,
 		Architecture: runtime.GOARCH,
-		// TODO(stevvooe): Need to resolve GOARM for arm hosts.
+		// TODO (stevvooe): Need to resolve GOARM for arm hosts. id:384 gh:385
 	}
 }

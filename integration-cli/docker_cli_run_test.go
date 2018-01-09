@@ -96,7 +96,7 @@ func (s *DockerSuite) TestRunExitCodeOne(c *check.C) {
 
 // it should be possible to pipe in data via stdin to a process running in a container
 func (s *DockerSuite) TestRunStdinPipe(c *check.C) {
-	// TODO Windows: This needs some work to make compatible.
+	// TODO Windows: This needs some work to make compatible. id:184 gh:185
 	testRequires(c, DaemonIsLinux)
 	result := icmd.RunCmd(icmd.Cmd{
 		Command: []string{dockerBinary, "run", "-i", "-a", "stdin", "busybox", "cat"},
@@ -177,7 +177,7 @@ func (s *DockerSuite) TestRunWithoutNetworking(c *check.C) {
 
 //test --link use container name to link target
 func (s *DockerSuite) TestRunLinksContainerWithContainerName(c *check.C) {
-	// TODO Windows: This test cannot run on a Windows daemon as the networking
+	// TODO Windows: This test cannot run on a Windows daemon as the networking id:180 gh:181
 	// settings are not populated back yet on inspect.
 	testRequires(c, DaemonIsLinux)
 	dockerCmd(c, "run", "-i", "-t", "-d", "--name", "parent", "busybox")
@@ -192,7 +192,7 @@ func (s *DockerSuite) TestRunLinksContainerWithContainerName(c *check.C) {
 
 //test --link use container id to link target
 func (s *DockerSuite) TestRunLinksContainerWithContainerID(c *check.C) {
-	// TODO Windows: This test cannot run on a Windows daemon as the networking
+	// TODO Windows: This test cannot run on a Windows daemon as the networking id:842 gh:843
 	// settings are not populated back yet on inspect.
 	testRequires(c, DaemonIsLinux)
 	cID, _ := dockerCmd(c, "run", "-i", "-t", "-d", "busybox")
@@ -724,7 +724,7 @@ func (s *DockerSuite) TestRunUserDefaults(c *check.C) {
 }
 
 func (s *DockerSuite) TestRunUserByName(c *check.C) {
-	// TODO Windows: This test cannot run on a Windows daemon as Windows does
+	// TODO Windows: This test cannot run on a Windows daemon as Windows does id:185 gh:186
 	// not support the use of -u
 	testRequires(c, DaemonIsLinux)
 	out, _ := dockerCmd(c, "run", "-u", "root", "busybox", "id")
@@ -734,7 +734,7 @@ func (s *DockerSuite) TestRunUserByName(c *check.C) {
 }
 
 func (s *DockerSuite) TestRunUserByID(c *check.C) {
-	// TODO Windows: This test cannot run on a Windows daemon as Windows does
+	// TODO Windows: This test cannot run on a Windows daemon as Windows does id:214 gh:215
 	// not support the use of -u
 	testRequires(c, DaemonIsLinux)
 	out, _ := dockerCmd(c, "run", "-u", "1", "busybox", "id")
@@ -744,7 +744,7 @@ func (s *DockerSuite) TestRunUserByID(c *check.C) {
 }
 
 func (s *DockerSuite) TestRunUserByIDBig(c *check.C) {
-	// TODO Windows: This test cannot run on a Windows daemon as Windows does
+	// TODO Windows: This test cannot run on a Windows daemon as Windows does id:187 gh:188
 	// not support the use of -u
 	testRequires(c, DaemonIsLinux, NotArm)
 	out, _, err := dockerCmdWithError("run", "-u", "2147483648", "busybox", "id")
@@ -757,7 +757,7 @@ func (s *DockerSuite) TestRunUserByIDBig(c *check.C) {
 }
 
 func (s *DockerSuite) TestRunUserByIDNegative(c *check.C) {
-	// TODO Windows: This test cannot run on a Windows daemon as Windows does
+	// TODO Windows: This test cannot run on a Windows daemon as Windows does id:183 gh:184
 	// not support the use of -u
 	testRequires(c, DaemonIsLinux)
 	out, _, err := dockerCmdWithError("run", "-u", "-1", "busybox", "id")
@@ -770,7 +770,7 @@ func (s *DockerSuite) TestRunUserByIDNegative(c *check.C) {
 }
 
 func (s *DockerSuite) TestRunUserByIDZero(c *check.C) {
-	// TODO Windows: This test cannot run on a Windows daemon as Windows does
+	// TODO Windows: This test cannot run on a Windows daemon as Windows does id:843 gh:844
 	// not support the use of -u
 	testRequires(c, DaemonIsLinux)
 	out, _, err := dockerCmdWithError("run", "-u", "0", "busybox", "id")
@@ -783,7 +783,7 @@ func (s *DockerSuite) TestRunUserByIDZero(c *check.C) {
 }
 
 func (s *DockerSuite) TestRunUserNotFound(c *check.C) {
-	// TODO Windows: This test cannot run on a Windows daemon as Windows does
+	// TODO Windows: This test cannot run on a Windows daemon as Windows does id:188 gh:189
 	// not support the use of -u
 	testRequires(c, DaemonIsLinux)
 	_, _, err := dockerCmdWithError("run", "-u", "notme", "busybox", "id")
@@ -815,7 +815,7 @@ func (s *DockerSuite) TestRunTwoConcurrentContainers(c *check.C) {
 }
 
 func (s *DockerSuite) TestRunEnvironment(c *check.C) {
-	// TODO Windows: Environment handling is different between Linux and
+	// TODO Windows: Environment handling is different between Linux and id:215 gh:216
 	// Windows and this test relies currently on unix functionality.
 	testRequires(c, DaemonIsLinux)
 	result := icmd.RunCmd(icmd.Cmd{
@@ -854,7 +854,7 @@ func (s *DockerSuite) TestRunEnvironment(c *check.C) {
 }
 
 func (s *DockerSuite) TestRunEnvironmentErase(c *check.C) {
-	// TODO Windows: Environment handling is different between Linux and
+	// TODO Windows: Environment handling is different between Linux and id:190 gh:191
 	// Windows and this test relies currently on unix functionality.
 	testRequires(c, DaemonIsLinux)
 
@@ -887,7 +887,7 @@ func (s *DockerSuite) TestRunEnvironmentErase(c *check.C) {
 }
 
 func (s *DockerSuite) TestRunEnvironmentOverride(c *check.C) {
-	// TODO Windows: Environment handling is different between Linux and
+	// TODO Windows: Environment handling is different between Linux and id:186 gh:187
 	// Windows and this test relies currently on unix functionality.
 	testRequires(c, DaemonIsLinux)
 
@@ -929,7 +929,7 @@ func (s *DockerSuite) TestRunContainerNetwork(c *check.C) {
 }
 
 func (s *DockerSuite) TestRunNetHostNotAllowedWithLinks(c *check.C) {
-	// TODO Windows: This is Linux specific as --link is not supported and
+	// TODO Windows: This is Linux specific as --link is not supported and id:844 gh:845
 	// this will be deprecated in favor of container networking model.
 	testRequires(c, DaemonIsLinux, NotUserNamespace)
 	dockerCmd(c, "run", "--name", "linked", "busybox", "true")
@@ -946,7 +946,7 @@ func (s *DockerSuite) TestRunNetHostNotAllowedWithLinks(c *check.C) {
 // codepath is executed with "docker run -h <hostname>".  Both were manually
 // tested, but this testcase takes the simpler path of using "run -h .."
 func (s *DockerSuite) TestRunFullHostnameSet(c *check.C) {
-	// TODO Windows: -h is not yet functional.
+	// TODO Windows: -h is not yet functional. id:192 gh:193
 	testRequires(c, DaemonIsLinux)
 	out, _ := dockerCmd(c, "run", "-h", "foo.bar.baz", "busybox", "hostname")
 	if actual := strings.Trim(out, "\r\n"); actual != "foo.bar.baz" {
@@ -1140,7 +1140,7 @@ func (s *DockerSuite) TestRunProcWritableInPrivilegedContainers(c *check.C) {
 
 func (s *DockerSuite) TestRunDeviceNumbers(c *check.C) {
 	// Not applicable on Windows as /dev/ is a Unix specific concept
-	// TODO: NotUserNamespace could be removed here if "root" "root" is replaced w user
+	// TODO: NotUserNamespace could be removed here if "root" "root" is replaced w user id:218 gh:219
 	testRequires(c, DaemonIsLinux, NotUserNamespace)
 	out, _ := dockerCmd(c, "run", "busybox", "sh", "-c", "ls -l /dev/null")
 	deviceLineFields := strings.Fields(out)
@@ -1278,7 +1278,7 @@ func (s *DockerSuite) TestRunDNSDefaultOptions(c *check.C) {
 	actual, _ := dockerCmd(c, "run", "busybox", "cat", "/etc/resolv.conf")
 	// check that the actual defaults are appended to the commented out
 	// localhost resolver (which should be preserved)
-	// NOTE: if we ever change the defaults from google dns, this will break
+	// NOTE: if we ever change the defaults from google dns, this will break id:193 gh:194
 	expected := "#nameserver 127.0.2.1\n\nnameserver 8.8.8.8\nnameserver 8.8.4.4\n"
 	if actual != expected {
 		c.Fatalf("expected resolv.conf be: %q, but was: %q", expected, actual)
@@ -1623,7 +1623,7 @@ func (s *DockerSuite) TestRunAttachWithDetach(c *check.C) {
 }
 
 func (s *DockerSuite) TestRunState(c *check.C) {
-	// TODO Windows: This needs some rework as Windows busybox does not support top
+	// TODO Windows: This needs some rework as Windows busybox does not support top id:189 gh:190
 	testRequires(c, DaemonIsLinux)
 	out, _ := dockerCmd(c, "run", "-d", "busybox", "top")
 
@@ -1678,7 +1678,7 @@ func (s *DockerSuite) TestRunCopyVolumeUIDGID(c *check.C) {
 
 // Test for #1582
 func (s *DockerSuite) TestRunCopyVolumeContent(c *check.C) {
-	// TODO Windows, post RS1. Windows does not yet support volume functionality
+	// TODO Windows, post RS1. Windows does not yet support volume functionality id:845 gh:846
 	// that copies from the image to the volume.
 	testRequires(c, DaemonIsLinux)
 	name := "testruncopyvolumecontent"
@@ -2002,7 +2002,7 @@ func (s *DockerSuite) TestRunSetMacAddress(c *check.C) {
 }
 
 func (s *DockerSuite) TestRunInspectMacAddress(c *check.C) {
-	// TODO Windows. Network settings are not propagated back to inspect.
+	// TODO Windows. Network settings are not propagated back to inspect. id:195 gh:196
 	testRequires(c, DaemonIsLinux)
 	mac := "12:34:56:78:9a:bc"
 	out, _ := dockerCmd(c, "run", "-d", "--mac-address="+mac, "busybox", "top")
@@ -2024,7 +2024,7 @@ func (s *DockerSuite) TestRunWithInvalidMacAddress(c *check.C) {
 }
 
 func (s *DockerSuite) TestRunDeallocatePortOnMissingIptablesRule(c *check.C) {
-	// TODO Windows. Network settings are not propagated back to inspect.
+	// TODO Windows. Network settings are not propagated back to inspect. id:223 gh:224
 	testRequires(c, SameHostDaemon, DaemonIsLinux)
 
 	out := cli.DockerCmd(c, "run", "-d", "-p", "23:23", "busybox", "top").Combined()
@@ -2040,7 +2040,7 @@ func (s *DockerSuite) TestRunDeallocatePortOnMissingIptablesRule(c *check.C) {
 }
 
 func (s *DockerSuite) TestRunPortInUse(c *check.C) {
-	// TODO Windows. The duplicate NAT message returned by Windows will be
+	// TODO Windows. The duplicate NAT message returned by Windows will be id:197 gh:198
 	// changing as is currently completely undecipherable. Does need modifying
 	// to run sh rather than top though as top isn't in Windows busybox.
 	testRequires(c, SameHostDaemon, DaemonIsLinux)
@@ -2059,7 +2059,7 @@ func (s *DockerSuite) TestRunPortInUse(c *check.C) {
 
 // https://github.com/docker/docker/issues/12148
 func (s *DockerSuite) TestRunAllocatePortInReservedRange(c *check.C) {
-	// TODO Windows. -P is not yet supported
+	// TODO Windows. -P is not yet supported id:191 gh:192
 	testRequires(c, DaemonIsLinux)
 	// allocate a dynamic port to get the most recent
 	out, _ := dockerCmd(c, "run", "-d", "-P", "-p", "80", "busybox", "top")
@@ -2080,7 +2080,7 @@ func (s *DockerSuite) TestRunAllocatePortInReservedRange(c *check.C) {
 
 // Regression test for #7792
 func (s *DockerSuite) TestRunMountOrdering(c *check.C) {
-	// TODO Windows: Post RS1. Windows does not support nested mounts.
+	// TODO Windows: Post RS1. Windows does not support nested mounts. id:846 gh:847
 	testRequires(c, SameHostDaemon, DaemonIsLinux, NotUserNamespace)
 	prefix, _ := getPrefixAndSlashFromDaemonPlatform()
 
@@ -2172,7 +2172,7 @@ func (s *DockerSuite) TestRunCreateVolumeEtc(c *check.C) {
 }
 
 func (s *DockerSuite) TestVolumesNoCopyData(c *check.C) {
-	// TODO Windows (Post RS1). Windows does not support volumes which
+	// TODO Windows (Post RS1). Windows does not support volumes which id:198 gh:199
 	// are pre-populated such as is built in the dockerfile used in this test.
 	testRequires(c, DaemonIsLinux)
 	prefix, slash := getPrefixAndSlashFromDaemonPlatform()
@@ -2236,7 +2236,7 @@ func (s *DockerSuite) TestRunVolumesCleanPaths(c *check.C) {
 
 // Regression test for #3631
 func (s *DockerSuite) TestRunSlowStdoutConsumer(c *check.C) {
-	// TODO Windows: This should be able to run on Windows if can find an
+	// TODO Windows: This should be able to run on Windows if can find an id:225 gh:226
 	// alternate to /dev/zero and /dev/stdout.
 	testRequires(c, DaemonIsLinux)
 	cont := exec.Command(dockerBinary, "run", "--rm", "busybox", "/bin/sh", "-c", "dd if=/dev/zero of=/dev/stdout bs=1024 count=2000 | catv")
@@ -2262,7 +2262,7 @@ func (s *DockerSuite) TestRunSlowStdoutConsumer(c *check.C) {
 }
 
 func (s *DockerSuite) TestRunAllowPortRangeThroughExpose(c *check.C) {
-	// TODO Windows: -P is not currently supported. Also network
+	// TODO Windows: -P is not currently supported. Also network id:200 gh:201
 	// settings are not propagated back.
 	testRequires(c, DaemonIsLinux)
 	out, _ := dockerCmd(c, "run", "-d", "--expose", "3000-3003", "-P", "busybox", "top")
@@ -2490,7 +2490,7 @@ func (s *DockerSuite) TestRunTLSVerify(c *check.C) {
 }
 
 func (s *DockerSuite) TestRunPortFromDockerRangeInUse(c *check.C) {
-	// TODO Windows. Once moved to libnetwork/CNM, this may be able to be
+	// TODO Windows. Once moved to libnetwork/CNM, this may be able to be id:194 gh:195
 	// re-instated.
 	testRequires(c, DaemonIsLinux)
 	// first find allocator current position
@@ -2593,7 +2593,7 @@ func (s *DockerSuite) TestRunNetHost(c *check.C) {
 }
 
 func (s *DockerSuite) TestRunNetHostTwiceSameName(c *check.C) {
-	// TODO Windows. As Windows networking evolves and converges towards
+	// TODO Windows. As Windows networking evolves and converges towards id:847 gh:848
 	// CNM, this test may be possible to enable on Windows.
 	testRequires(c, SameHostDaemon, DaemonIsLinux, NotUserNamespace)
 
@@ -2620,7 +2620,7 @@ func (s *DockerSuite) TestRunNetContainerWhichHost(c *check.C) {
 }
 
 func (s *DockerSuite) TestRunAllowPortRangeThroughPublish(c *check.C) {
-	// TODO Windows. This may be possible to enable in the future. However,
+	// TODO Windows. This may be possible to enable in the future. However, id:244 gh:245
 	// Windows does not currently support --expose, or populate the network
 	// settings seen through inspect.
 	testRequires(c, DaemonIsLinux)
@@ -2825,7 +2825,7 @@ func (s *DockerSuite) TestRunPIDHostWithChildIsKillable(c *check.C) {
 }
 
 func (s *DockerSuite) TestRunWithTooSmallMemoryLimit(c *check.C) {
-	// TODO Windows. This may be possible to enable once Windows supports
+	// TODO Windows. This may be possible to enable once Windows supports id:229 gh:230
 	// memory limits on containers
 	testRequires(c, DaemonIsLinux)
 	// this memory limit is 1 byte less than the min, which is 4MB
@@ -2979,7 +2979,7 @@ func (s *DockerSuite) TestRunUnshareProc(c *check.C) {
 }
 
 func (s *DockerSuite) TestRunPublishPort(c *check.C) {
-	// TODO Windows: This may be possible once Windows moves to libnetwork and CNM
+	// TODO Windows: This may be possible once Windows moves to libnetwork and CNM id:203 gh:204
 	testRequires(c, DaemonIsLinux)
 	dockerCmd(c, "run", "-d", "--name", "test", "--expose", "8080", "busybox", "top")
 	out, _ := dockerCmd(c, "port", "test")
@@ -3267,7 +3267,7 @@ func (s *DockerSuite) TestRunCapAddSYSTIME(c *check.C) {
 
 // run create container failed should clean up the container
 func (s *DockerSuite) TestRunCreateContainerFailedCleanUp(c *check.C) {
-	// TODO Windows. This may be possible to enable once link is supported
+	// TODO Windows. This may be possible to enable once link is supported id:196 gh:197
 	testRequires(c, DaemonIsLinux)
 	name := "unique_name"
 	_, _, err := dockerCmdWithError("run", "--name", name, "--link", "nothing:nothing", "busybox")
@@ -3348,7 +3348,7 @@ func (s *DockerSuite) TestRunInvalidCgroupParent(c *check.C) {
 func testRunInvalidCgroupParent(c *check.C, cgroupParent, cleanCgroupParent, name string) {
 	out, _, err := dockerCmdWithError("run", "--cgroup-parent", cgroupParent, "--name", name, "busybox", "cat", "/proc/self/cgroup")
 	if err != nil {
-		// XXX: This may include a daemon crash.
+		// XXX: This may include a daemon crash. id:848 gh:849
 		c.Fatalf("unexpected failure when running container with --cgroup-parent option - %s\n%v", string(out), err)
 	}
 
@@ -3456,7 +3456,7 @@ func (s *DockerSuite) TestRunLinkToContainerNetMode(c *check.C) {
 }
 
 func (s *DockerSuite) TestRunLoopbackOnlyExistsWhenNetworkingDisabled(c *check.C) {
-	// TODO Windows: This may be possible to convert.
+	// TODO Windows: This may be possible to convert. id:249 gh:250
 	testRequires(c, DaemonIsLinux)
 	out, _ := dockerCmd(c, "run", "--net=none", "busybox", "ip", "-o", "-4", "a", "show", "up")
 
@@ -3503,7 +3503,7 @@ func (s *DockerSuite) TestRunModeNetContainerHostname(c *check.C) {
 }
 
 func (s *DockerSuite) TestRunNetworkNotInitializedNoneMode(c *check.C) {
-	// TODO Windows: Network settings are not currently propagated. This may
+	// TODO Windows: Network settings are not currently propagated. This may id:257 gh:258
 	// be resolved in the future with the move to libnetwork and CNM.
 	testRequires(c, DaemonIsLinux)
 	out, _ := dockerCmd(c, "run", "-d", "--net=none", "busybox", "top")
@@ -3705,7 +3705,7 @@ func (s *DockerSuite) TestRunStdinBlockedAfterContainerExit(c *check.C) {
 }
 
 func (s *DockerSuite) TestRunWrongCpusetCpusFlagValue(c *check.C) {
-	// TODO Windows: This needs validation (error out) in the daemon.
+	// TODO Windows: This needs validation (error out) in the daemon. id:206 gh:207
 	testRequires(c, DaemonIsLinux)
 	out, exitCode, err := dockerCmdWithError("run", "--cpuset-cpus", "1-10,11--", "busybox", "true")
 	c.Assert(err, check.NotNil)
@@ -3716,7 +3716,7 @@ func (s *DockerSuite) TestRunWrongCpusetCpusFlagValue(c *check.C) {
 }
 
 func (s *DockerSuite) TestRunWrongCpusetMemsFlagValue(c *check.C) {
-	// TODO Windows: This needs validation (error out) in the daemon.
+	// TODO Windows: This needs validation (error out) in the daemon. id:199 gh:200
 	testRequires(c, DaemonIsLinux)
 	out, exitCode, err := dockerCmdWithError("run", "--cpuset-mems", "1-42--", "busybox", "true")
 	c.Assert(err, check.NotNil)
@@ -3760,7 +3760,7 @@ func (s *DockerSuite) TestCmdCannotBeInvoked(c *check.C) {
 }
 
 // TestRunNonExistingImage checks that 'docker run foo' exits with error msg 125 and contains  'Unable to find image'
-// FIXME(vdemeester) should be a unit test
+// FIXME (vdemeester) should be a unit test id:849 gh:850
 func (s *DockerSuite) TestRunNonExistingImage(c *check.C) {
 	icmd.RunCommand(dockerBinary, "run", "foo").Assert(c, icmd.Expected{
 		ExitCode: 125,
@@ -3769,7 +3769,7 @@ func (s *DockerSuite) TestRunNonExistingImage(c *check.C) {
 }
 
 // TestDockerFails checks that 'docker run -foo busybox' exits with 125 to signal docker run failed
-// FIXME(vdemeester) should be a unit test
+// FIXME (vdemeester) should be a unit test id:251 gh:252
 func (s *DockerSuite) TestDockerFails(c *check.C) {
 	icmd.RunCommand(dockerBinary, "run", "-foo", "busybox").Assert(c, icmd.Expected{
 		ExitCode: 125,
@@ -3985,7 +3985,7 @@ func (s *DockerSuite) TestRunNamedVolumesFromNotRemoved(c *check.C) {
 }
 
 func (s *DockerSuite) TestRunAttachFailedNoLeak(c *check.C) {
-	// TODO @msabansal - https://github.com/moby/moby/issues/35023. Duplicate
+	// TODO @msabansal - https://github.com/moby/moby/issues/35023. Duplicate id:259 gh:260
 	// port mappings are not errored out on RS3 builds. Temporarily disabling
 	// this test pending further investigation. Note we parse kernel.GetKernelVersion
 	// rather than system.GetOSVersion as test binaries aren't manifested, so would
@@ -3994,7 +3994,7 @@ func (s *DockerSuite) TestRunAttachFailedNoLeak(c *check.C) {
 		v, err := kernel.GetKernelVersion()
 		c.Assert(err, checker.IsNil)
 		build, _ := strconv.Atoi(strings.Split(strings.SplitN(v.String(), " ", 3)[2][1:], ".")[0])
-		if build >= 16292 { // @jhowardmsft TODO - replace with final RS3 build and ==
+		if build >= 16292 { // @jhowardmsft TODO - replace with final RS3 build and == id:208 gh:209
 			c.Skip("Temporarily disabled on RS3 builds")
 		}
 	}
@@ -4013,7 +4013,7 @@ func (s *DockerSuite) TestRunAttachFailedNoLeak(c *check.C) {
 	out2, err2 := dockerCmd(c, "inspect", "--format", "{{json .State}}", "fail")
 	c.Assert(err, checker.NotNil, check.Commentf("Command should have failed but succeeded with: %s\nContainer 'test' [%+v]: %s\nContainer 'fail' [%+v]: %s", out, err1, out1, err2, out2))
 	// check for windows error as well
-	// TODO Windows Post TP5. Fix the error message string
+	// TODO Windows Post TP5. Fix the error message string id:202 gh:203
 	c.Assert(strings.Contains(string(out), "port is already allocated") ||
 		strings.Contains(string(out), "were not connected because a duplicate name exists") ||
 		strings.Contains(string(out), "HNS failed with error : Failed to create endpoint") ||

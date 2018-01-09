@@ -87,7 +87,7 @@ func (daemon *Daemon) ContainersPrune(ctx context.Context, pruneFilters filters.
 				continue
 			}
 			cSize, _ := daemon.getSize(c.ID)
-			// TODO: sets RmLink to true?
+			// TODO: sets RmLink to true? id:104 gh:105
 			err := daemon.ContainerRm(c.ID, &types.ContainerRmConfig{})
 			if err != nil {
 				logrus.Warnf("failed to prune container %s: %v", c.ID, err)
@@ -162,7 +162,7 @@ func (daemon *Daemon) VolumesPrune(ctx context.Context, pruneFilters filters.Arg
 
 // ImagesPrune removes unused images
 func (daemon *Daemon) ImagesPrune(ctx context.Context, pruneFilters filters.Args) (*types.ImagesPruneReport, error) {
-	// TODO @jhowardmsft LCOW Support: This will need revisiting later.
+	// TODO @jhowardmsft LCOW Support: This will need revisiting later. id:107 gh:108
 	platform := runtime.GOOS
 	if system.LCOWSupported() {
 		platform = "linux"

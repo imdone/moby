@@ -20,6 +20,6 @@ func GetOperatingSystem() (string, error) {
 // IsContainerized returns true if we are running inside a container.
 // No-op on FreeBSD and Darwin, always returns false.
 func IsContainerized() (bool, error) {
-	// TODO: Implement jail detection for freeBSD
+	// TODO: Implement jail detection for freeBSD id:260 gh:261
 	return false, errors.New("Cannot detect if we are in container")
 }

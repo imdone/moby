@@ -12,7 +12,7 @@ func copyFileInfo(fi os.FileInfo, name string) error {
 		return errors.Wrapf(err, "failed to chmod %s", name)
 	}
 
-	// TODO: copy windows specific metadata
+	// TODO: copy windows specific metadata id:887 gh:888
 
 	return nil
 }

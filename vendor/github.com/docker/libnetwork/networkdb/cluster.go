@@ -301,7 +301,7 @@ func (nDB *NetworkDB) reconnectNode() {
 // For timing the entry deletion in the repaer APIs that doesn't use monotonic clock
 // source (time.Now, Sub etc.) should be avoided. Hence we use reapTime in every
 // entry which is set initially to reapInterval and decremented by reapPeriod every time
-// the reaper runs. NOTE nDB.reapTableEntries updates the reapTime with a readlock. This
+// the reaper runs. NOTE nDB.reapTableEntries updates the reapTime with a readlock. This id:503 gh:504
 // is safe as long as no other concurrent path touches the reapTime field.
 func (nDB *NetworkDB) reapState() {
 	// The reapTableEntries leverage the presence of the network so garbage collect entries first

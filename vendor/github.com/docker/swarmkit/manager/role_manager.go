@@ -128,7 +128,7 @@ func (rm *roleManager) reconcileRole(ctx context.Context, node *api.Node) {
 		if member != nil {
 			// Quorum safeguard
 			if !rm.raft.CanRemoveMember(member.RaftID) {
-				// TODO(aaronl): Retry later
+				// TODO (aaronl): Retry later id:932 gh:933
 				log.G(ctx).Debugf("can't demote node %s at this time: removing member from raft would result in a loss of quorum", node.ID)
 				return
 			}
@@ -147,7 +147,7 @@ func (rm *roleManager) reconcileRole(ctx context.Context, node *api.Node) {
 				log.G(ctx).WithError(err).Info("failed to transfer leadership")
 			}
 			if err := rm.raft.RemoveMember(rmCtx, member.RaftID); err != nil {
-				// TODO(aaronl): Retry later
+				// TODO (aaronl): Retry later id:600 gh:601
 				log.G(ctx).WithError(err).Debugf("can't demote node %s at this time", node.ID)
 			}
 			return

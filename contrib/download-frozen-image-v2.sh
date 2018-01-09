@@ -146,11 +146,11 @@ handle_single_manifest_v2() {
 			application/vnd.docker.image.rootfs.diff.tar.gzip)
 				local layerTar="$layerId/layer.tar"
 				layerFiles=( "${layerFiles[@]}" "$layerTar" )
-				# TODO figure out why "-C -" doesn't work here
+				# TODO figure out why "-C -" doesn't work here id:22 gh:23
 				# "curl: (33) HTTP server doesn't seem to support byte ranges. Cannot resume."
 				# "HTTP/1.1 416 Requested Range Not Satisfiable"
 				if [ -f "$dir/$layerTar" ]; then
-					# TODO hackpatch for no -C support :'(
+					# TODO hackpatch for no -C support :'( id:23 gh:24
 					echo "skipping existing ${layerId:0:12}"
 					continue
 				fi
@@ -290,11 +290,11 @@ while [ $# -gt 0 ]; do
 
 				echo "$imageJson" > "$dir/$layerId/json"
 
-				# TODO figure out why "-C -" doesn't work here
+				# TODO figure out why "-C -" doesn't work here id:51 gh:52
 				# "curl: (33) HTTP server doesn't seem to support byte ranges. Cannot resume."
 				# "HTTP/1.1 416 Requested Range Not Satisfiable"
 				if [ -f "$dir/$layerId/layer.tar" ]; then
-					# TODO hackpatch for no -C support :'(
+					# TODO hackpatch for no -C support :'( id:806 gh:807
 					echo "skipping existing ${layerId:0:12}"
 					continue
 				fi

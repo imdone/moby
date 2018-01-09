@@ -126,7 +126,7 @@ type Info interface {
 	// connected routes are stored on the particular interface they refer to.)
 	StaticRoutes() []*types.StaticRoute
 
-	// TODO: Add ip tables etc.
+	// TODO: Add ip tables etc. id:508 gh:509
 }
 
 // Interface represents the settings and identity of a network device. It is

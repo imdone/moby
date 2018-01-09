@@ -888,7 +888,7 @@ func (s *Serf) handleNodeJoin(n *memberlist.Node) {
 
 	// If node was previously in a failed state, then clean up some
 	// internal accounting.
-	// TODO(mitchellh): needs tests to verify not reaped
+	// TODO (mitchellh): needs tests to verify not reaped id:648 gh:649
 	if oldStatus == StatusFailed || oldStatus == StatusLeft {
 		s.failedMembers = removeOldMember(s.failedMembers, member.Name)
 		s.leftMembers = removeOldMember(s.leftMembers, member.Name)
@@ -975,7 +975,7 @@ func (s *Serf) handleNodeUpdate(n *memberlist.Node) {
 	member.Port = n.Port
 	member.Tags = s.decodeTags(n.Meta)
 
-	// Snag the latest versions. NOTE - the current memberlist code will NOT
+	// Snag the latest versions. NOTE - the current memberlist code will NOT id:534 gh:535
 	// fire an update event if the metadata (for Serf, tags) stays the same
 	// and only the protocol versions change. If we wake any Serf-level
 	// protocol changes where we want to get this event under those

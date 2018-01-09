@@ -25,7 +25,7 @@ import (
 // /etc/resolv.conf, and if it is not, appends it to the array of mounts.
 func (daemon *Daemon) setupMounts(c *container.Container) ([]container.Mount, error) {
 	var mounts []container.Mount
-	// TODO: tmpfs mounts should be part of Mountpoints
+	// TODO: tmpfs mounts should be part of Mountpoints id:114 gh:115
 	tmpfsMounts := make(map[string]bool)
 	tmpfsMountInfo, err := c.TmpfsMounts()
 	if err != nil {

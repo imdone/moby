@@ -1223,7 +1223,7 @@ type Decoder struct {
 	// Try to put things that go together to fit within a cache line (8 words).
 
 	d decDriver
-	// NOTE: Decoder shouldn't call it's read methods,
+	// NOTE: Decoder shouldn't call it's read methods, id:1047 gh:1048
 	// as the handler MAY need to do some coordination.
 	r decReader
 	// sa [initCollectionCap]decRtidFn
@@ -1689,7 +1689,7 @@ func (d *Decoder) getDecFn(rt reflect.Type, checkFastpath, checkCodecSelfer bool
 	// registered a pointer or non-pointer type, meaning we may have to recurse first
 	// before matching a mapped type, even though the extension byte is already detected.
 	//
-	// NOTE: if decoding into a nil interface{}, we return a non-nil
+	// NOTE: if decoding into a nil interface{}, we return a non-nil id:691 gh:692
 	// value except even if the container registers a length of 0.
 	if checkCodecSelfer && ti.cs {
 		fn.f = (*decFnInfo).selferUnmarshal

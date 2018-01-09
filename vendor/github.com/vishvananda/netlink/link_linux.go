@@ -781,7 +781,7 @@ func (h *Handle) LinkAdd(link Link) error {
 }
 
 func (h *Handle) linkModify(link Link, flags int) error {
-	// TODO: support extra data for macvlan
+	// TODO: support extra data for macvlan id:971 gh:972
 	base := link.Attrs()
 
 	if base.Name == "" {
@@ -789,10 +789,10 @@ func (h *Handle) linkModify(link Link, flags int) error {
 	}
 
 	if tuntap, ok := link.(*Tuntap); ok {
-		// TODO: support user
-		// TODO: support group
-		// TODO: multi_queue
-		// TODO: support non- persistent
+		// TODO: support user id:690 gh:691
+		// TODO: support group id:573 gh:574
+		// TODO: multi_queue id:1054 gh:1055
+		// TODO: support non- persistent id:708 gh:709
 		if tuntap.Mode < syscall.IFF_TUN || tuntap.Mode > syscall.IFF_TAP {
 			return fmt.Errorf("Tuntap.Mode %v unknown!", tuntap.Mode)
 		}
@@ -821,7 +821,7 @@ func (h *Handle) linkModify(link Link, flags int) error {
 
 		// can't set master during create, so set it afterwards
 		if base.MasterIndex != 0 {
-			// TODO: verify MasterIndex is actually a bridge?
+			// TODO: verify MasterIndex is actually a bridge? id:972 gh:973
 			return h.LinkSetMasterByIndex(link, base.MasterIndex)
 		}
 		return nil
@@ -830,7 +830,7 @@ func (h *Handle) linkModify(link Link, flags int) error {
 	req := h.newNetlinkRequest(syscall.RTM_NEWLINK, flags)
 
 	msg := nl.NewIfInfomsg(syscall.AF_UNSPEC)
-	// TODO: make it shorter
+	// TODO: make it shorter id:692 gh:693
 	if base.Flags&net.FlagUp != 0 {
 		msg.Change = syscall.IFF_UP
 		msg.Flags = syscall.IFF_UP
@@ -963,7 +963,7 @@ func (h *Handle) linkModify(link Link, flags int) error {
 
 	// can't set master during create, so set it afterwards
 	if base.MasterIndex != 0 {
-		// TODO: verify MasterIndex is actually a bridge?
+		// TODO: verify MasterIndex is actually a bridge? id:575 gh:576
 		return h.LinkSetMasterByIndex(link, base.MasterIndex)
 	}
 	return nil
@@ -1297,7 +1297,7 @@ func LinkList() ([]Link, error) {
 // LinkList gets a list of link devices.
 // Equivalent to: `ip link show`
 func (h *Handle) LinkList() ([]Link, error) {
-	// NOTE(vish): This duplicates functionality in net/iface_linux.go, but we need
+	// NOTE (vish): This duplicates functionality in net/iface_linux.go, but we need id:1055 gh:1056
 	//             to get the message ourselves to parse link type.
 	req := h.newNetlinkRequest(syscall.RTM_GETLINK, syscall.NLM_F_DUMP)
 
@@ -1589,7 +1589,7 @@ func parseBondData(link Link, data []syscall.NetlinkRouteAttr) {
 		case nl.IFLA_BOND_ARP_INTERVAL:
 			bond.ArpInterval = int(native.Uint32(data[i].Value[0:4]))
 		case nl.IFLA_BOND_ARP_IP_TARGET:
-			// TODO: implement
+			// TODO: implement id:711 gh:712
 		case nl.IFLA_BOND_ARP_VALIDATE:
 			bond.ArpValidate = BondArpValidate(native.Uint32(data[i].Value[0:4]))
 		case nl.IFLA_BOND_ARP_ALL_TARGETS:
@@ -1619,7 +1619,7 @@ func parseBondData(link Link, data []syscall.NetlinkRouteAttr) {
 		case nl.IFLA_BOND_AD_SELECT:
 			bond.AdSelect = BondAdSelect(data[i].Value[0])
 		case nl.IFLA_BOND_AD_INFO:
-			// TODO: implement
+			// TODO: implement id:973 gh:974
 		case nl.IFLA_BOND_AD_ACTOR_SYS_PRIO:
 			bond.AdActorSysPrio = int(native.Uint16(data[i].Value[0:2]))
 		case nl.IFLA_BOND_AD_USER_PORT_KEY:

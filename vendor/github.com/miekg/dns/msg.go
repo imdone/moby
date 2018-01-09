@@ -661,7 +661,7 @@ func packStructValue(val reflect.Value, msg []byte, off int, compression map[str
 					off++
 				}
 			case `dns:"wks"`:
-				// TODO(miek): this is wrong should be lenrd
+				// TODO (miek): this is wrong should be lenrd id:652 gh:653
 				if off == lenmsg {
 					break // dyn. updates
 				}
@@ -1656,7 +1656,7 @@ func (dns *Msg) Unpack(msg []byte) (err error) {
 	// The header counts might have been wrong so we need to update it
 	dh.Arcount = uint16(len(dns.Extra))
 	if off != len(msg) {
-		// TODO(miek) make this an error?
+		// TODO (miek) make this an error? id:539 gh:540
 		// use PackOpt to let people tell how detailed the error reporting should be?
 		// println("dns: extra bytes in dns packet", off, "<", len(msg))
 	} else if dns.Truncated {
@@ -1807,7 +1807,7 @@ func compressionLenSearch(c map[string]int, s string) (int, bool) {
 	return 0, false
 }
 
-// TODO(miek): should add all types, because the all can be *used* for compression.
+// TODO (miek): should add all types, because the all can be *used* for compression. id:1036 gh:1037
 func compressionLenHelperType(c map[string]int, r RR) {
 	switch x := r.(type) {
 	case *NS:
@@ -1908,7 +1908,7 @@ func (dns *Msg) CopyTo(r1 *Msg) *Msg {
 
 	if len(dns.Question) > 0 {
 		r1.Question = make([]Question, len(dns.Question))
-		copy(r1.Question, dns.Question) // TODO(miek): Question is an immutable value, ok to do a shallow-copy
+		copy(r1.Question, dns.Question) // TODO (miek): Question is an immutable value, ok to do a shallow-copy id:673 gh:674
 	}
 
 	rrArr := make([]RR, len(dns.Answer)+len(dns.Ns)+len(dns.Extra))

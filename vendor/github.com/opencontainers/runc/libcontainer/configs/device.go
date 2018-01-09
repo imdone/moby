@@ -9,7 +9,7 @@ const (
 	Wildcard = -1
 )
 
-// TODO Windows: This can be factored out in the future
+// TODO Windows: This can be factored out in the future id:545 gh:546
 
 type Device struct {
 	// Device type, block, char, etc.

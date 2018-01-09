@@ -42,7 +42,7 @@ func APIVersions(resp *http.Response, versionHeader string) []APIVersion {
 // API version string = <API type> '/' <API version>
 // API type = [a-z][a-z0-9]*
 // API version = [0-9]+(\.[0-9]+)?
-// TODO(dmcgowan): Enforce format, add error condition, remove unknown type
+// TODO (dmcgowan): Enforce format, add error condition, remove unknown type id:913 gh:914
 func ParseAPIVersion(versionStr string) APIVersion {
 	idx := strings.IndexRune(versionStr, '/')
 	if idx == -1 {

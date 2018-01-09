@@ -64,7 +64,7 @@ func UnpackLayer(dest string, layer io.Reader, options *TarOptions) (size int64,
 		// Windows image. However, for development, it is necessary to be able
 		// to pull Linux images which are in the repository.
 		//
-		// TODO Windows. Once the registry is aware of what images are Windows-
+		// TODO Windows. Once the registry is aware of what images are Windows- id:865 gh:867
 		// specific or Linux-specific, this warning should be changed to an error
 		// to cater for the situation where someone does manage to upload a Linux
 		// image but have it tagged as Windows inadvertently.

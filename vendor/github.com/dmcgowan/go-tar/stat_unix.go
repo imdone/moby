@@ -89,7 +89,7 @@ func statUnix(fi os.FileInfo, h *Header) error {
 			minor |= uint32((dev & 0xffff0000) >> 8)
 			h.Devmajor, h.Devminor = int64(major), int64(minor)
 		default:
-			// TODO: Implement solaris (see https://golang.org/issue/8106)
+			// TODO: Implement solaris (see https://golang.org/issue/8106) id:439 gh:440
 		}
 	}
 	return nil

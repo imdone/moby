@@ -27,7 +27,7 @@ func (s *DockerSwarmSuite) TestSwarmVolumePlugin(c *check.C) {
 	// create a dummy volume to trigger lazy loading of the plugin
 	out, err = d.Cmd("volume", "create", "-d", "customvolumedriver", "hello")
 
-	// TODO(aaronl): It will take about 15 seconds for swarm to realize the
+	// TODO (aaronl): It will take about 15 seconds for swarm to realize the id:212 gh:213
 	// plugin was loaded. Switching the test over to plugin v2 would avoid
 	// this long delay.
 

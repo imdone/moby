@@ -98,7 +98,7 @@ func NewLocalPlugin(name, addr string) *Plugin {
 	return &Plugin{
 		name: name,
 		Addr: addr,
-		// TODO: change to nil
+		// TODO: change to nil id:332 gh:333
 		TLSConfig:    &tlsconfig.Options{InsecureSkipVerify: true},
 		activateWait: sync.NewCond(&sync.Mutex{}),
 	}

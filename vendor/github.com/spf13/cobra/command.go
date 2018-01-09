@@ -382,7 +382,7 @@ func stripFlags(args []string, c *Command) []string {
 			case strings.Contains(y, "=\""):
 				inQuote = true
 			case strings.HasPrefix(y, "--") && !strings.Contains(y, "="):
-				// TODO: this isn't quite right, we should really check ahead for 'true' or 'false'
+				// TODO: this isn't quite right, we should really check ahead for 'true' or 'false' id:551 gh:552
 				inFlag = !isBooleanFlag(y[2:], c.Flags())
 			case strings.HasPrefix(y, "-") && !strings.Contains(y, "=") && len(y) == 2 && !isBooleanShortFlag(y[1:], c.Flags()):
 				inFlag = true
@@ -476,7 +476,7 @@ func (c *Command) Traverse(args []string) (*Command, []string, error) {
 		switch {
 		// A long flag with a space separated value
 		case strings.HasPrefix(arg, "--") && !strings.Contains(arg, "="):
-			// TODO: this isn't quite right, we should really check ahead for 'true' or 'false'
+			// TODO: this isn't quite right, we should really check ahead for 'true' or 'false' id:1043 gh:1044
 			inFlag = !isBooleanFlag(arg[2:], c.Flags())
 			flags = append(flags, arg)
 			continue

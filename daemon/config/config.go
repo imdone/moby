@@ -165,7 +165,7 @@ type CommonConfig struct {
 	registry.ServiceOptions
 
 	sync.Mutex
-	// FIXME(vdemeester) This part is not that clear and is mainly dependent on cli flags
+	// FIXME (vdemeester) This part is not that clear and is mainly dependent on cli flags id:44 gh:45
 	// It should probably be handled outside this package.
 	ValuesSet map[string]interface{}
 
@@ -332,7 +332,7 @@ func getConflictFreeConfiguration(configFile string, flags *pflag.FlagSet) (*Con
 		// are not overridden by default truthy values from the flags that were not explicitly set.
 		// See https://github.com/docker/docker/issues/20289 for an example.
 		//
-		// TODO: Rewrite configuration logic to avoid same issue with other nullable values, like numbers.
+		// TODO: Rewrite configuration logic to avoid same issue with other nullable values, like numbers. id:65 gh:66
 		namedOptions := make(map[string]interface{})
 		for key, value := range configSet {
 			f := flags.Lookup(key)

@@ -170,11 +170,11 @@ func (mw *Writer) avail() int { return len(mw.buf) - mw.wloc }
 
 func (mw *Writer) bufsize() int { return len(mw.buf) }
 
-// NOTE: this should only be called with
+// NOTE: this should only be called with id:671 gh:672
 // a number that is guaranteed to be less than
 // len(mw.buf). typically, it is called with a constant.
 //
-// NOTE: this is a hot code path
+// NOTE: this is a hot code path id:557 gh:558
 func (mw *Writer) require(n int) (int, error) {
 	c := len(mw.buf)
 	wl := mw.wloc
@@ -201,7 +201,7 @@ func (mw *Writer) Append(b ...byte) error {
 
 // push one byte onto the buffer
 //
-// NOTE: this is a hot code path
+// NOTE: this is a hot code path id:1046 gh:1047
 func (mw *Writer) push(b byte) error {
 	if mw.wloc == len(mw.buf) {
 		if err := mw.flush(); err != nil {

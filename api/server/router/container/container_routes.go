@@ -586,7 +586,7 @@ func (s *containerRouter) wsContainersAttach(ctx context.Context, w http.Respons
 		UseStdin:   true,
 		UseStdout:  true,
 		UseStderr:  true,
-		MuxStreams: false, // TODO: this should be true since it's a single stream for both stdout and stderr
+		MuxStreams: false, // TODO: this should be true since it's a single stream for both stdout and stderr id:26 gh:27
 	}
 
 	err = s.backend.ContainerAttach(containerName, attachConfig)

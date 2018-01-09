@@ -8,7 +8,7 @@ import (
 	"golang.org/x/sync/errgroup"
 )
 
-// Everything below is copied from containerd/fs. TODO: remove duplication @dmcgowan
+// Everything below is copied from containerd/fs. TODO: remove duplication @dmcgowan id:689 gh:690
 
 // Const redefined because containerd/fs doesn't build on !linux
 

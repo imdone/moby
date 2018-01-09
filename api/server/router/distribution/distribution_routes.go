@@ -79,7 +79,7 @@ func (s *distributionRouter) getDistributionInfo(ctx context.Context, w http.Res
 			Size:      descriptor.Size,
 		}
 	} else {
-		// TODO(nishanttotla): Once manifests can be looked up as a blob, the
+		// TODO (nishanttotla): Once manifests can be looked up as a blob, the id:5 gh:6
 		// descriptor should be set using blobsrvc.Stat(ctx, canonicalRef.Digest())
 		// instead of having to manually fill in the fields
 		distributionInspect.Descriptor.Digest = canonicalRef.Digest()

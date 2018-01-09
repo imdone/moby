@@ -280,7 +280,7 @@ func (rca *RootCA) RequestAndSaveNewCertificates(ctx context.Context, kw KeyWrit
 	// Create an X509Cert so we can .Verify()
 	// Check to see if this certificate was signed by our CA, and isn't expired
 	parsedCerts, chains, err := ValidateCertChain(rca.Pool, signedCert, false)
-	// TODO(cyli): - right now we need the invalid certificate in order to determine whether or not we should
+	// TODO (cyli): - right now we need the invalid certificate in order to determine whether or not we should id:587 gh:588
 	// download a new root, because we only want to do that in the case of workers.  When we have a single
 	// codepath for updating the root CAs for both managers and workers, this snippet can go.
 	if _, ok := err.(x509.UnknownAuthorityError); ok {
@@ -961,7 +961,7 @@ func GenerateNewCSR() ([]byte, []byte, error) {
 
 // EncryptECPrivateKey receives a PEM encoded private key and returns an encrypted
 // AES256 version using a passphrase
-// TODO: Make this method generic to handle RSA keys
+// TODO: Make this method generic to handle RSA keys id:471 gh:472
 func EncryptECPrivateKey(key []byte, passphraseStr string) ([]byte, error) {
 	passphrase := []byte(passphraseStr)
 	cipherType := x509.PEMCipherAES256

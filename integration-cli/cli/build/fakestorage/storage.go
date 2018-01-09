@@ -40,7 +40,7 @@ type Fake interface {
 }
 
 // SetTestEnvironment sets a static test environment
-// TODO: decouple this package from environment
+// TODO: decouple this package from environment id:129 gh:130
 func SetTestEnvironment(env *environment.Execution) {
 	testEnv = env
 }

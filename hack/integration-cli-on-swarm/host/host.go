@@ -155,12 +155,12 @@ func filtersBytes(optionalFiltersFile string) ([]byte, error) {
 }
 
 func waitForMasterUp(cli *client.Client, stackName string) (string, error) {
-	// FIXME(AkihiroSuda): it should retry until master is up, rather than pre-sleeping
+	// FIXME (AkihiroSuda): it should retry until master is up, rather than pre-sleeping id:122 gh:123
 	time.Sleep(10 * time.Second)
 
 	fil := filters.NewArgs()
 	fil.Add("label", "com.docker.stack.namespace="+stackName)
-	// FIXME(AkihiroSuda): we should not rely on internal service naming convention
+	// FIXME (AkihiroSuda): we should not rely on internal service naming convention id:124 gh:125
 	fil.Add("label", "com.docker.swarm.service.name="+stackName+"_master")
 	masters, err := cli.ContainerList(context.Background(), types.ContainerListOptions{
 		All:     true,

@@ -118,7 +118,7 @@ func (is *store) Create(config []byte) (ID, error) {
 		return "", err
 	}
 
-	// TODO @jhowardmsft - LCOW Support. This will need revisiting when coalescing the image stores.
+	// TODO @jhowardmsft - LCOW Support. This will need revisiting when coalescing the image stores. id:125 gh:126
 	// Integrity check - ensure we are creating something for the correct platform
 	if system.LCOWSupported() {
 		if strings.ToLower(img.OperatingSystem()) != strings.ToLower(is.os) {

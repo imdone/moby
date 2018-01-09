@@ -5,7 +5,7 @@
 // Gotty is a Go-package for reading and parsing the terminfo database
 package gotty
 
-// TODO add more concurrency to name lookup, look for more opportunities.
+// TODO add more concurrency to name lookup, look for more opportunities. id:359 gh:360
 
 import (
 	"bytes"

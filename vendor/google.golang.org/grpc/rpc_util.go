@@ -228,7 +228,7 @@ func (p *parser) recvMsg(maxMsgSize int) (pf payloadFormat, msg []byte, err erro
 	if length > uint32(maxMsgSize) {
 		return 0, nil, Errorf(codes.Internal, "grpc: received message length %d exceeding the max size %d", length, maxMsgSize)
 	}
-	// TODO(bradfitz,zhaoq): garbage. reuse buffer after proto decoding instead
+	// TODO (bradfitz,zhaoq): garbage. reuse buffer after proto decoding instead id:772 gh:773
 	// of making it for each message:
 	msg = make([]byte, int(length))
 	if _, err := io.ReadFull(p.r, msg); err != nil {
@@ -249,14 +249,14 @@ func encode(c Codec, msg interface{}, cp Compressor, cbuf *bytes.Buffer, outPayl
 	)
 	if msg != nil {
 		var err error
-		// TODO(zhaoq): optimize to reduce memory alloc and copying.
+		// TODO (zhaoq): optimize to reduce memory alloc and copying. id:1006 gh:1007
 		b, err = c.Marshal(msg)
 		if err != nil {
 			return nil, err
 		}
 		if outPayload != nil {
 			outPayload.Payload = msg
-			// TODO truncate large payload.
+			// TODO truncate large payload. id:787 gh:788
 			outPayload.Data = b
 			outPayload.Length = len(b)
 		}
@@ -328,7 +328,7 @@ func recv(p *parser, c Codec, s *transport.Stream, dc Decompressor, m interface{
 		}
 	}
 	if len(d) > maxMsgSize {
-		// TODO: Revisit the error code. Currently keep it consistent with java
+		// TODO: Revisit the error code. Currently keep it consistent with java id:704 gh:705
 		// implementation.
 		return Errorf(codes.Internal, "grpc: received a message of %d bytes exceeding %d limit", len(d), maxMsgSize)
 	}
@@ -338,7 +338,7 @@ func recv(p *parser, c Codec, s *transport.Stream, dc Decompressor, m interface{
 	if inPayload != nil {
 		inPayload.RecvTime = time.Now()
 		inPayload.Payload = m
-		// TODO truncate large payload.
+		// TODO truncate large payload. id:1089 gh:1090
 		inPayload.Data = d
 		inPayload.Length = len(d)
 	}
@@ -468,11 +468,11 @@ type MethodConfig struct {
 	// The actual value used is the minumum of the value specified here and the value set
 	// by the application via the gRPC client API. If either one is not set, then the other
 	// will be used.  If neither is set, then the built-in default is used.
-	// TODO: support this.
+	// TODO: support this. id:774 gh:775
 	MaxReqSize uint32
 	// MaxRespSize is the maximum allowed payload size for an individual response in a
 	// stream (server->client) in bytes.
-	// TODO: support this.
+	// TODO: support this. id:1007 gh:1008
 	MaxRespSize uint32
 }
 

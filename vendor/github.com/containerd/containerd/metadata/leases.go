@@ -134,8 +134,8 @@ func (lm *LeaseManager) List(ctx context.Context, includeResources bool, filter 
 		}
 		l.Labels = labels
 
-		// TODO: Read Snapshots
-		// TODO: Read Content
+		// TODO: Read Snapshots id:893 gh:894
+		// TODO: Read Content id:493 gh:494
 
 		leases = append(leases, l)
 

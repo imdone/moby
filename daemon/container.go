@@ -151,7 +151,7 @@ func (daemon *Daemon) newContainer(name string, operatingSystem string, config *
 	base.Created = time.Now().UTC()
 	base.Managed = managed
 	base.Path = entrypoint
-	base.Args = args //FIXME: de-duplicate from config
+	base.Args = args //FIXME: de-duplicate from config id:812 gh:813
 	base.Config = config
 	base.HostConfig = &containertypes.HostConfig{}
 	base.ImageID = imgID

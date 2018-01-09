@@ -34,7 +34,7 @@ func ApplyLayers(ctx context.Context, layers []Layer, sn snapshots.Snapshotter, 
 	var chain []digest.Digest
 	for _, layer := range layers {
 		if _, err := ApplyLayer(ctx, layer, chain, sn, a); err != nil {
-			// TODO: possibly wait and retry if extraction of same chain id was in progress
+			// TODO: possibly wait and retry if extraction of same chain id was in progress id:406 gh:407
 			return "", err
 		}
 
@@ -66,7 +66,7 @@ func ApplyLayer(ctx context.Context, layer Layer, chain []digest.Digest, sn snap
 	// Prepare snapshot with from parent, label as root
 	mounts, err := sn.Prepare(ctx, key, parent.String(), opts...)
 	if err != nil {
-		//TODO: If is snapshot exists error, retry
+		//TODO: If is snapshot exists error, retry id:401 gh:402
 		return false, errors.Wrapf(err, "failed to prepare extraction snapshot %q", key)
 	}
 	defer func() {

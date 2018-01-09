@@ -287,7 +287,7 @@ func (p *Buffer) Marshal(pb Message) error {
 // Size returns the encoded size of a protocol buffer.
 func Size(pb Message) (n int) {
 	// Can the object marshal itself?  If so, Size is slow.
-	// TODO: add Size to Marshaler, or add a Sizer interface.
+	// TODO: add Size to Marshaler, or add a Sizer interface. id:631 gh:632
 	if m, ok := pb.(Marshaler); ok {
 		b, _ := m.Marshal()
 		return len(b)
@@ -748,7 +748,7 @@ func (o *Buffer) enc_slice_packed_int32(p *Properties, base structPointer) error
 	if l == 0 {
 		return ErrNil
 	}
-	// TODO: Reuse a Buffer.
+	// TODO: Reuse a Buffer. id:943 gh:944
 	buf := NewBuffer(nil)
 	for i := 0; i < l; i++ {
 		x := int32(s.Index(i)) // permit sign extension to use full 64-bit range
@@ -817,7 +817,7 @@ func (o *Buffer) enc_slice_packed_uint32(p *Properties, base structPointer) erro
 	if l == 0 {
 		return ErrNil
 	}
-	// TODO: Reuse a Buffer.
+	// TODO: Reuse a Buffer. id:625 gh:626
 	buf := NewBuffer(nil)
 	for i := 0; i < l; i++ {
 		p.valEnc(buf, uint64(s.Index(i)))
@@ -880,7 +880,7 @@ func (o *Buffer) enc_slice_packed_int64(p *Properties, base structPointer) error
 	if l == 0 {
 		return ErrNil
 	}
-	// TODO: Reuse a Buffer.
+	// TODO: Reuse a Buffer. id:516 gh:518
 	buf := NewBuffer(nil)
 	for i := 0; i < l; i++ {
 		p.valEnc(buf, s.Index(i))
@@ -1124,7 +1124,7 @@ func size_exts(p *Properties, base structPointer) int {
 
 // Encode a map field.
 func (o *Buffer) enc_new_map(p *Properties, base structPointer) error {
-	var state errorState // XXX: or do we need to plumb this through?
+	var state errorState // XXX: or do we need to plumb this through? id:1026 gh:1027
 
 	/*
 		A map defined as

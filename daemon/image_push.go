@@ -41,7 +41,7 @@ func (daemon *Daemon) PushImage(ctx context.Context, image, tag string, metaHead
 		close(writesDone)
 	}()
 
-	// TODO @jhowardmsft LCOW Support. This will require revisiting. For now, hard-code.
+	// TODO @jhowardmsft LCOW Support. This will require revisiting. For now, hard-code. id:95 gh:96
 	platform := runtime.GOOS
 	if system.LCOWSupported() {
 		platform = "linux"

@@ -539,7 +539,7 @@ func (s *DockerSuite) TestContainerAPICommitWithLabelInConfig(c *check.C) {
 }
 
 func (s *DockerSuite) TestContainerAPIBadPort(c *check.C) {
-	// TODO Windows to Windows CI - Port this test
+	// TODO Windows to Windows CI - Port this test id:132 gh:133
 	testRequires(c, DaemonIsLinux)
 
 	config := containertypes.Config{
@@ -680,7 +680,7 @@ func UtilCreateNetworkMode(c *check.C, networkMode containertypes.NetworkMode) {
 }
 
 func (s *DockerSuite) TestContainerAPICreateWithCpuSharesCpuset(c *check.C) {
-	// TODO Windows to Windows CI. The CpuShares part could be ported.
+	// TODO Windows to Windows CI. The CpuShares part could be ported. id:133 gh:134
 	testRequires(c, DaemonIsLinux)
 	config := containertypes.Config{
 		Image: "busybox",
@@ -886,7 +886,7 @@ func (s *DockerSuite) TestContainerAPIPostCreateNull(c *check.C) {
 }
 
 func (s *DockerSuite) TestCreateWithTooLowMemoryLimit(c *check.C) {
-	// TODO Windows: Port once memory is supported
+	// TODO Windows: Port once memory is supported id:134 gh:135
 	testRequires(c, DaemonIsLinux)
 	config := `{
 		"Image":     "busybox",
@@ -990,7 +990,7 @@ func (s *DockerSuite) TestContainerAPIStart(c *check.C) {
 	err = cli.ContainerStart(context.Background(), name, types.ContainerStartOptions{})
 	c.Assert(err, checker.IsNil)
 
-	// TODO(tibor): figure out why this doesn't work on windows
+	// TODO (tibor): figure out why this doesn't work on windows id:829 gh:830
 }
 
 func (s *DockerSuite) TestContainerAPIStop(c *check.C) {

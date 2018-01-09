@@ -84,7 +84,7 @@ func (r *controller) PortStatus(ctx context.Context) (*api.PortStatus, error) {
 
 // Update tasks a recent task update and applies it to the container.
 func (r *controller) Update(ctx context.Context, t *api.Task) error {
-	// TODO(stevvooe): While assignment of tasks is idempotent, we do allow
+	// TODO (stevvooe): While assignment of tasks is idempotent, we do allow id:809 gh:810
 	// updates of metadata, such as labelling, as well as any other properties
 	// that make sense.
 	return nil
@@ -117,7 +117,7 @@ func (r *controller) Prepare(ctx context.Context) error {
 			var pctx context.Context
 
 			r.pulled = make(chan struct{})
-			pctx, r.cancelPull = context.WithCancel(context.Background()) // TODO(stevvooe): Bind a context to the entire controller.
+			pctx, r.cancelPull = context.WithCancel(context.Background()) // TODO (stevvooe): Bind a context to the entire controller. id:60 gh:61
 
 			go func() {
 				defer close(r.pulled)
@@ -130,7 +130,7 @@ func (r *controller) Prepare(ctx context.Context) error {
 			return ctx.Err()
 		case <-r.pulled:
 			if r.pullErr != nil {
-				// NOTE(stevvooe): We always try to pull the image to make sure we have
+				// NOTE (stevvooe): We always try to pull the image to make sure we have id:38 gh:39
 				// the most up to date version. This will return an error, but we only
 				// log it. If the image truly doesn't exist, the create below will
 				// error out.
@@ -175,7 +175,7 @@ func (r *controller) Start(ctx context.Context) error {
 	// Detect whether the container has *ever* been started. If so, we don't
 	// issue the start.
 	//
-	// TODO(stevvooe): This is very racy. While reading inspect, another could
+	// TODO (stevvooe): This is very racy. While reading inspect, another could id:59 gh:60
 	// start the process and we could end up starting it twice.
 	if ctnr.State.Status != "created" {
 		return exec.ErrTaskStarted
@@ -341,7 +341,7 @@ func (r *controller) Shutdown(ctx context.Context) error {
 		}
 
 		// add a delay for gossip converge
-		// TODO(dongluochen): this delay should be configurable to fit different cluster size and network delay.
+		// TODO (dongluochen): this delay should be configurable to fit different cluster size and network delay. id:61 gh:62
 		time.Sleep(defaultGossipConvergeDelay)
 	}
 
@@ -631,7 +631,7 @@ func parsePortMap(portMap nat.PortMap) ([]*api.PortConfig, error) {
 				return nil, err
 			}
 
-			// TODO(aluzzardi): We're losing the port `name` here since
+			// TODO (aluzzardi): We're losing the port `name` here since id:810 gh:811
 			// there's no way to retrieve it back from the Engine.
 			exposedPorts = append(exposedPorts, &api.PortConfig{
 				PublishMode:   api.PublishModeHost,

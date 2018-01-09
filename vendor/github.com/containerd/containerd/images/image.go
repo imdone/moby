@@ -68,7 +68,7 @@ type Store interface {
 	Delete(ctx context.Context, name string, opts ...DeleteOpt) error
 }
 
-// TODO(stevvooe): Many of these functions make strong platform assumptions,
+// TODO (stevvooe): Many of these functions make strong platform assumptions, id:889 gh:890
 // which are untrue in a lot of cases. More refactoring must be done here to
 // make this work in all cases.
 
@@ -106,7 +106,7 @@ func (image *Image) Size(ctx context.Context, provider content.Provider, platfor
 
 // Manifest resolves a manifest from the image for the given platform.
 //
-// TODO(stevvooe): This violates the current platform agnostic approach to this
+// TODO (stevvooe): This violates the current platform agnostic approach to this id:484 gh:485
 // package by returning a specific manifest type. We'll need to refactor this
 // to return a manifest descriptor or decide that we want to bring the API in
 // this direction because this abstraction is not needed.`
@@ -260,7 +260,7 @@ func Check(ctx context.Context, provider content.Provider, image ocispec.Descrip
 		return false, nil, nil, nil, errors.Wrapf(err, "failed to check image %v", image.Digest)
 	}
 
-	// TODO(stevvooe): It is possible that referenced conponents could have
+	// TODO (stevvooe): It is possible that referenced conponents could have id:379 gh:380
 	// children, but this is rare. For now, we ignore this and only verify
 	// that manfiest components are present.
 	required = append([]ocispec.Descriptor{mfst.Config}, mfst.Layers...)
@@ -293,7 +293,7 @@ func Children(ctx context.Context, provider content.Provider, desc ocispec.Descr
 			return nil, err
 		}
 
-		// TODO(stevvooe): We just assume oci manifest, for now. There may be
+		// TODO (stevvooe): We just assume oci manifest, for now. There may be id:367 gh:368
 		// subtle differences from the docker version.
 		var manifest ocispec.Manifest
 		if err := json.Unmarshal(p, &manifest); err != nil {
@@ -358,7 +358,7 @@ func RootFS(ctx context.Context, provider content.Provider, configDesc ocispec.D
 		return nil, err
 	}
 
-	// TODO(stevvooe): Remove this bit when OCI structure uses correct type for
+	// TODO (stevvooe): Remove this bit when OCI structure uses correct type for id:364 gh:365
 	// rootfs.DiffIDs.
 	var diffIDs []digest.Digest
 	for _, diffID := range config.RootFS.DiffIDs {

@@ -175,7 +175,7 @@ type Task struct {
 	// As backup, if this field has an empty name, the runtime will
 	// allocate a unique name for the actual container.
 	//
-	// NOTE(stevvooe): The preserves the ability for us to making naming
+	// NOTE (stevvooe): The preserves the ability for us to making naming id:583 gh:584
 	// decisions for tasks in orchestrator, albeit, this is left empty for now.
 	Annotations Annotations `protobuf:"bytes,7,opt,name=annotations" json:"annotations"`
 	// ServiceAnnotations is a direct copy of the service name and labels when

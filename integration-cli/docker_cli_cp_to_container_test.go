@@ -46,7 +46,7 @@ func (s *DockerSuite) TestCpToErrSrcNotExists(c *check.C) {
 		// Due to the CLI using a different version than the daemon, comparing the
 		// error message won't work, so just hard-code the common part here.
 		//
-		// TODO this should probably be a test in the CLI repository instead
+		// TODO this should probably be a test in the CLI repository instead id:835 gh:836
 		c.Assert(strings.ToLower(err.Error()), checker.Contains, "cannot find the file specified")
 		c.Assert(strings.ToLower(err.Error()), checker.Contains, strings.ToLower(tmpDir))
 	} else {

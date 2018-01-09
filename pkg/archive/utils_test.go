@@ -128,7 +128,7 @@ func testBreakout(untarFn string, tmpdir string, headers []*tar.Header) error {
 		return err
 	}
 	if helloStat.IsDir() != fi.IsDir() ||
-		// TODO: cannot check for fi.ModTime() change
+		// TODO: cannot check for fi.ModTime() change id:245 gh:246
 		helloStat.Mode() != fi.Mode() ||
 		helloStat.Size() != fi.Size() ||
 		!bytes.Equal(helloData, b) {

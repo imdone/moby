@@ -156,7 +156,7 @@ func (s *namespaceStore) namespaceEmpty(ctx context.Context, namespace string) (
 		return false, nil
 	}
 
-	// TODO(stevvooe): Need to add check for content store, as well. Still need
+	// TODO (stevvooe): Need to add check for content store, as well. Still need id:388 gh:389
 	// to make content store namespace aware.
 
 	return true, nil

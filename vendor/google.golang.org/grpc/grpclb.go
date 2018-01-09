@@ -164,7 +164,7 @@ func (b *balancer) watchAddrUpdates(w naming.Watcher, ch chan []remoteBalancerIn
 		case naming.Add:
 			var exist bool
 			for _, v := range b.rbs {
-				// TODO: Is the same addr with different server name a different balancer?
+				// TODO: Is the same addr with different server name a different balancer? id:1004 gh:1005
 				if update.Addr == v.addr {
 					exist = true
 					break
@@ -175,13 +175,13 @@ func (b *balancer) watchAddrUpdates(w naming.Watcher, ch chan []remoteBalancerIn
 			}
 			md, ok := update.Metadata.(*AddrMetadataGRPCLB)
 			if !ok {
-				// TODO: Revisit the handling here and may introduce some fallback mechanism.
+				// TODO: Revisit the handling here and may introduce some fallback mechanism. id:783 gh:784
 				grpclog.Printf("The name resolution contains unexpected metadata %v", update.Metadata)
 				continue
 			}
 			switch md.AddrType {
 			case Backend:
-				// TODO: Revisit the handling here and may introduce some fallback mechanism.
+				// TODO: Revisit the handling here and may introduce some fallback mechanism. id:697 gh:698
 				grpclog.Printf("The name resolution does not give grpclb addresses")
 				continue
 			case GRPCLB:
@@ -205,7 +205,7 @@ func (b *balancer) watchAddrUpdates(w naming.Watcher, ch chan []remoteBalancerIn
 			grpclog.Println("Unknown update.Op ", update.Op)
 		}
 	}
-	// TODO: Fall back to the basic round-robin load balancing if the resulting address is
+	// TODO: Fall back to the basic round-robin load balancing if the resulting address is id:1087 gh:1088
 	// not a load balancer.
 	select {
 	case <-ch:
@@ -218,7 +218,7 @@ func (b *balancer) watchAddrUpdates(w naming.Watcher, ch chan []remoteBalancerIn
 func (b *balancer) serverListExpire(seq int) {
 	b.mu.Lock()
 	defer b.mu.Unlock()
-	// TODO: gRPC interanls do not clear the connections when the server list is stale.
+	// TODO: gRPC interanls do not clear the connections when the server list is stale. id:770 gh:771
 	// This means RPCs will keep using the existing server list until b receives new
 	// server list even though the list is expired. Revisit this behavior later.
 	if b.done || seq < b.seq {
@@ -333,12 +333,12 @@ func (b *balancer) callRemoteBalancer(lbc *loadBalancerClient, seq int) (retry b
 		},
 	}
 	if err := stream.Send(initReq); err != nil {
-		// TODO: backoff on retry?
+		// TODO: backoff on retry? id:1005 gh:1006
 		return true
 	}
 	reply, err := stream.Recv()
 	if err != nil {
-		// TODO: backoff on retry?
+		// TODO: backoff on retry? id:785 gh:786
 		return true
 	}
 	initResp := reply.GetInitialResponse()
@@ -346,7 +346,7 @@ func (b *balancer) callRemoteBalancer(lbc *loadBalancerClient, seq int) (retry b
 		grpclog.Println("Failed to receive the initial response from the remote balancer.")
 		return
 	}
-	// TODO: Support delegation.
+	// TODO: Support delegation. id:701 gh:702
 	if initResp.LoadBalancerDelegate != "" {
 		// delegation
 		grpclog.Println("TODO: Delegation is not supported yet.")
@@ -383,7 +383,7 @@ func (b *balancer) callRemoteBalancer(lbc *loadBalancerClient, seq int) (retry b
 
 func (b *balancer) Start(target string, config BalancerConfig) error {
 	b.rand = rand.New(rand.NewSource(time.Now().Unix()))
-	// TODO: Fall back to the basic direct connection if there is no name resolver.
+	// TODO: Fall back to the basic direct connection if there is no name resolver. id:1088 gh:1089
 	if b.r == nil {
 		return errors.New("there is no name resolver installed")
 	}

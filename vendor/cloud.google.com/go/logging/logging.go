@@ -18,7 +18,7 @@
 // - There is no way to provide a protocol buffer payload.
 // - No support for the "partial success" feature when writing log entries.
 
-// TODO(jba): test whether forward-slash characters in the log ID must be URL-encoded.
+// TODO (jba): test whether forward-slash characters in the log ID must be URL-encoded. id:347 gh:348
 // These features are missing now, but will likely be added:
 // - There is no way to specify CallOptions.
 
@@ -292,7 +292,7 @@ func (c *Client) Logger(logID string, opts ...LoggerOption) *Logger {
 		logName:        internal.LogPath(c.parent(), logID),
 		commonResource: &mrpb.MonitoredResource{Type: "global"},
 	}
-	// TODO(jba): determine the right context for the bundle handler.
+	// TODO (jba): determine the right context for the bundle handler. id:304 gh:305
 	ctx := context.TODO()
 	l.bundler = bundler.NewBundler(&logpb.LogEntry{}, func(entries interface{}) {
 		l.writeLogEntries(ctx, entries.([]*logpb.LogEntry))
@@ -507,7 +507,7 @@ func fromHTTPRequest(r *HTTPRequest) *logtypepb.HttpRequest {
 		ResponseSize:                   r.ResponseSize,
 		Latency:                        ptypes.DurationProto(r.Latency),
 		UserAgent:                      r.Request.UserAgent(),
-		RemoteIp:                       r.RemoteIP, // TODO(jba): attempt to parse http.Request.RemoteAddr?
+		RemoteIp:                       r.RemoteIP, // TODO (jba): attempt to parse http.Request.RemoteAddr? id:281 gh:282
 		Referer:                        r.Request.Referer(),
 		CacheHit:                       r.CacheHit,
 		CacheValidatedWithOriginServer: r.CacheValidatedWithOriginServer,
@@ -571,7 +571,7 @@ func jsonValueToStructValue(v interface{}) *structpb.Value {
 // LogSync logs the Entry synchronously without any buffering. Because LogSync is slow
 // and will block, it is intended primarily for debugging or critical errors.
 // Prefer Log for most uses.
-// TODO(jba): come up with a better name (LogNow?) or eliminate.
+// TODO (jba): come up with a better name (LogNow?) or eliminate. id:879 gh:880
 func (l *Logger) LogSync(ctx context.Context, e Entry) error {
 	ent, err := toLogEntry(e)
 	if err != nil {

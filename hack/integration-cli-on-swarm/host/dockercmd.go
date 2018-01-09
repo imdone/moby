@@ -24,7 +24,7 @@ func system(commands [][]string) error {
 }
 
 func pushImage(unusedCli *client.Client, remote, local string) error {
-	// FIXME: eliminate os/exec (but it is hard to pass auth without os/exec ...)
+	// FIXME: eliminate os/exec (but it is hard to pass auth without os/exec ...) id:116 gh:118
 	return system([][]string{
 		{"docker", "image", "tag", local, remote},
 		{"docker", "image", "push", remote},
@@ -32,7 +32,7 @@ func pushImage(unusedCli *client.Client, remote, local string) error {
 }
 
 func deployStack(unusedCli *client.Client, stackName, composeFilePath string) error {
-	// FIXME: eliminate os/exec (but stack is implemented in CLI ...)
+	// FIXME: eliminate os/exec (but stack is implemented in CLI ...) id:118 gh:117
 	return system([][]string{
 		{"docker", "stack", "deploy",
 			"--compose-file", composeFilePath,
@@ -42,23 +42,23 @@ func deployStack(unusedCli *client.Client, stackName, composeFilePath string) er
 }
 
 func hasStack(unusedCli *client.Client, stackName string) bool {
-	// FIXME: eliminate os/exec (but stack is implemented in CLI ...)
+	// FIXME: eliminate os/exec (but stack is implemented in CLI ...) id:119 gh:120
 	out, err := exec.Command("docker", "stack", "ls").CombinedOutput()
 	if err != nil {
 		panic(fmt.Errorf("`docker stack ls` failed with: %s", string(out)))
 	}
-	// FIXME: not accurate
+	// FIXME: not accurate id:825 gh:826
 	return strings.Contains(string(out), stackName)
 }
 
 func removeStack(unusedCli *client.Client, stackName string) error {
-	// FIXME: eliminate os/exec (but stack is implemented in CLI ...)
+	// FIXME: eliminate os/exec (but stack is implemented in CLI ...) id:121 gh:122
 	if err := system([][]string{
 		{"docker", "stack", "rm", stackName},
 	}); err != nil {
 		return err
 	}
-	// FIXME
+	// FIXME id:120 gh:121
 	time.Sleep(10 * time.Second)
 	return nil
 }

@@ -5,7 +5,7 @@
 // for setting quota limits on a newly created directory.
 // It currently supports the legacy XFS specific ioctls.
 //
-// TODO: use generic quota control ioctl FS_IOC_FS{GET,SET}XATTR
+// TODO: use generic quota control ioctl FS_IOC_FS{GET,SET}XATTR id:90 gh:91
 //       for both xfs/ext4 for kernel version >= v4.5
 //
 

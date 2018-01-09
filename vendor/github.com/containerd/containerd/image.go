@@ -160,7 +160,7 @@ func (i *image) getLayers(ctx context.Context, platform string) ([]rootfs.Layer,
 	layers := make([]rootfs.Layer, len(diffIDs))
 	for i := range diffIDs {
 		layers[i].Diff = ocispec.Descriptor{
-			// TODO: derive media type from compressed type
+			// TODO: derive media type from compressed type id:361 gh:362
 			MediaType: ocispec.MediaTypeImageLayer,
 			Digest:    diffIDs[i],
 		}

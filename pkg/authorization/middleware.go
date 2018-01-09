@@ -63,7 +63,7 @@ func (m *Middleware) WrapHandler(handler func(ctx context.Context, w http.Respon
 		userAuthNMethod := ""
 
 		// Default authorization using existing TLS connection credentials
-		// FIXME: Non trivial authorization mechanisms (such as advanced certificate validations, kerberos support
+		// FIXME: Non trivial authorization mechanisms (such as advanced certificate validations, kerberos support id:327 gh:328
 		// and ldap) will be extracted using AuthN feature, which is tracked under:
 		// https://github.com/docker/docker/pull/20883
 		if r.TLS != nil && len(r.TLS.PeerCertificates) > 0 {

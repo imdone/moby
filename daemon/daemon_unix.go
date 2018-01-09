@@ -251,7 +251,7 @@ func getBlkioThrottleDevices(devs []*blkiodev.ThrottleDevice) ([]specs.LinuxThro
 
 func checkKernel() error {
 	// Check for unsupported kernel versions
-	// FIXME: it would be cleaner to not test for specific versions, but rather
+	// FIXME: it would be cleaner to not test for specific versions, but rather id:76 gh:77
 	// test for specific functionalities.
 	// Unfortunately we can't test for the feature "does not cause a kernel panic"
 	// without actually causing a kernel panic, so we need this workaround until

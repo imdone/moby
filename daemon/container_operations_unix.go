@@ -195,7 +195,7 @@ func (daemon *Daemon) setupSecretDir(c *container.Container) (setupErr error) {
 	}
 
 	for _, s := range c.SecretReferences {
-		// TODO (ehazlett): use type switch when more are supported
+		// TODO (ehazlett): use type switch when more are supported id:68 gh:69
 		if s.File == nil {
 			logrus.Error("secret target type is not a file target")
 			continue
@@ -272,7 +272,7 @@ func (daemon *Daemon) setupConfigDir(c *container.Container) (setupErr error) {
 	}
 
 	for _, configRef := range c.ConfigReferences {
-		// TODO (ehazlett): use type switch when more are supported
+		// TODO (ehazlett): use type switch when more are supported id:69 gh:70
 		if configRef.File == nil {
 			logrus.Error("config target type is not a file target")
 			continue

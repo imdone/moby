@@ -13,7 +13,7 @@ import (
 // The collector allows non-running containers to be added
 // and will start processing stats when they are started.
 func (daemon *Daemon) newStatsCollector(interval time.Duration) *stats.Collector {
-	// FIXME(vdemeester) move this elsewhere
+	// FIXME (vdemeester) move this elsewhere id:111 gh:112
 	if runtime.GOOS == "linux" {
 		meminfo, err := system.ReadMemInfo()
 		if err == nil && meminfo.MemTotal > 0 {

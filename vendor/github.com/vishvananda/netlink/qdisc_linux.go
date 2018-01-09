@@ -10,7 +10,7 @@ import (
 	"github.com/vishvananda/netlink/nl"
 )
 
-// NOTE function is here because it uses other linux functions
+// NOTE function is here because it uses other linux functions id:714 gh:715
 func NewNetem(attrs QdiscAttrs, nattrs NetemQdiscAttrs) *Netem {
 	var limit uint32 = 1000
 	var lossCorr, delayCorr, duplicateCorr uint32
@@ -33,7 +33,7 @@ func NewNetem(attrs QdiscAttrs, nattrs NetemQdiscAttrs) *Netem {
 	if duplicate > 0 {
 		duplicateCorr = Percentage2u32(nattrs.DuplicateCorr)
 	}
-	// FIXME should validate values(like loss/duplicate are percentages...)
+	// FIXME should validate values(like loss/duplicate are percentages...) id:974 gh:975
 	latency = time2Tick(latency)
 
 	if nattrs.Limit != 0 {
@@ -189,7 +189,7 @@ func qdiscPayload(req *nl.NetlinkRequest, qdisc Qdisc) error {
 		opt.Version = qdisc.Version
 		opt.Rate2Quantum = qdisc.Rate2Quantum
 		opt.Defcls = qdisc.Defcls
-		// TODO: Handle Debug properly. For now default to 0
+		// TODO: Handle Debug properly. For now default to 0 id:699 gh:700
 		opt.Debug = qdisc.Debug
 		opt.DirectPkts = qdisc.DirectPkts
 		nl.NewRtAttrChild(options, nl.TCA_HTB_INIT, opt.Serialize())
@@ -381,7 +381,7 @@ func parseHtbData(qdisc Qdisc, data []syscall.NetlinkRouteAttr) error {
 			htb.Debug = opt.Debug
 			htb.DirectPkts = opt.DirectPkts
 		case nl.TCA_HTB_DIRECT_QLEN:
-			// TODO
+			// TODO id:581 gh:582
 			//htb.DirectQlen = native.uint32(datum.Value)
 		}
 	}

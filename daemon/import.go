@@ -124,7 +124,7 @@ func (daemon *Daemon) ImportImage(src string, repository, os string, tag string,
 		return err
 	}
 
-	// FIXME: connect with commit code and call refstore directly
+	// FIXME: connect with commit code and call refstore directly id:98 gh:99
 	if newRef != nil {
 		if err := daemon.TagImageWithReference(id, os, newRef); err != nil {
 			return err

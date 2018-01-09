@@ -17,7 +17,7 @@ type Method func(ctx context.Context, unmarshal func(interface{}) error) (interf
 type ServiceDesc struct {
 	Methods map[string]Method
 
-	// TODO(stevvooe): Add stream support.
+	// TODO (stevvooe): Add stream support. id:1044 gh:1046
 }
 
 type serviceSet struct {

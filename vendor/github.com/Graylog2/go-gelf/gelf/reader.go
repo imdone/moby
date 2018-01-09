@@ -42,7 +42,7 @@ func (r *Reader) Addr() string {
 	return r.conn.LocalAddr().String()
 }
 
-// FIXME: this will discard data if p isn't big enough to hold the
+// FIXME: this will discard data if p isn't big enough to hold the id:351 gh:352
 // full message.
 func (r *Reader) Read(p []byte) (int, error) {
 	msg, err := r.ReadMessage()

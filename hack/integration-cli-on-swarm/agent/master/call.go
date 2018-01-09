@@ -78,7 +78,7 @@ func executeTests(funkerName string, testChunks [][]string) error {
 		}(chunkID, tests)
 	}
 	wg.Wait()
-	// TODO: print actual tests rather than chunks
+	// TODO: print actual tests rather than chunks id:115 gh:116
 	log.Printf("Executed %d chunks in %s. PASS: %d, FAIL: %d.",
 		len(testChunks), time.Since(begin), passed, failed)
 	if failed > 0 {
@@ -113,7 +113,7 @@ func executeTestChunkWithRetry(funkerName string, args types.Args) (types.Result
 			log.Printf("Error while calling executeTestChunk(%q, %d), will retry (trial %d): %v",
 				funkerName, args.ChunkID, i, err)
 		}
-		// TODO: non-constant sleep
+		// TODO: non-constant sleep id:824 gh:825
 		time.Sleep(funkerRetryDuration)
 	}
 	return types.Result{}, fmt.Errorf("could not call executeTestChunk(%q, %d) in %v", funkerName, args.ChunkID, funkerRetryTimeout)

@@ -142,7 +142,7 @@ func NewRepository(ctx context.Context, name reference.Named, baseURL string, tr
 	client := &http.Client{
 		Transport:     transport,
 		CheckRedirect: checkHTTPRedirect,
-		// TODO(dmcgowan): create cookie jar
+		// TODO (dmcgowan): create cookie jar id:458 gh:459
 	}
 
 	return &repository{
@@ -736,7 +736,7 @@ func (bs *blobs) Create(ctx context.Context, options ...distribution.BlobCreateO
 		}
 		return nil, distribution.ErrBlobMounted{From: opts.Mount.From, Descriptor: desc}
 	case http.StatusAccepted:
-		// TODO(dmcgowan): Check for invalid UUID
+		// TODO (dmcgowan): Check for invalid UUID id:444 gh:445
 		uuid := resp.Header.Get("Docker-Upload-UUID")
 		location, err := sanitizeLocation(resp.Header.Get("Location"), u)
 		if err != nil {

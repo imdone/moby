@@ -4,7 +4,7 @@
 
 package tar
 
-// TODO(dsymonds):
+// TODO (dsymonds): id:324 gh:325
 // - catch more errors (no first header, etc.)
 
 import (
@@ -99,7 +99,7 @@ func (tw *Writer) writeHeader(hdr *Header, allowPax bool) error {
 	// a map to hold pax header records, if any are needed
 	paxHeaders := make(map[string]string)
 
-	// TODO(dsnet): we might want to use PAX headers for
+	// TODO (dsnet): we might want to use PAX headers for id:343 gh:344
 	// subsecond time resolution, but for now let's just capture
 	// too long fields or non ascii characters
 
@@ -159,13 +159,13 @@ func (tw *Writer) writeHeader(hdr *Header, allowPax bool) error {
 
 	v7 := header.V7()
 	formatString(v7.Name(), hdr.Name, paxPath)
-	// TODO(dsnet): The GNU format permits the mode field to be encoded in
+	// TODO (dsnet): The GNU format permits the mode field to be encoded in id:301 gh:302
 	// base-256 format. Thus, we can use formatNumeric instead of formatOctal.
 	f.formatOctal(v7.Mode(), hdr.Mode)
 	formatNumeric(v7.UID(), int64(hdr.Uid), paxUid)
 	formatNumeric(v7.GID(), int64(hdr.Gid), paxGid)
 	formatNumeric(v7.Size(), hdr.Size, paxSize)
-	// TODO(dsnet): Consider using PAX for finer time granularity.
+	// TODO (dsnet): Consider using PAX for finer time granularity. id:279 gh:280
 	formatNumeric(v7.ModTime(), modTime, paxNone)
 	v7.TypeFlag()[0] = hdr.Typeflag
 	formatString(v7.LinkName(), hdr.Linkname, paxLinkpath)
@@ -176,7 +176,7 @@ func (tw *Writer) writeHeader(hdr *Header, allowPax bool) error {
 	formatNumeric(ustar.DevMajor(), hdr.Devmajor, paxNone)
 	formatNumeric(ustar.DevMinor(), hdr.Devminor, paxNone)
 
-	// TODO(dsnet): The logic surrounding the prefix field is broken when trying
+	// TODO (dsnet): The logic surrounding the prefix field is broken when trying id:878 gh:879
 	// to encode the header as GNU format. The challenge with the current logic
 	// is that we are unsure what format we are using at any given moment until
 	// we have processed *all* of the fields. The problem is that by the time

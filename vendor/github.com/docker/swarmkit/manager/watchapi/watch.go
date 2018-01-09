@@ -35,7 +35,7 @@ func (s *Server) Watch(request *api.WatchRequest, stream api.Watch_WatchServer) 
 	}
 	defer cancel()
 
-	// TODO(aaronl): Send current version in this WatchMessage?
+	// TODO (aaronl): Send current version in this WatchMessage? id:496 gh:497
 	if err := stream.Send(&api.WatchMessage{}); err != nil {
 		return err
 	}

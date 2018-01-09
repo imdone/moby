@@ -78,7 +78,7 @@ type TLSAuthorization struct {
 	// Roles contains the acceptable TLS OU roles for the handler.
 	Roles []string `protobuf:"bytes,1,rep,name=roles" json:"roles,omitempty"`
 	// Insecure is set to true if this method does not require
-	// authorization. NOTE: Specifying both "insecure" and a nonempty
+	// authorization. NOTE: Specifying both "insecure" and a nonempty id:1017 gh:1018
 	// list of roles is invalid. This would fail at codegen time.
 	Insecure         *bool  `protobuf:"varint,2,opt,name=insecure" json:"insecure,omitempty"`
 	XXX_unrecognized []byte `json:"-"`

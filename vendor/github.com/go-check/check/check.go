@@ -308,7 +308,7 @@ func (c *C) logCode(path string, line int) {
 	c.logf("%s:%d:", nicePath(path), line)
 	code, err := printLine(path, line)
 	if code == "" {
-		code = "..." // XXX Open the file and take the raw line.
+		code = "..." // XXX Open the file and take the raw line. id:1019 gh:1020
 		if err != nil {
 			code += err.Error()
 		}
@@ -459,7 +459,7 @@ func (tracker *resultTracker) _loopRoutine() {
 		if tracker._waiting > 0 {
 			// Calls still running. Can't stop.
 			select {
-			// XXX Reindent this (not now to make diff clear)
+			// XXX Reindent this (not now to make diff clear) id:611 gh:612
 			case c = <-tracker._expectChan:
 				tracker._waiting += 1
 			case c = <-tracker._doneChan:
