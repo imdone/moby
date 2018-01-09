@@ -83,7 +83,7 @@ func (s *DockerSuite) TestExecAfterContainerRestart(c *check.C) {
 }
 
 func (s *DockerDaemonSuite) TestExecAfterDaemonRestart(c *check.C) {
-	// TODO Windows CI: Requires a little work to get this ported.
+	// TODO Windows CI: Requires a little work to get this ported. id:837 gh:838
 	testRequires(c, DaemonIsLinux, SameHostDaemon)
 	s.d.StartWithBusybox(c)
 
@@ -104,7 +104,7 @@ func (s *DockerDaemonSuite) TestExecAfterDaemonRestart(c *check.C) {
 
 // Regression test for #9155, #9044
 func (s *DockerSuite) TestExecEnv(c *check.C) {
-	// TODO Windows CI: This one is interesting and may just end up being a feature
+	// TODO Windows CI: This one is interesting and may just end up being a feature id:168 gh:169
 	// difference between Windows and Linux. On Windows, the environment is passed
 	// into the process that is launched, not into the machine environment. Hence
 	// a subsequent exec will not have LALA set/
@@ -152,7 +152,7 @@ func (s *DockerSuite) TestExecPausedContainer(c *check.C) {
 
 // regression test for #9476
 func (s *DockerSuite) TestExecTTYCloseStdin(c *check.C) {
-	// TODO Windows CI: This requires some work to port to Windows.
+	// TODO Windows CI: This requires some work to port to Windows. id:169 gh:170
 	testRequires(c, DaemonIsLinux)
 	dockerCmd(c, "run", "-d", "-it", "--name", "exec_tty_stdin", "busybox")
 
@@ -208,9 +208,9 @@ func (s *DockerSuite) TestExecTTYWithoutStdin(c *check.C) {
 	}
 }
 
-// FIXME(vdemeester) this should be a unit tests on cli/command/container package
+// FIXME (vdemeester) this should be a unit tests on cli/command/container package id:170 gh:171
 func (s *DockerSuite) TestExecParseError(c *check.C) {
-	// TODO Windows CI: Requires some extra work. Consider copying the
+	// TODO Windows CI: Requires some extra work. Consider copying the id:171 gh:172
 	// runSleepingContainer helper to have an exec version.
 	testRequires(c, DaemonIsLinux)
 	dockerCmd(c, "run", "-d", "--name", "top", "busybox", "top")
@@ -224,7 +224,7 @@ func (s *DockerSuite) TestExecParseError(c *check.C) {
 }
 
 func (s *DockerSuite) TestExecStopNotHanging(c *check.C) {
-	// TODO Windows CI: Requires some extra work. Consider copying the
+	// TODO Windows CI: Requires some extra work. Consider copying the id:838 gh:839
 	// runSleepingContainer helper to have an exec version.
 	testRequires(c, DaemonIsLinux)
 	dockerCmd(c, "run", "-d", "--name", "testing", "busybox", "top")
@@ -432,7 +432,7 @@ func (s *DockerSuite) TestRunMutableNetworkFiles(c *check.C) {
 }
 
 func (s *DockerSuite) TestExecWithUser(c *check.C) {
-	// TODO Windows CI: This may be fixable in the future once Windows
+	// TODO Windows CI: This may be fixable in the future once Windows id:172 gh:173
 	// supports users
 	testRequires(c, DaemonIsLinux)
 	dockerCmd(c, "run", "-d", "--name", "parent", "busybox", "top")
@@ -509,7 +509,7 @@ func (s *DockerSuite) TestExecUlimits(c *check.C) {
 
 // #15750
 func (s *DockerSuite) TestExecStartFails(c *check.C) {
-	// TODO Windows CI. This test should be portable. Figure out why it fails
+	// TODO Windows CI. This test should be portable. Figure out why it fails id:201 gh:202
 	// currently.
 	testRequires(c, DaemonIsLinux)
 	name := "exec-15750"

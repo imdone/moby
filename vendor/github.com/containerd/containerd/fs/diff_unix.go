@@ -15,9 +15,9 @@ import (
 // be found in the mount info for upper which is the direct
 // diff with the provided lower directory
 func detectDirDiff(upper, lower string) *diffDirOptions {
-	// TODO: get mount options for upper
-	// TODO: detect AUFS
-	// TODO: detect overlay
+	// TODO: get mount options for upper id:375 gh:376
+	// TODO: detect AUFS id:360 gh:361
+	// TODO: detect overlay id:358 gh:359
 	return nil
 }
 

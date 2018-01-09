@@ -24,7 +24,7 @@ func (p *process) IOPaths() (string, string, string) {
 		stdout = p.pipeName(unix.Stdout)
 		stderr = p.pipeName(unix.Stderr)
 	)
-	// TODO: debug why we're having zombies when I don't unset those
+	// TODO: debug why we're having zombies when I don't unset those id:274 gh:275
 	if p.io.Stdin == nil {
 		stdin = ""
 	}

@@ -75,7 +75,7 @@ func newV1Endpoint(address url.URL, tlsConfig *tls.Config, userAgent string, met
 
 	*endpoint.URL = address
 
-	// TODO(tiborvass): make sure a ConnectTimeout transport is used
+	// TODO (tiborvass): make sure a ConnectTimeout transport is used id:337 gh:338
 	tr := NewTransport(tlsConfig)
 	endpoint.client = HTTPClient(transport.NewTransport(tr, Headers(userAgent, metaHeaders)...))
 	return endpoint

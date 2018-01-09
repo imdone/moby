@@ -16,6 +16,6 @@ func (d *driver) Mkfifo(path string, mode os.FileMode) error {
 
 // Lchmod changes the mode of an file not following symlinks.
 func (d *driver) Lchmod(path string, mode os.FileMode) (err error) {
-	// TODO: Use Window's equivalent
+	// TODO: Use Window's equivalent id:410 gh:411
 	return os.Chmod(path, mode)
 }

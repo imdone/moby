@@ -22,7 +22,7 @@ func (r *remote) setDefaults() {
 		r.Debug.Level = "info"
 	}
 	if r.snapshotter == "" {
-		r.snapshotter = "naive" // TODO(mlaventure): switch to "windows" once implemented
+		r.snapshotter = "naive" // TODO (mlaventure): switch to "windows" once implemented id:313 gh:314
 	}
 }
 

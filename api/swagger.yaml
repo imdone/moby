@@ -917,7 +917,7 @@ definitions:
         type: "string"
         example: "/var/run/docker/netns/8ab54b426c38"
 
-      # TODO is SecondaryIPAddresses actually used?
+      # TODO is SecondaryIPAddresses actually used? id:9 gh:10
       SecondaryIPAddresses:
         description: ""
         type: "array"
@@ -925,7 +925,7 @@ definitions:
           $ref: "#/definitions/Address"
         x-nullable: true
 
-      # TODO is SecondaryIPv6Addresses actually used?
+      # TODO is SecondaryIPv6Addresses actually used? id:32 gh:33
       SecondaryIPv6Addresses:
         description: ""
         type: "array"
@@ -933,7 +933,7 @@ definitions:
           $ref: "#/definitions/Address"
         x-nullable: true
 
-      # TODO properties below are part of DefaultNetworkSettings, which is
+      # TODO properties below are part of DefaultNetworkSettings, which is id:793 gh:794
       # marked as deprecated since Docker 1.9 and to be removed in Docker v17.12
       EndpointID:
         description: |

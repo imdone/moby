@@ -223,11 +223,11 @@ func translateContainerdStartErr(cmd string, setExitCode func(int), err error) e
 		retErr = startInvalidConfigError(errDesc)
 	}
 
-	// TODO: it would be nice to get some better errors from containerd so we can return better errors here
+	// TODO: it would be nice to get some better errors from containerd so we can return better errors here id:79 gh:80
 	return retErr
 }
 
-// TODO: cpuguy83 take care of it once the new library is ready
+// TODO: cpuguy83 take care of it once the new library is ready id:815 gh:816
 type errNotFound struct{ error }
 
 func (errNotFound) NotFound() {}

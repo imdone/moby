@@ -129,7 +129,7 @@ func TestCopyFile(t *testing.T) {
 
 // Reading a symlink to a directory must return the directory
 func TestReadSymlinkedDirectoryExistingDirectory(t *testing.T) {
-	// TODO Windows: Port this test
+	// TODO Windows: Port this test id:248 gh:249
 	if runtime.GOOS == "windows" {
 		t.Skip("Needs porting to Windows")
 	}
@@ -175,7 +175,7 @@ func TestReadSymlinkedDirectoryNonExistingSymlink(t *testing.T) {
 
 // Reading a symlink to a file must fail
 func TestReadSymlinkedDirectoryToFile(t *testing.T) {
-	// TODO Windows: Port this test
+	// TODO Windows: Port this test id:255 gh:256
 	if runtime.GOOS == "windows" {
 		t.Skip("Needs porting to Windows")
 	}

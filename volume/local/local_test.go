@@ -30,7 +30,7 @@ func TestGetAddress(t *testing.T) {
 }
 
 func TestRemove(t *testing.T) {
-	// TODO Windows: Investigate why this test fails on Windows under CI
+	// TODO Windows: Investigate why this test fails on Windows under CI id:726 gh:727
 	//               but passes locally.
 	if runtime.GOOS == "windows" {
 		t.Skip("Test failing on Windows CI")

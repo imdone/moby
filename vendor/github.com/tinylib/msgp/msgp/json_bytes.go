@@ -13,7 +13,7 @@ var unfuns [_maxtype]func(jsWriter, []byte, []byte) ([]byte, []byte, error)
 
 func init() {
 
-	// NOTE(pmh): this is best expressed as a jump table,
+	// NOTE (pmh): this is best expressed as a jump table, id:555 gh:556
 	// but gc doesn't do that yet. revisit post-go1.5.
 	unfuns = [_maxtype]func(jsWriter, []byte, []byte) ([]byte, []byte, error){
 		StrType:        rwStringBytes,

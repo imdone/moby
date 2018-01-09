@@ -570,7 +570,7 @@ func (s *DockerRegistryAuthTokenSuite) TestPushMisconfiguredTokenServiceResponse
 	dockerCmd(c, "tag", "busybox", repoName)
 	out, _, err := dockerCmdWithError("push", repoName)
 	c.Assert(err, check.NotNil, check.Commentf(out))
-	// TODO: isolate test so that it can be guaranteed that the 503 will trigger xfer retries
+	// TODO: isolate test so that it can be guaranteed that the 503 will trigger xfer retries id:841 gh:842
 	//c.Assert(out, checker.Contains, "Retrying")
 	//c.Assert(out, checker.Not(checker.Contains), "Retrying in 15")
 	split := strings.Split(out, "\n")

@@ -81,7 +81,7 @@ import (
 
 // GenVersion is the current version of codecgen.
 //
-// NOTE: Increment this value each time codecgen changes fundamentally.
+// NOTE: Increment this value each time codecgen changes fundamentally. id:967 gh:967
 // Fundamental changes are:
 //   - helper methods change (signature change, new ones added, some removed, etc)
 //   - codecgen command line changes
@@ -663,7 +663,7 @@ func (x *genRunner) enc(varname string, t reflect.Type) {
 		x.linef("} else { r.EncodeRawExt(%v, e)", varname)
 		return
 	}
-	// HACK: Support for Builtins.
+	// HACK: Support for Builtins. id:680 gh:681
 	//       Currently, only Binc supports builtins, and the only builtin type is time.Time.
 	//       Have a method that returns the rtid for time.Time if Handle is Binc.
 	if t == timeTyp {
@@ -940,7 +940,7 @@ func (x *genRunner) encListFallback(varname string, t reflect.Type) {
 }
 
 func (x *genRunner) encMapFallback(varname string, t reflect.Type) {
-	// TODO: expand this to handle canonical.
+	// TODO: expand this to handle canonical. id:565 gh:566
 	i := x.varsfx()
 	x.line("r.EncodeMapStart(len(" + varname + "))")
 	x.linef("for %sk%s, %sv%s := range %s {", genTempVarPfx, i, genTempVarPfx, i, varname)
@@ -1069,7 +1069,7 @@ func (x *genRunner) dec(varname string, t reflect.Type) {
 		return
 	}
 
-	// HACK: Support for Builtins.
+	// HACK: Support for Builtins. id:1050 gh:1051
 	//       Currently, only Binc supports builtins, and the only builtin type is time.Time.
 	//       Have a method that returns the rtid for time.Time if Handle is Binc.
 	if t == timeTyp {
@@ -1579,7 +1579,7 @@ var genCheckVendor = os.Getenv("GO15VENDOREXPERIMENT") == "1"
 func genImportPath(t reflect.Type) (s string) {
 	s = t.PkgPath()
 	if genCheckVendor {
-		// HACK: Misbehaviour occurs in go 1.5. May have to re-visit this later.
+		// HACK: Misbehaviour occurs in go 1.5. May have to re-visit this later. id:698 gh:699
 		// if s contains /vendor/ OR startsWith vendor/, then return everything after it.
 		const vendorStart = "vendor/"
 		const vendorInline = "/vendor/"

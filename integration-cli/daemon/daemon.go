@@ -638,7 +638,7 @@ func (d *Daemon) GetIDByName(name string) (string, error) {
 
 // ActiveContainers returns the list of ids of the currently running containers
 func (d *Daemon) ActiveContainers() (ids []string) {
-	// FIXME(vdemeester) shouldn't ignore the error
+	// FIXME (vdemeester) shouldn't ignore the error id:131 gh:132
 	out, _ := d.Cmd("ps", "-q")
 	for _, id := range strings.Split(out, "\n") {
 		if id = strings.TrimSpace(id); id != "" {
@@ -694,7 +694,7 @@ func (d *Daemon) BuildImageWithOut(name, dockerfile string, useCache bool, build
 }
 
 // CheckActiveContainerCount returns the number of active containers
-// FIXME(vdemeester) should re-use ActivateContainers in some way
+// FIXME (vdemeester) should re-use ActivateContainers in some way id:828 gh:829
 func (d *Daemon) CheckActiveContainerCount(c *check.C) (interface{}, check.CommentInterface) {
 	out, err := d.Cmd("ps", "-q")
 	c.Assert(err, checker.IsNil)
@@ -802,7 +802,7 @@ func WaitInspectWithArgs(dockerBinary, name, expr, expected string, timeout time
 
 // BuildImageCmdWithHost create a build command with the specified arguments.
 // Deprecated
-// FIXME(vdemeester) move this away
+// FIXME (vdemeester) move this away id:135 gh:136
 func BuildImageCmdWithHost(dockerBinary, name, dockerfile, host string, useCache bool, buildFlags ...string) *exec.Cmd {
 	args := []string{}
 	if host != "" {

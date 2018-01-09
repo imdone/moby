@@ -45,7 +45,7 @@ type Member struct {
 
 // NewCluster creates a new Cluster neighbors list for a raft Member.
 func NewCluster() *Cluster {
-	// TODO(abronan): generate Cluster ID for federation
+	// TODO (abronan): generate Cluster ID for federation id:579 gh:580
 
 	return &Cluster{
 		members:        make(map[uint64]*Member),

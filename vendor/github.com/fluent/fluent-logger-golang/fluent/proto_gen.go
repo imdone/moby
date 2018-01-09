@@ -1,6 +1,6 @@
 package fluent
 
-// NOTE: THIS FILE WAS PRODUCED BY THE
+// NOTE: THIS FILE WAS PRODUCED BY THE id:936 gh:937
 // MSGP CODE GENERATION TOOL (github.com/tinylib/msgp)
 // DO NOT EDIT
 

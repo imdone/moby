@@ -12,7 +12,7 @@ import (
 	"testing"
 )
 
-// TODO Windows: This needs some serious work to port to Windows. For now,
+// TODO Windows: This needs some serious work to port to Windows. For now, id:280 gh:281
 // turning off testing in this package.
 
 type dirOrLink struct {
@@ -168,7 +168,7 @@ func TestFollowSymlinkRelativeLinkChain(t *testing.T) {
 	defer os.RemoveAll(tmpdir)
 
 	// avoid letting symlink g (pointed at by symlink h) take out of scope
-	// TODO: we should probably normalize to scope here because ../[....]/root
+	// TODO: we should probably normalize to scope here because ../[....]/root id:263 gh:264
 	// is out of scope and we leak information
 	if err := makeFs(tmpdir, []dirOrLink{
 		{path: "testdata/fs/b/h", target: "../g"},

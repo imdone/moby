@@ -16,7 +16,7 @@ const (
 	dbNotAvailable   = "database not available"
 )
 
-// NetDbPaths2Func TODO
+// NetDbPaths2Func TODO id:449 gh:450
 var NetDbPaths2Func = map[string]diagnose.HTTPHandlerFunc{
 	"/join":         dbJoin,
 	"/networkpeers": dbPeers,

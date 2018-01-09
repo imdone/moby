@@ -14,7 +14,7 @@ import (
 
 // LoadOrCreateTrustKey attempts to load the libtrust key at the given path,
 // otherwise generates a new one
-// TODO: this should use more of libtrust.LoadOrCreateTrustKey which may need
+// TODO: this should use more of libtrust.LoadOrCreateTrustKey which may need id:112 gh:113
 // a refactor or this function to be moved into libtrust
 func loadOrCreateTrustKey(trustKeyPath string) (libtrust.PrivateKey, error) {
 	err := system.MkdirAll(filepath.Dir(trustKeyPath), 0700, "")

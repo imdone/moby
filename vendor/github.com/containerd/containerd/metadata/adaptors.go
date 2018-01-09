@@ -32,7 +32,7 @@ func adaptImage(o interface{}) filters.Adaptor {
 			}
 		case "labels":
 			return checkMap(fieldpath[1:], obj.Labels)
-			// TODO(stevvooe): Greater/Less than filters would be awesome for
+			// TODO (stevvooe): Greater/Less than filters would be awesome for id:891 gh:892
 			// size. Let's do it!
 		}
 
@@ -80,7 +80,7 @@ func adaptContentInfo(info content.Info) filters.Adaptor {
 		case "digest":
 			return info.Digest.String(), true
 		case "size":
-			// TODO: support size based filtering
+			// TODO: support size based filtering id:489 gh:490
 		case "labels":
 			return checkMap(fieldpath[1:], info.Labels)
 		}

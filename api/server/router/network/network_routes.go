@@ -143,7 +143,7 @@ func (n *networkRouter) getNetwork(ctx context.Context, w http.ResponseWriter, r
 	}
 
 	// In case multiple networks have duplicate names, return error.
-	// TODO (yongtang): should we wrap with version here for backward compatibility?
+	// TODO (yongtang): should we wrap with version here for backward compatibility? id:7 gh:8
 
 	// First find based on full ID, return immediately once one is found.
 	// If a network appears both in swarm and local, assume it is in local first

@@ -169,7 +169,7 @@ package codec
 //    - encoding/xml cannot parse into a map[string]interface{}
 //      I found this out on reading https://github.com/clbanning/mxj
 
-// TODO:
+// TODO: id:672 gh:673
 //
 //   - (En|De)coder should store an error when it occurs.
 //     Until reset, subsequent calls return that error that was stored.

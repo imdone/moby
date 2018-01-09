@@ -29,7 +29,7 @@ type StoreObject interface {
 // Event is the type used for events passed over watcher channels, and also
 // the type used to specify filtering in calls to Watch.
 type Event interface {
-	// TODO(stevvooe): Consider whether it makes sense to squish both the
+	// TODO (stevvooe): Consider whether it makes sense to squish both the id:923 gh:924
 	// matcher type and the primary type into the same type. It might be better
 	// to build a matcher from an event prototype.
 

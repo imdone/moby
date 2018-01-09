@@ -215,7 +215,7 @@ func (daemon *Daemon) createSpec(c *container.Container) (*specs.Spec, error) {
 			return nil, err
 		}
 	} else {
-		// TODO @jhowardmsft LCOW Support. Modify this check when running in dual-mode
+		// TODO @jhowardmsft LCOW Support. Modify this check when running in dual-mode id:821 gh:822
 		if system.LCOWSupported() && img.OS == "linux" {
 			daemon.createSpecLinuxFields(c, &s)
 		}
@@ -338,7 +338,7 @@ func (daemon *Daemon) createSpecWindowsFields(c *container.Container, s *specs.S
 }
 
 // Sets the Linux-specific fields of the OCI spec
-// TODO: @jhowardmsft LCOW Support. We need to do a lot more pulling in what can
+// TODO: @jhowardmsft LCOW Support. We need to do a lot more pulling in what can id:105 gh:106
 // be pulled in from oci_linux.go.
 func (daemon *Daemon) createSpecLinuxFields(c *container.Container, s *specs.Spec) {
 	if len(s.Process.Cwd) == 0 {

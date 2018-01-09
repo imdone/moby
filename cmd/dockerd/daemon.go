@@ -130,7 +130,7 @@ func (cli *DaemonCli) start(opts *daemonOptions) (err error) {
 		}()
 	}
 
-	// TODO: extract to newApiServerConfig()
+	// TODO: extract to newApiServerConfig() id:42 gh:43
 	serverConfig := &apiserver.Config{
 		Logging:     true,
 		SocketGroup: cli.Config.SocketGroup,
@@ -239,7 +239,7 @@ func (cli *DaemonCli) start(opts *daemonOptions) (err error) {
 		return fmt.Errorf("Error validating authorization plugin: %v", err)
 	}
 
-	// TODO: move into startMetricsServer()
+	// TODO: move into startMetricsServer() id:798 gh:799
 	if cli.Config.MetricsAddress != "" {
 		if !d.HasExperimental() {
 			return fmt.Errorf("metrics-addr is only supported when experimental is enabled")
@@ -249,7 +249,7 @@ func (cli *DaemonCli) start(opts *daemonOptions) (err error) {
 		}
 	}
 
-	// TODO: createAndStartCluster()
+	// TODO: createAndStartCluster() id:46 gh:46
 	name, _ := os.Hostname()
 
 	// Use a buffered channel to pass changes from store watch API to daemon
@@ -343,7 +343,7 @@ func newRouterOptions(config *config.Config, daemon *daemon.Daemon) (routerOptio
 	buildCache, err := fscache.NewFSCache(fscache.Opt{
 		Backend: fscache.NewNaiveCacheBackend(builderStateDir),
 		Root:    builderStateDir,
-		GCPolicy: fscache.GCPolicy{ // TODO: expose this in config
+		GCPolicy: fscache.GCPolicy{ // TODO: expose this in config id:16 gh:17
 			MaxSize:         1024 * 1024 * 512,  // 512MB
 			MaxKeepDuration: 7 * 24 * time.Hour, // 1 week
 		},
@@ -475,11 +475,11 @@ func loadDaemonCliConfig(opts *daemonOptions) (*config.Config, error) {
 
 	if runtime.GOOS != "windows" {
 		if flags.Changed("disable-legacy-registry") {
-			// TODO: Remove this error after 3 release cycles (18.03)
+			// TODO: Remove this error after 3 release cycles (18.03) id:17 gh:18
 			return nil, errors.New("ERROR: The '--disable-legacy-registry' flag has been removed. Interacting with legacy (v1) registries is no longer supported")
 		}
 		if !conf.V2Only {
-			// TODO: Remove this error after 3 release cycles (18.03)
+			// TODO: Remove this error after 3 release cycles (18.03) id:45 gh:47
 			return nil, errors.New("ERROR: The 'disable-legacy-registry' configuration option has been removed. Interacting with legacy (v1) registries is no longer supported")
 		}
 	}
@@ -541,7 +541,7 @@ func initRouter(opts routerOptions) {
 	opts.api.InitRouter(routers...)
 }
 
-// TODO: remove this from cli and return the authzMiddleware
+// TODO: remove this from cli and return the authzMiddleware id:800 gh:801
 func (cli *DaemonCli) initMiddlewares(s *apiserver.Server, cfg *apiserver.Config, pluginStore plugingetter.PluginGetter) error {
 	v := cfg.Version
 

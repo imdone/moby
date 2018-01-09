@@ -206,7 +206,7 @@ func (s *store) Update(ctx context.Context, info content.Info, fieldpaths ...str
 }
 
 func (s *store) Walk(ctx context.Context, fn content.WalkFunc, filters ...string) error {
-	// TODO: Support filters
+	// TODO: Support filters id:885 gh:886
 	root := filepath.Join(s.root, "blobs")
 	var alg digest.Algorithm
 	return filepath.Walk(root, func(path string, fi os.FileInfo, err error) error {
@@ -217,7 +217,7 @@ func (s *store) Walk(ctx context.Context, fn content.WalkFunc, filters ...string
 			return nil
 		}
 
-		// TODO(stevvooe): There are few more cases with subdirs that should be
+		// TODO (stevvooe): There are few more cases with subdirs that should be id:470 gh:471
 		// handled in case the layout gets corrupted. This isn't strict enough
 		// and may spew bad data.
 
@@ -286,7 +286,7 @@ func (s *store) ListStatuses(ctx context.Context, fs ...string) ([]content.Statu
 				return nil, err
 			}
 
-			// TODO(stevvooe): This is a common error if uploads are being
+			// TODO (stevvooe): This is a common error if uploads are being id:370 gh:371
 			// completed while making this listing. Need to consider taking a
 			// lock on the whole store to coordinate this aspect.
 			//
@@ -416,7 +416,7 @@ func (s *store) Writer(ctx context.Context, ref string, total int64, expected di
 // writer provides the main implementation of the Writer method. The caller
 // must hold the lock correctly and release on error if there is a problem.
 func (s *store) writer(ctx context.Context, ref string, total int64, expected digest.Digest) (content.Writer, error) {
-	// TODO(stevvooe): Need to actually store expected here. We have
+	// TODO (stevvooe): Need to actually store expected here. We have id:353 gh:354
 	// code in the service that shouldn't be dealing with this.
 	if expected != "" {
 		p := s.blobPath(expected)
@@ -446,7 +446,7 @@ func (s *store) writer(ctx context.Context, ref string, total int64, expected di
 		}
 
 		if ref != status.Ref {
-			// NOTE(stevvooe): This is fairly catastrophic. Either we have some
+			// NOTE (stevvooe): This is fairly catastrophic. Either we have some id:354 gh:355
 			// layout corruption or a hash collision for the ref key.
 			return nil, errors.Wrapf(err, "ref key does not match: %v != %v", ref, status.Ref)
 		}
@@ -455,7 +455,7 @@ func (s *store) writer(ctx context.Context, ref string, total int64, expected di
 			return nil, errors.Errorf("provided total differs from status: %v != %v", total, status.Total)
 		}
 
-		// TODO(stevvooe): slow slow slow!!, send to goroutine or use resumable hashes
+		// TODO (stevvooe): slow slow slow!!, send to goroutine or use resumable hashes id:886 gh:887
 		fp, err := os.Open(data)
 		if err != nil {
 			return nil, err

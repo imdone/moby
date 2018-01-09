@@ -20,15 +20,15 @@ const (
 )
 
 // Fw filter filters on firewall marks
-// NOTE: this is in filter_linux because it refers to nl.TcPolice which
+// NOTE: this is in filter_linux because it refers to nl.TcPolice which id:571 gh:572
 //       is defined in nl/tc_linux.go
 type Fw struct {
 	FilterAttrs
 	ClassId uint32
-	// TODO remove nl type from interface
+	// TODO remove nl type from interface id:1053 gh:1054
 	Police nl.TcPolice
 	InDev  string
-	// TODO Action
+	// TODO Action id:705 gh:706
 	Mask   uint32
 	AvRate uint32
 	Rtab   [256]uint32

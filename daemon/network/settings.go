@@ -10,7 +10,7 @@ import (
 )
 
 // Settings stores configuration details about the daemon network config
-// TODO Windows. Many of these fields can be factored out.,
+// TODO Windows. Many of these fields can be factored out., id:100 gh:101
 type Settings struct {
 	Bridge                 string
 	SandboxID              string

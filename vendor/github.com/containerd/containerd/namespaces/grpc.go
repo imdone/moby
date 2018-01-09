@@ -10,7 +10,7 @@ const (
 	GRPCHeader = "containerd-namespace"
 )
 
-// NOTE(stevvooe): We can stub this file out if we don't want a grpc dependency here.
+// NOTE (stevvooe): We can stub this file out if we don't want a grpc dependency here. id:495 gh:496
 
 func withGRPCNamespaceHeader(ctx context.Context, namespace string) context.Context {
 	// also store on the grpc headers so it gets picked up by any clients that
@@ -31,7 +31,7 @@ func fromGRPCHeader(ctx context.Context) (string, bool) {
 	// try to extract for use in grpc servers.
 	md, ok := metadata.FromIncomingContext(ctx)
 	if !ok {
-		// TODO(stevvooe): Check outgoing context?
+		// TODO (stevvooe): Check outgoing context? id:391 gh:392
 		return "", false
 	}
 

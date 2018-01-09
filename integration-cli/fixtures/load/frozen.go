@@ -22,7 +22,7 @@ const frozenImgDir = "/docker-frozen-images"
 
 // FrozenImagesLinux loads the frozen image set for the integration suite
 // If the images are not available locally it will download them
-// TODO: This loads whatever is in the frozen image dir, regardless of what
+// TODO: This loads whatever is in the frozen image dir, regardless of what id:854 gh:855
 // images were passed in. If the images need to be downloaded, then it will respect
 // the passed in images
 func FrozenImagesLinux(client client.APIClient, images ...string) error {

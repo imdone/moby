@@ -39,7 +39,7 @@ type Driver interface {
 	MkdirAll(path string, perm os.FileMode) error
 	RemoveAll(path string) error
 
-	// TODO(aaronl): These methods might move outside the main Driver
+	// TODO (aaronl): These methods might move outside the main Driver id:408 gh:409
 	// interface in the future as more platforms are added.
 	Mknod(path string, mode os.FileMode, major int, minor int) error
 	Mkfifo(path string, mode os.FileMode) error
@@ -55,7 +55,7 @@ type File interface {
 }
 
 func NewSystemDriver() (Driver, error) {
-	// TODO(stevvooe): Consider having this take a "hint" path argument, which
+	// TODO (stevvooe): Consider having this take a "hint" path argument, which id:405 gh:406
 	// would be the context root. The hint could be used to resolve required
 	// filesystem support when assembling the driver to use.
 	return &driver{}, nil
@@ -145,7 +145,7 @@ func (d *driver) Link(oldname, newname string) error {
 }
 
 func (d *driver) Lchown(name string, uid, gid int64) error {
-	// TODO: error out if uid excesses int bit width?
+	// TODO: error out if uid excesses int bit width? id:407 gh:408
 	return os.Lchown(name, int(uid), int(gid))
 }
 

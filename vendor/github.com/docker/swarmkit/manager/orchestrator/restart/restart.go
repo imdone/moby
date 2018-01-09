@@ -101,7 +101,7 @@ func (r *Supervisor) waitRestart(ctx context.Context, oldDelay *delayedStart, cl
 // Restart initiates a new task to replace t if appropriate under the service's
 // restart policy.
 func (r *Supervisor) Restart(ctx context.Context, tx store.Tx, cluster *api.Cluster, service *api.Service, t api.Task) error {
-	// TODO(aluzzardi): This function should not depend on `service`.
+	// TODO (aluzzardi): This function should not depend on `service`. id:486 gh:487
 
 	// Is the old task still in the process of restarting? If so, wait for
 	// its restart delay to elapse, to avoid tight restart loops (for
@@ -193,7 +193,7 @@ func (r *Supervisor) Restart(ctx context.Context, tx store.Tx, cluster *api.Clus
 // shouldRestart returns true if a task should be restarted according to the
 // restart policy.
 func (r *Supervisor) shouldRestart(ctx context.Context, t *api.Task, service *api.Service) bool {
-	// TODO(aluzzardi): This function should not depend on `service`.
+	// TODO (aluzzardi): This function should not depend on `service`. id:530 gh:531
 	condition := orchestrator.RestartCondition(t)
 
 	if condition != api.RestartOnAny &&

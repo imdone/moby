@@ -4,7 +4,7 @@
 
 package tar
 
-// TODO(dsymonds):
+// TODO (dsymonds): id:355 gh:356
 // - catch more errors (no first header, etc.)
 
 import (
@@ -153,7 +153,7 @@ func (tw *Writer) writeHeader(hdr *Header, allowPax bool) error {
 	// a map to hold pax header records, if any are needed
 	paxHeaders := make(map[string]string)
 
-	// TODO(shanemhansen): we might want to use PAX headers for
+	// TODO (shanemhansen): we might want to use PAX headers for id:310 gh:311
 	// subsecond time resolution, but for now let's just capture
 	// too long fields or non ascii characters
 

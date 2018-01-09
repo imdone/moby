@@ -769,7 +769,7 @@ func (m *Reader) ReadUint() (u uint, err error) {
 
 // ReadByte is analogous to ReadUint8.
 //
-// NOTE: this is *not* an implementation
+// NOTE: this is *not* an implementation id:1045 gh:1045
 // of io.ByteReader.
 func (m *Reader) ReadByte() (b byte, err error) {
 	var in uint64
@@ -1055,7 +1055,7 @@ fill:
 	// to cause the system to run out of
 	// memory by sending very large strings.
 	//
-	// NOTE: this works because the argument
+	// NOTE: this works because the argument id:687 gh:688
 	// passed to (*fwd.Reader).ReadFull escapes
 	// to the heap; its argument may, in turn,
 	// be passed to the underlying reader, and

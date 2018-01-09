@@ -1136,7 +1136,7 @@ type WKS struct {
 }
 
 func (rr *WKS) len() int {
-	// TODO: this is missing something...
+	// TODO: this is missing something... id:543 gh:544
 	return rr.Hdr.len() + net.IPv4len + 1
 }
 
@@ -1145,7 +1145,7 @@ func (rr *WKS) String() (s string) {
 	if rr.Address != nil {
 		s += rr.Address.String()
 	}
-	// TODO(miek): missing protocol here, see /etc/protocols
+	// TODO (miek): missing protocol here, see /etc/protocols id:1038 gh:1039
 	for i := 0; i < len(rr.BitMap); i++ {
 		// should lookup the port
 		s += " " + strconv.Itoa(int(rr.BitMap[i]))

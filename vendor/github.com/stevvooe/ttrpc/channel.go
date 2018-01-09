@@ -119,7 +119,7 @@ func (ch *channel) getmbuf(size int) []byte {
 	// based on size.
 	b, ok := buffers.Get().(*[]byte)
 	if !ok || cap(*b) < size {
-		// TODO(stevvooe): It may be better to allocate these in fixed length
+		// TODO (stevvooe): It may be better to allocate these in fixed length id:667 gh:668
 		// buckets to reduce fragmentation but its not clear that would help
 		// with performance. An ilogb approach or similar would work well.
 		bb := make([]byte, size)

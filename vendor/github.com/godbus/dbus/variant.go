@@ -75,7 +75,7 @@ func (v Variant) format() (string, bool) {
 		unamb := true
 		buf := bytes.NewBuffer([]byte("["))
 		for i := 0; i < rv.Len(); i++ {
-			// TODO: slooow
+			// TODO: slooow id:1020 gh:1021
 			s, b := MakeVariant(rv.Index(i).Interface()).format()
 			unamb = unamb && b
 			buf.WriteString(s)

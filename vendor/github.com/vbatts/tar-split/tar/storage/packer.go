@@ -24,7 +24,7 @@ type Unpacker interface {
 	Next() (*Entry, error)
 }
 
-/* TODO(vbatts) figure out a good model for this
+/* TODO (vbatts) figure out a good model for this id:569 gh:570
 type PackUnpacker interface {
 	Packer
 	Unpacker

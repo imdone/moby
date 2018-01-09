@@ -67,7 +67,7 @@ func (s *DockerSuite) TestStartAttachSilent(c *check.C) {
 }
 
 func (s *DockerSuite) TestStartRecordError(c *check.C) {
-	// TODO Windows CI: Requires further porting work. Should be possible.
+	// TODO Windows CI: Requires further porting work. Should be possible. id:256 gh:257
 	testRequires(c, DaemonIsLinux)
 	// when container runs successfully, we should not have state.Error
 	dockerCmd(c, "run", "-d", "-p", "9999:9999", "--name", "test", "busybox", "top")
@@ -179,7 +179,7 @@ func (s *DockerSuite) TestStartAttachWithRename(c *check.C) {
 		cli.DockerCmd(c, "rename", "before", "after")
 		cli.DockerCmd(c, "stop", "--time=2", "after")
 	}()
-	// FIXME(vdemeester) the intent is not clear and potentially racey
+	// FIXME (vdemeester) the intent is not clear and potentially racey id:290 gh:291
 	result := cli.Docker(cli.Args("start", "-a", "before")).Assert(c, icmd.Expected{
 		ExitCode: 137,
 	})

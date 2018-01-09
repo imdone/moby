@@ -300,7 +300,7 @@ type MemBytes int64
 
 // String returns the string format of the human readable memory bytes
 func (m *MemBytes) String() string {
-	// NOTE: In spf13/pflag/flag.go, "0" is considered as "zero value" while "0 B" is not.
+	// NOTE: In spf13/pflag/flag.go, "0" is considered as "zero value" while "0 B" is not. id:276 gh:278
 	// We return "0" in case value is 0 here so that the default value is hidden.
 	// (Sometimes "default 0 B" is actually misleading)
 	if m.Value() != 0 {

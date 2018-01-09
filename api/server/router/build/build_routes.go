@@ -70,7 +70,7 @@ func newImageBuildOptions(ctx context.Context, r *http.Request) (*types.ImageBui
 	options.Target = r.FormValue("target")
 	options.RemoteContext = r.FormValue("remote")
 	if versions.GreaterThanOrEqualTo(version, "1.32") {
-		// TODO @jhowardmsft. The following environment variable is an interim
+		// TODO @jhowardmsft. The following environment variable is an interim id:4 gh:5
 		// measure to allow the daemon to have a default platform if omitted by
 		// the client. This allows LCOW and WCOW to work with a down-level CLI
 		// for a short period of time, as the CLI changes can't be merged

@@ -191,7 +191,7 @@ func getName(ref reference.Named, tag, name string) (string, error) {
 			return "", errors.New("cannot use digest in plugin tag")
 		}
 		if reference.IsNameOnly(localRef) {
-			// TODO: log change in name to out stream
+			// TODO: log change in name to out stream id:29 gh:30
 			name = reference.FamiliarString(reference.TagNameOnly(localRef))
 		}
 	}
@@ -209,7 +209,7 @@ func (pr *pluginRouter) createPlugin(ctx context.Context, w http.ResponseWriter,
 	if err := pr.backend.CreateFromContext(ctx, r.Body, options); err != nil {
 		return err
 	}
-	//TODO: send progress bar
+	//TODO: send progress bar id:791 gh:792
 	w.WriteHeader(http.StatusNoContent)
 	return nil
 }

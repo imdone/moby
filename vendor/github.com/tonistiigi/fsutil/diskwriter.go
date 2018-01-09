@@ -198,7 +198,7 @@ func (dw *DiskWriter) requestAsyncFileData(p, dest string, fi os.FileInfo) {
 		}); err != nil {
 			return err
 		}
-		return chtimes(dest, fi.ModTime().UnixNano()) // TODO: parent dirs
+		return chtimes(dest, fi.ModTime().UnixNano()) // TODO: parent dirs id:964 gh:965
 	})
 }
 

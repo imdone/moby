@@ -589,7 +589,7 @@ func (s *Section) NewKey(name, val string) (*Key, error) {
 
 // GetKey returns key in section by given name.
 func (s *Section) GetKey(name string) (*Key, error) {
-	// FIXME: change to section level lock?
+	// FIXME: change to section level lock? id:609 gh:610
 	if s.f.BlockMode {
 		s.f.lock.RLock()
 	}

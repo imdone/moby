@@ -156,7 +156,7 @@ func (e *Exchange) Subscribe(ctx context.Context, fs ...string) (ch <-chan *even
 			case ev := <-channel.C:
 				env, ok := ev.(*events.Envelope)
 				if !ok {
-					// TODO(stevvooe): For the most part, we are well protected
+					// TODO (stevvooe): For the most part, we are well protected id:373 gh:374
 					// from this condition. Both Forward and Publish protect
 					// from this.
 					err = errors.Errorf("invalid envelope encountered %#v; please file a bug", ev)

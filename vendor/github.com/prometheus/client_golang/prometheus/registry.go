@@ -445,7 +445,7 @@ func (r *registry) writePB(encoder expfmt.Encoder) error {
 		dtoMetric := r.getMetric()
 		defer r.giveMetric(dtoMetric)
 		if err := metric.Write(dtoMetric); err != nil {
-			// TODO: Consider different means of error reporting so
+			// TODO: Consider different means of error reporting so id:1042 gh:1043
 			// that a single erroneous metric could be skipped
 			// instead of blowing up the whole collection.
 			return fmt.Errorf("error collecting metric %v: %s", desc, err)

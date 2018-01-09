@@ -52,11 +52,11 @@ func newLog(storage Storage, logger Logger) *raftLog {
 	}
 	firstIndex, err := storage.FirstIndex()
 	if err != nil {
-		panic(err) // TODO(bdarnell)
+		panic(err) // TODO (bdarnell) id:538 gh:539
 	}
 	lastIndex, err := storage.LastIndex()
 	if err != nil {
-		panic(err) // TODO(bdarnell)
+		panic(err) // TODO (bdarnell) id:412 gh:413
 	}
 	log.unstable.offset = lastIndex + 1
 	log.unstable.logger = logger
@@ -168,7 +168,7 @@ func (l *raftLog) firstIndex() uint64 {
 	}
 	index, err := l.storage.FirstIndex()
 	if err != nil {
-		panic(err) // TODO(bdarnell)
+		panic(err) // TODO (bdarnell) id:413 gh:414
 	}
 	return index
 }
@@ -179,7 +179,7 @@ func (l *raftLog) lastIndex() uint64 {
 	}
 	i, err := l.storage.LastIndex()
 	if err != nil {
-		panic(err) // TODO(bdarnell)
+		panic(err) // TODO (bdarnell) id:414 gh:415
 	}
 	return i
 }
@@ -220,7 +220,7 @@ func (l *raftLog) term(i uint64) (uint64, error) {
 	// the valid term range is [index of dummy entry, last index]
 	dummyIndex := l.firstIndex() - 1
 	if i < dummyIndex || i > l.lastIndex() {
-		// TODO: return an error instead?
+		// TODO: return an error instead? id:904 gh:905
 		return 0, nil
 	}
 
@@ -235,7 +235,7 @@ func (l *raftLog) term(i uint64) (uint64, error) {
 	if err == ErrCompacted || err == ErrUnavailable {
 		return 0, err
 	}
-	panic(err) // TODO(bdarnell)
+	panic(err) // TODO (bdarnell) id:540 gh:541
 }
 
 func (l *raftLog) entries(i, maxsize uint64) ([]pb.Entry, error) {
@@ -254,7 +254,7 @@ func (l *raftLog) allEntries() []pb.Entry {
 	if err == ErrCompacted { // try again if there was a racing compaction
 		return l.allEntries()
 	}
-	// TODO (xiangli): handle error?
+	// TODO (xiangli): handle error? id:415 gh:416
 	panic(err)
 }
 
@@ -307,7 +307,7 @@ func (l *raftLog) slice(lo, hi, maxSize uint64) ([]pb.Entry, error) {
 		} else if err == ErrUnavailable {
 			l.logger.Panicf("entries[%d:%d) is unavailable from storage", lo, min(hi, l.unstable.offset))
 		} else if err != nil {
-			panic(err) // TODO(bdarnell)
+			panic(err) // TODO (bdarnell) id:416 gh:417
 		}
 
 		// check if ents has reached the size limitation

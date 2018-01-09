@@ -39,7 +39,7 @@ func (s *systemRouter) getInfo(ctx context.Context, w http.ResponseWriter, r *ht
 	}
 
 	if versions.LessThan(httputils.VersionFromContext(ctx), "1.25") {
-		// TODO: handle this conversion in engine-api
+		// TODO: handle this conversion in engine-api id:33 gh:34
 		type oldInfo struct {
 			*types.Info
 			ExecutionDriver string

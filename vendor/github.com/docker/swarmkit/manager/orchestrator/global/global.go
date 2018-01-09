@@ -127,7 +127,7 @@ func (g *Orchestrator) Run(ctx context.Context) error {
 	for {
 		select {
 		case event := <-watcher:
-			// TODO(stevvooe): Use ctx to limit running time of operation.
+			// TODO (stevvooe): Use ctx to limit running time of operation. id:528 gh:529
 			switch v := event.(type) {
 			case api.EventUpdateCluster:
 				g.cluster = v.Cluster
@@ -530,7 +530,7 @@ func (g *Orchestrator) tickTasks(ctx context.Context) {
 
 func (g *Orchestrator) shutdownTask(ctx context.Context, batch *store.Batch, t *api.Task) {
 	// set existing task DesiredState to TaskStateShutdown
-	// TODO(aaronl): optimistic update?
+	// TODO (aaronl): optimistic update? id:482 gh:483
 	err := batch.Update(func(tx store.Tx) error {
 		t = store.GetTask(tx, t.ID)
 		if t != nil && t.DesiredState < api.TaskStateShutdown {

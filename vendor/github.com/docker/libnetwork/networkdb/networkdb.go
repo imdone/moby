@@ -185,7 +185,7 @@ type Config struct {
 	reapEntryInterval time.Duration
 
 	// reapNetworkInterval duration of a delted network before being garbage collected
-	// NOTE this MUST always be higher than reapEntryInterval
+	// NOTE this MUST always be higher than reapEntryInterval id:452 gh:453
 	reapNetworkInterval time.Duration
 
 	// StatsPrintPeriod the period to use to print queue stats
@@ -518,7 +518,7 @@ func (nDB *NetworkDB) deleteNodeNetworkEntries(nid, node string) {
 			// 2) the local node is leaving the network
 			if oldEntry.node == node {
 				if isNodeLocal {
-					// TODO fcrisciani: this can be removed if there is no way to leave the network
+					// TODO fcrisciani: this can be removed if there is no way to leave the network id:918 gh:919
 					// without doing a delete of all the objects
 					entry.ltime++
 				}
@@ -605,7 +605,7 @@ func (nDB *NetworkDB) JoinNetwork(nid string) error {
 	nodeNetworks[nid] = &network{id: nid, ltime: ltime, entriesNumber: entries}
 	nodeNetworks[nid].tableBroadcasts = &memberlist.TransmitLimitedQueue{
 		NumNodes: func() int {
-			//TODO fcrisciani this can be optimized maybe avoiding the lock?
+			//TODO fcrisciani this can be optimized maybe avoiding the lock? id:570 gh:571
 			// this call is done each GetBroadcasts call to evaluate the number of
 			// replicas for the message
 			nDB.RLock()

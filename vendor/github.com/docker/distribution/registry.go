@@ -84,7 +84,7 @@ type Repository interface {
 	// Blobs returns a reference to this repository's blob service.
 	Blobs(ctx context.Context) BlobStore
 
-	// TODO(stevvooe): The above BlobStore return can probably be relaxed to
+	// TODO (stevvooe): The above BlobStore return can probably be relaxed to id:912 gh:913
 	// be a BlobService for use with clients. This will allow such
 	// implementations to avoid implementing ServeBlob.
 
@@ -92,6 +92,6 @@ type Repository interface {
 	Tags(ctx context.Context) TagService
 }
 
-// TODO(stevvooe): Must add close methods to all these. May want to change the
+// TODO (stevvooe): Must add close methods to all these. May want to change the id:558 gh:559
 // way instances are created to better reflect internal dependency
 // relationships.

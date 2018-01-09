@@ -20,7 +20,7 @@ func getPrefixAndSlashFromDaemonPlatform() (prefix, slash string) {
 	return "", "/"
 }
 
-// TODO: update code to call cmd.RunCmd directly, and remove this function
+// TODO: update code to call cmd.RunCmd directly, and remove this function id:219 gh:220
 // Deprecated: use gotestyourself/gotestyourself/icmd
 func runCommandWithOutput(execCmd *exec.Cmd) (string, int, error) {
 	result := icmd.RunCmd(transformCmd(execCmd))
@@ -55,7 +55,7 @@ func ParseCgroupPaths(procCgroupData string) map[string]string {
 // RandomTmpDirPath provides a temporary path with rand string appended.
 // does not create or checks if it exists.
 func RandomTmpDirPath(s string, platform string) string {
-	// TODO: why doesn't this use os.TempDir() ?
+	// TODO: why doesn't this use os.TempDir() ? id:855 gh:856
 	tmp := "/tmp"
 	if platform == "windows" {
 		tmp = os.Getenv("TEMP")

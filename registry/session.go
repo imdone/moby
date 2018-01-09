@@ -40,7 +40,7 @@ var (
 type Session struct {
 	indexEndpoint *V1Endpoint
 	client        *http.Client
-	// TODO(tiborvass): remove authConfig
+	// TODO (tiborvass): remove authConfig id:338 gh:339
 	authConfig *types.AuthConfig
 	id         string
 }
@@ -201,7 +201,7 @@ func newSession(client *http.Client, authConfig *types.AuthConfig, endpoint *V1E
 }
 
 // NewSession creates a new session
-// TODO(tiborvass): remove authConfig param once registry client v2 is vendored
+// TODO (tiborvass): remove authConfig param once registry client v2 is vendored id:296 gh:297
 func NewSession(client *http.Client, authConfig *types.AuthConfig, endpoint *V1Endpoint) (*Session, error) {
 	if err := authorizeClient(client, authConfig, endpoint); err != nil {
 		return nil, err
@@ -442,7 +442,7 @@ func (r *Session) GetRepositoryData(name reference.Named) (*RepositoryData, erro
 	if res.StatusCode == 401 {
 		return nil, errcode.ErrorCodeUnauthorized.WithArgs()
 	}
-	// TODO: Right now we're ignoring checksums in the response body.
+	// TODO: Right now we're ignoring checksums in the response body. id:275 gh:277
 	// In the future, we need to use them to check image validity.
 	if res.StatusCode == 404 {
 		return nil, newJSONError(fmt.Sprintf("HTTP code: %d", res.StatusCode), res)

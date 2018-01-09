@@ -82,7 +82,7 @@ func (mwr *remotesWeightedRandom) Select(excludes ...string) (api.Peer, error) {
 	mwr.mu.Lock()
 	defer mwr.mu.Unlock()
 
-	// NOTE(stevvooe): We then use a weighted random selection algorithm
+	// NOTE (stevvooe): We then use a weighted random selection algorithm id:605 gh:606
 	// (http://stackoverflow.com/questions/4463561/weighted-random-selection-from-array)
 	// to choose the master to connect to.
 	//

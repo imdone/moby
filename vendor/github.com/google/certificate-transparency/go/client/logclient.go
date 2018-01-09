@@ -371,7 +371,7 @@ func (c *LogClient) VerifySCTSignature(sct ct.SignedCertificateTimestamp, ctype 
 	}
 
 	if ctype == ct.PrecertLogEntryType {
-		// TODO(drysdale): cope with pre-certs, which need to have the
+		// TODO (drysdale): cope with pre-certs, which need to have the id:644 gh:645
 		// following fields set:
 		//    leaf.PrecertEntry.TBSCertificate
 		//    leaf.PrecertEntry.IssuerKeyHash  (SHA-256 of issuer's public key)

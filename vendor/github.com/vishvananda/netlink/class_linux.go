@@ -7,7 +7,7 @@ import (
 	"github.com/vishvananda/netlink/nl"
 )
 
-// NOTE: function is in here because it uses other linux functions
+// NOTE: function is in here because it uses other linux functions id:970 gh:971
 func NewHtbClass(attrs ClassAttrs, cattrs HtbClassAttrs) *HtbClass {
 	mtu := 1600
 	rate := cattrs.Rate / 8
@@ -132,7 +132,7 @@ func classPayload(req *nl.NetlinkRequest, class Class) error {
 		opt.Quantum = htb.Quantum
 		opt.Level = htb.Level
 		opt.Prio = htb.Prio
-		// TODO: Handle Debug properly. For now default to 0
+		// TODO: Handle Debug properly. For now default to 0 id:688 gh:689
 		/* Calculate {R,C}Tab and set Rate and Ceil */
 		cellLog := -1
 		ccellLog := -1

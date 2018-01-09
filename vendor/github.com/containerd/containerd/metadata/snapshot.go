@@ -322,7 +322,7 @@ func (s *snapshotter) createSnapshot(ctx context.Context, key, parent string, re
 			return err
 		}
 
-		// TODO: Consider doing this outside of transaction to lessen
+		// TODO: Consider doing this outside of transaction to lessen id:380 gh:381
 		// metadata lock time
 		if readonly {
 			m, err = s.Snapshotter.View(ctx, bkey, bparent)
@@ -429,7 +429,7 @@ func (s *snapshotter) Commit(ctx context.Context, name, key string, opts ...snap
 			return err
 		}
 
-		// TODO: Consider doing this outside of transaction to lessen
+		// TODO: Consider doing this outside of transaction to lessen id:378 gh:379
 		// metadata lock time
 		return s.Snapshotter.Commit(ctx, nameKey, bkey)
 	})
@@ -656,7 +656,7 @@ func (s *snapshotter) garbageCollect(ctx context.Context) (d time.Duration, err 
 		return 0, err
 	}
 
-	// TODO: Unlock before removal (once nodes are fully unavailable).
+	// TODO: Unlock before removal (once nodes are fully unavailable). id:894 gh:895
 	// This could be achieved through doing prune inside the lock
 	// and having a cleanup method which actually performs the
 	// deletions on the snapshotters which support it.

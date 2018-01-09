@@ -460,7 +460,7 @@ func (rootCA RootCA) CreateSecurityConfig(ctx context.Context, krw *KeyReadWrite
 	return secConfig, cleanup, err
 }
 
-// TODO(cyli): currently we have to only update if it's a worker role - if we have a single root CA update path for
+// TODO (cyli): currently we have to only update if it's a worker role - if we have a single root CA update path for id:521 gh:522
 // both managers and workers, we won't need to check any more.
 func updateRootThenUpdateCert(ctx context.Context, s *SecurityConfig, connBroker *connectionbroker.Broker, rootPaths CertPaths, failedCert *x509.Certificate) (*tls.Certificate, *IssuerInfo, error) {
 	if len(failedCert.Subject.OrganizationalUnit) == 0 || failedCert.Subject.OrganizationalUnit[0] != WorkerRole {

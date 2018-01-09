@@ -36,7 +36,7 @@ func (r byCreated) Less(i, j int) bool { return r[i].Created < r[j].Created }
 
 // Map returns a map of all images in the ImageStore
 func (daemon *Daemon) Map() map[image.ID]*image.Image {
-	// TODO @jhowardmsft LCOW. This can be removed when imagestores are coalesced
+	// TODO @jhowardmsft LCOW. This can be removed when imagestores are coalesced id:97 gh:98
 	platform := runtime.GOOS
 	if system.LCOWSupported() {
 		platform = "linux"
@@ -51,7 +51,7 @@ func (daemon *Daemon) Map() map[image.ID]*image.Image {
 // the heads.
 func (daemon *Daemon) Images(imageFilters filters.Args, all bool, withExtraAttrs bool) ([]*types.ImageSummary, error) {
 
-	// TODO @jhowardmsft LCOW. This can be removed when imagestores are coalesced
+	// TODO @jhowardmsft LCOW. This can be removed when imagestores are coalesced id:99 gh:100
 	platform := runtime.GOOS
 	if system.LCOWSupported() {
 		platform = "linux"

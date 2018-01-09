@@ -164,7 +164,7 @@ func (c *client) Restore(ctx context.Context, id string, attachStdio StdioCallba
 		bundleDir: filepath.Join(c.stateDir, id),
 		ctr:       ctr,
 		task:      t,
-		// TODO(mlaventure): load execs
+		// TODO (mlaventure): load execs id:272 gh:273
 	}
 
 	c.logger.WithFields(logrus.Fields{
@@ -190,7 +190,7 @@ func (c *client) Create(ctx context.Context, id string, ociSpec *specs.Spec, run
 
 	cdCtr, err := c.remote.NewContainer(ctx, id,
 		containerd.WithSpec(ociSpec),
-		// TODO(mlaventure): when containerd support lcow, revisit runtime value
+		// TODO (mlaventure): when containerd support lcow, revisit runtime value id:311 gh:312
 		containerd.WithRuntime(fmt.Sprintf("io.containerd.runtime.v1.%s", runtime.GOOS), runtimeOptions))
 	if err != nil {
 		return err

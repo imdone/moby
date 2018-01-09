@@ -104,7 +104,7 @@ func TestDaemonRestartKillContainers(t *testing.T) {
 					if running != expected {
 						t.Fatalf("got unexpected running state, expected %v, got: %v", expected, running)
 					}
-					// TODO(cpuguy83): test pause states... this seems to be rather undefined currently
+					// TODO (cpuguy83): test pause states... this seems to be rather undefined currently id:266 gh:267
 				})
 			}
 		}

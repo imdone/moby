@@ -23,7 +23,7 @@ type dockerPusher struct {
 	*dockerBase
 	tag string
 
-	// TODO: namespace tracker
+	// TODO: namespace tracker id:387 gh:388
 	tracker StatusTracker
 }
 
@@ -38,7 +38,7 @@ func (p dockerPusher) Push(ctx context.Context, desc ocispec.Descriptor) (conten
 		if status.Offset == status.Total {
 			return nil, errors.Wrapf(errdefs.ErrAlreadyExists, "ref %v", ref)
 		}
-		// TODO: Handle incomplete status
+		// TODO: Handle incomplete status id:385 gh:386
 	} else if !errdefs.IsNotFound(err) {
 		return nil, errors.Wrap(err, "failed to get status")
 	}
@@ -89,18 +89,18 @@ func (p dockerPusher) Push(ctx context.Context, desc ocispec.Descriptor) (conten
 				p.tracker.SetStatus(ref, Status{
 					Status: content.Status{
 						Ref: ref,
-						// TODO: Set updated time?
+						// TODO: Set updated time? id:896 gh:897
 					},
 				})
 				return nil, errors.Wrapf(errdefs.ErrAlreadyExists, "content %v on remote", desc.Digest)
 			}
 		} else if resp.StatusCode != http.StatusNotFound {
-			// TODO: log error
+			// TODO: log error id:499 gh:500
 			return nil, errors.Errorf("unexpected response: %s", resp.Status)
 		}
 	}
 
-	// TODO: Lookup related objects for cross repository push
+	// TODO: Lookup related objects for cross repository push id:397 gh:398
 
 	if isManifest {
 		var putPath string
@@ -116,7 +116,7 @@ func (p dockerPusher) Push(ctx context.Context, desc ocispec.Descriptor) (conten
 		}
 		req.Header.Add("Content-Type", desc.MediaType)
 	} else {
-		// TODO: Do monolithic upload if size is small
+		// TODO: Do monolithic upload if size is small id:389 gh:390
 
 		// Start upload request
 		req, err = http.NewRequest(http.MethodPost, p.url("blobs", "uploads")+"/", nil)
@@ -132,7 +132,7 @@ func (p dockerPusher) Push(ctx context.Context, desc ocispec.Descriptor) (conten
 		switch resp.StatusCode {
 		case http.StatusOK, http.StatusAccepted, http.StatusNoContent:
 		default:
-			// TODO: log error
+			// TODO: log error id:390 gh:391
 			return nil, errors.Errorf("unexpected response: %s", resp.Status)
 		}
 
@@ -162,7 +162,7 @@ func (p dockerPusher) Push(ctx context.Context, desc ocispec.Descriptor) (conten
 		},
 	})
 
-	// TODO: Support chunked upload
+	// TODO: Support chunked upload id:897 gh:898
 
 	pr, pw := io.Pipe()
 	respC := make(chan *http.Response, 1)
@@ -181,7 +181,7 @@ func (p dockerPusher) Push(ctx context.Context, desc ocispec.Descriptor) (conten
 		switch resp.StatusCode {
 		case http.StatusOK, http.StatusCreated, http.StatusNoContent:
 		default:
-			// TODO: log error
+			// TODO: log error id:501 gh:502
 			pr.CloseWithError(errors.Errorf("unexpected response: %s", resp.Status))
 		}
 		respC <- resp
@@ -236,7 +236,7 @@ func (pw *pushWriter) Status() (content.Status, error) {
 }
 
 func (pw *pushWriter) Digest() digest.Digest {
-	// TODO: Get rid of this function?
+	// TODO: Get rid of this function? id:400 gh:401
 	return pw.expected
 }
 
@@ -249,9 +249,9 @@ func (pw *pushWriter) Commit(ctx context.Context, size int64, expected digest.Di
 	if err := pw.pipe.Close(); err != nil {
 		return err
 	}
-	// TODO: Update status to determine committing
+	// TODO: Update status to determine committing id:392 gh:393
 
-	// TODO: timeout waiting for response
+	// TODO: timeout waiting for response id:393 gh:394
 	resp := <-pw.responseC
 	if resp == nil {
 		return errors.New("no response")
@@ -291,7 +291,7 @@ func (pw *pushWriter) Commit(ctx context.Context, size int64, expected digest.Di
 }
 
 func (pw *pushWriter) Truncate(size int64) error {
-	// TODO: if blob close request and start new request at offset
-	// TODO: always error on manifest
+	// TODO: if blob close request and start new request at offset id:898 gh:899
+	// TODO: always error on manifest id:505 gh:506
 	return errors.New("cannot truncate remote upload")
 }

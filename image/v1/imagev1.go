@@ -49,7 +49,7 @@ func CreateID(v1Image image.V1Image, layerID layer.ChainID, parent digest.Digest
 		return "", err
 	}
 
-	// FIXME: note that this is slightly incompatible with RootFS logic
+	// FIXME: note that this is slightly incompatible with RootFS logic id:126 gh:127
 	config["layer_id"] = rawJSON(layerID)
 	if parent != "" {
 		config["parent"] = rawJSON(parent)

@@ -79,7 +79,7 @@ func (ms *multiAddrSorter) Swap(i, j int) {
 }
 
 const (
-	// NOTE (sean@): These constants are here for code readability only and
+	// NOTE (sean@): These constants are here for code readability only and id:662 gh:663
 	// are sprucing up the code for readability purposes.  Some of the
 	// Cmp*() variants have confusing logic (especially when dealing with
 	// mixed-type comparisons) and this, I think, has made it easier to grok

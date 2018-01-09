@@ -20,8 +20,8 @@ import (
 //  * ./foo.txt with content "hello world"
 //  * ./empty with empty content
 //
-// FIXME: stream content instead of buffering
-// FIXME: specify permissions and other archive metadata
+// FIXME: stream content instead of buffering id:250 gh:251
+// FIXME: specify permissions and other archive metadata id:866 gh:866
 func Generate(input ...string) (io.Reader, error) {
 	files := parseStringPairs(input...)
 	buf := new(bytes.Buffer)

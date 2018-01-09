@@ -6,7 +6,7 @@ import (
 	"os"
 )
 
-// TODO: darwin, BSD support
+// TODO: darwin, BSD support id:962 gh:963
 
 func adviseRead(mem []byte) {}
 

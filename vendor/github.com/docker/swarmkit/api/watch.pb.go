@@ -403,7 +403,7 @@ func _Object_OneofSizer(msg proto.Message) (n int) {
 	return n
 }
 
-// FIXME(aaronl): These messages should ideally be embedded in SelectBy, but
+// FIXME (aaronl): These messages should ideally be embedded in SelectBy, but id:469 gh:470
 // protoc generates bad code for that.
 type SelectBySlot struct {
 	ServiceID string `protobuf:"bytes,1,opt,name=service_id,json=serviceId,proto3" json:"service_id,omitempty"`
@@ -425,7 +425,7 @@ func (*SelectByCustom) ProtoMessage()               {}
 func (*SelectByCustom) Descriptor() ([]byte, []int) { return fileDescriptorWatch, []int{2} }
 
 type SelectBy struct {
-	// TODO(aaronl): Are all of these things we want to expose in
+	// TODO (aaronl): Are all of these things we want to expose in id:924 gh:925
 	// the API? Exposing them may commit us to maintaining those
 	// internal indices going forward.
 	//

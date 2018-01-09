@@ -349,7 +349,7 @@ func (t *Transport) dial(addr string) (*grpc.ClientConn, error) {
 	}
 
 	// gRPC dialer connects to proxy first. Provide a custom dialer here avoid that.
-	// TODO(anshul) Add an option to configure this.
+	// TODO (anshul) Add an option to configure this. id:582 gh:583
 	grpcOptions = append(grpcOptions,
 		grpc.WithDialer(func(addr string, timeout time.Duration) (net.Conn, error) {
 			return net.DialTimeout("tcp", addr, timeout)

@@ -181,7 +181,7 @@ func assertImageList(out string, expected []string) bool {
 	return true
 }
 
-// FIXME(vdemeester) should be a unit test on `docker image ls`
+// FIXME (vdemeester) should be a unit test on `docker image ls` id:173 gh:174
 func (s *DockerSuite) TestImagesFilterSpaceTrimCase(c *check.C) {
 	imageName := "images_filter_test"
 	// Build a image and fail to build so that we have dangling images ?
@@ -249,7 +249,7 @@ func (s *DockerSuite) TestImagesEnsureDanglingImageOnlyListedOnce(c *check.C) {
 
 }
 
-// FIXME(vdemeester) should be a unit test for `docker image ls`
+// FIXME (vdemeester) should be a unit test for `docker image ls` id:839 gh:840
 func (s *DockerSuite) TestImagesWithIncorrectFilter(c *check.C) {
 	out, _, err := dockerCmdWithError("images", "-f", "dangling=invalid")
 	c.Assert(err, check.NotNil)

@@ -239,7 +239,7 @@ func (s *DockerTrustSuite) setupTrustedplugin(c *check.C, source, name string) s
 	c.Assert(err, checker.IsNil, check.Commentf("could not create test plugin"))
 
 	// tag the image and upload it to the private registry
-	// TODO: shouldn't need to use the CLI to do trust
+	// TODO: shouldn't need to use the CLI to do trust id:227 gh:228
 	cli.Docker(cli.Args("plugin", "push", repoName), trustedCmd).Assert(c, SuccessSigningAndPushing)
 
 	ctx, cancel = context.WithTimeout(context.Background(), 60*time.Second)

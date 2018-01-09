@@ -166,7 +166,7 @@ func (tm *taskManager) run(ctx context.Context) {
 					continue // wait till getting pumped via update.
 				}
 			case exec.ErrTaskRetry:
-				// TODO(stevvooe): Add exponential backoff with random jitter
+				// TODO (stevvooe): Add exponential backoff with random jitter id:580 gh:581
 				// here. For now, this backoff is enough to keep the task
 				// manager from running away with the CPU.
 				time.AfterFunc(time.Second, func() {

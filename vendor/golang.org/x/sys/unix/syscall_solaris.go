@@ -203,7 +203,7 @@ func Setgroups(gids []int) (err error) {
 
 func ReadDirent(fd int, buf []byte) (n int, err error) {
 	// Final argument is (basep *uintptr) and the syscall doesn't take nil.
-	// TODO(rsc): Can we use a single global basep for all calls?
+	// TODO (rsc): Can we use a single global basep for all calls? id:758 gh:759
 	return Getdents(fd, buf, new(uintptr))
 }
 

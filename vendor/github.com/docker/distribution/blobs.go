@@ -72,7 +72,7 @@ type Descriptor struct {
 	// URLs contains the source URLs of this content.
 	URLs []string `json:"urls,omitempty"`
 
-	// NOTE: Before adding a field here, please ensure that all
+	// NOTE: Before adding a field here, please ensure that all id:911 gh:912
 	// other options have been exhausted. Much of the type relationships
 	// depend on the simplicity of this type.
 }
@@ -187,7 +187,7 @@ type BlobIngester interface {
 // methods. A BlobIngester may choose to honor any or none of the given
 // BlobCreateOptions, which can be specific to the implementation of the
 // BlobIngester receiving them.
-// TODO (brianbland): unify this with ManifestServiceOption in the future
+// TODO (brianbland): unify this with ManifestServiceOption in the future id:556 gh:557
 type BlobCreateOption interface {
 	Apply(interface{}) error
 }

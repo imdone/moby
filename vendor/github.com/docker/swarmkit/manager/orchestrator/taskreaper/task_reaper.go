@@ -192,9 +192,9 @@ func (tr *TaskReaper) tick() {
 			// If MaxAttempts is set, keep at least one more than
 			// that number of tasks (this overrides TaskHistoryRetentionLimit).
 			// This is necessary to reconstruct restart history when the orchestrator starts up.
-			// TODO(aaronl): Consider hiding tasks beyond the normal
+			// TODO (aaronl): Consider hiding tasks beyond the normal id:597 gh:598
 			// retention limit in the UI.
-			// TODO(aaronl): There are some ways to cut down the
+			// TODO (aaronl): There are some ways to cut down the id:488 gh:489
 			// number of retained tasks at the cost of more
 			// complexity:
 			//   - Don't force retention of tasks with an older spec
@@ -239,9 +239,9 @@ func (tr *TaskReaper) tick() {
 				continue
 			}
 
-			// TODO(aaronl): This could filter for non-running tasks and use quickselect
+			// TODO (aaronl): This could filter for non-running tasks and use quickselect id:532 gh:533
 			// instead of sorting the whole slice.
-			// TODO(aaronl): This sort should really use lamport time instead of wall
+			// TODO (aaronl): This sort should really use lamport time instead of wall id:574 gh:575
 			// clock time. We should store a Version in the Status field.
 			sort.Sort(orchestrator.TasksByTimestamp(historicTasks))
 
@@ -282,7 +282,7 @@ func (tr *TaskReaper) tick() {
 
 // Stop stops the TaskReaper and waits for the main loop to exit.
 func (tr *TaskReaper) Stop() {
-	// TODO(dperny) calling stop on the task reaper twice will cause a panic
+	// TODO (dperny) calling stop on the task reaper twice will cause a panic id:931 gh:932
 	// because we try to close a channel that will already have been closed.
 	close(tr.stopChan)
 	<-tr.doneChan

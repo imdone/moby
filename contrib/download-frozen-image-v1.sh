@@ -76,11 +76,11 @@ while [ $# -gt 0 ]; do
 
 		curl -sSL -H "Authorization: Token $token" "https://registry-1.docker.io/v1/images/$imageId/json" -o "$dir/$imageId/json"
 
-		# TODO figure out why "-C -" doesn't work here
+		# TODO figure out why "-C -" doesn't work here id:804 gh:805
 		# "curl: (33) HTTP server doesn't seem to support byte ranges. Cannot resume."
 		# "HTTP/1.1 416 Requested Range Not Satisfiable"
 		if [ -f "$dir/$imageId/layer.tar" ]; then
-			# TODO hackpatch for no -C support :'(
+			# TODO hackpatch for no -C support :'( id:52 gh:53
 			echo "skipping existing ${imageId:0:12}"
 			continue
 		fi

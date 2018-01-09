@@ -9,7 +9,7 @@ import (
 )
 
 // ValidatePlatform determines if a platform structure is valid.
-// TODO This is a temporary function - can be replaced by parsing from
+// TODO This is a temporary function - can be replaced by parsing from id:333 gh:334
 // https://github.com/containerd/containerd/pull/1403/files at a later date.
 // @jhowardmsft
 func ValidatePlatform(platform *specs.Platform) error {
@@ -39,7 +39,7 @@ func ValidatePlatform(platform *specs.Platform) error {
 
 // ParsePlatform parses a platform string in the format os[/arch[/variant]
 // into an OCI image-spec platform structure.
-// TODO This is a temporary function - can be replaced by parsing from
+// TODO This is a temporary function - can be replaced by parsing from id:283 gh:284
 // https://github.com/containerd/containerd/pull/1403/files at a later date.
 // @jhowardmsft
 func ParsePlatform(in string) *specs.Platform {

@@ -101,7 +101,7 @@ func findZookeeperFatJar() string {
 	}
 	for _, path := range paths {
 		matches, _ := filepath.Glob(path)
-		// TODO: could sort by version and pick latest
+		// TODO: could sort by version and pick latest id:665 gh:666
 		if len(matches) > 0 {
 			return matches[0]
 		}

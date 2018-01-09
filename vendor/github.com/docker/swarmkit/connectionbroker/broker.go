@@ -63,7 +63,7 @@ func (b *Broker) SelectRemote(dialOpts ...grpc.DialOption) (*Conn, error) {
 	}
 
 	// gRPC dialer connects to proxy first. Provide a custom dialer here avoid that.
-	// TODO(anshul) Add an option to configure this.
+	// TODO (anshul) Add an option to configure this. id:589 gh:590
 	dialOpts = append(dialOpts,
 		grpc.WithUnaryInterceptor(grpc_prometheus.UnaryClientInterceptor),
 		grpc.WithStreamInterceptor(grpc_prometheus.StreamClientInterceptor),

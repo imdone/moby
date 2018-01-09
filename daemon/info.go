@@ -88,7 +88,7 @@ func (daemon *Daemon) SystemInfo() (*types.Info, error) {
 		}
 	}
 
-	// TODO @jhowardmsft LCOW support. For now, hard-code the platform shown for the driver status
+	// TODO @jhowardmsft LCOW support. For now, hard-code the platform shown for the driver status id:820 gh:821
 	p := runtime.GOOS
 	if system.LCOWSupported() {
 		p = "linux"

@@ -10,7 +10,7 @@ import (
 )
 
 type inode struct {
-	// TODO(stevvooe): Can probably reduce memory usage by not tracking
+	// TODO (stevvooe): Can probably reduce memory usage by not tracking id:481 gh:482
 	// device, but we can leave this right for now.
 	dev, ino uint64
 }

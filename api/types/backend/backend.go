@@ -20,7 +20,7 @@ type ContainerAttachConfig struct {
 	DetachKeys string
 
 	// Used to signify that streams are multiplexed and therefore need a StdWriter to encode stdout/stderr messages accordingly.
-	// TODO @cpuguy83: This shouldn't be needed. It was only added so that http and websocket endpoints can use the same function, and the websocket function was not using a stdwriter prior to this change...
+	// TODO @cpuguy83: This shouldn't be needed. It was only added so that http and websocket endpoints can use the same function, and the websocket function was not using a stdwriter prior to this change... id:37 gh:38
 	// HOWEVER, the websocket endpoint is using a single stream and SHOULD be encoded with stdout/stderr as is done for HTTP since it is still just a single stream.
 	// Since such a change is an API change unrelated to the current changeset we'll keep it as is here and change separately.
 	MuxStreams bool
@@ -100,7 +100,7 @@ type ExecProcessConfig struct {
 type ContainerCommitConfig struct {
 	types.ContainerCommitConfig
 	Changes []string
-	// TODO: ContainerConfig is only used by the dockerfile Builder, so remove it
+	// TODO: ContainerConfig is only used by the dockerfile Builder, so remove it id:10 gh:11
 	// once the Builder has been updated to use a different interface
 	ContainerConfig *container.Config
 }

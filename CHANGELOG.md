@@ -2273,7 +2273,7 @@ by another client (#15489)
 - Only unshare the mount namespace for execin.
 - Merge existing config when committing.
 - Disable daemon startup timeout.
-- Fix issue #4681: add loopback interface when networking is disabled.
+- Fix issue #4681: add loopback interface when networking is disabled. id:3 gh:4
 - Add failing test case for issue #4681.
 - Send SIGTERM to child, instead of SIGKILL.
 - Show the driver and the kernel version in `docker info` even when not in debug mode.
@@ -2363,7 +2363,7 @@ by another client (#15489)
 - Merge existing config when committing.
 - Fix panic in monitor.
 - Disable daemon startup timeout.
-- Fix issue #4681: add loopback interface when networking is disabled.
+- Fix issue #4681: add loopback interface when networking is disabled. id:0 gh:1
 - Add failing test case for issue #4681.
 - Send SIGTERM to child, instead of SIGKILL.
 - Show the driver and the kernel version in `docker info` even when not in debug mode.
@@ -3452,7 +3452,7 @@ With the ongoing changes to the networking and execution subsystems of docker te
 
 + Website: new high-level overview
 - Makefile: Swap "go get" for "go get -d", especially to compile on go1.1rc
-* Packaging: packaging ubuntu; issue #510: Use goland-stable PPA package to build docker
+* Packaging: packaging ubuntu; issue #510: Use goland-stable PPA package to build docker id:2 gh:3
 
 ## 0.3.0 (2013-05-06)
 

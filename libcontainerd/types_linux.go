@@ -23,7 +23,7 @@ func interfaceToStats(read time.Time, v interface{}) *Stats {
 	}
 }
 
-// Resources defines updatable container resource values. TODO: it must match containerd upcoming API
+// Resources defines updatable container resource values. TODO: it must match containerd upcoming API id:234 gh:235
 type Resources specs.LinuxResources
 
 // Checkpoints contains the details of a checkpoint

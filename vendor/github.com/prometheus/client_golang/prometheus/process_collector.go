@@ -103,7 +103,7 @@ func (c *processCollector) Collect(ch chan<- Metric) {
 	c.collectFn(ch)
 }
 
-// TODO(ts): Bring back error reporting by reverting 7faf9e7 as soon as the
+// TODO (ts): Bring back error reporting by reverting 7faf9e7 as soon as the id:549 gh:550
 // client allows users to configure the error behavior.
 func (c *processCollector) processCollect(ch chan<- Metric) {
 	pid, err := c.pidFn()

@@ -374,7 +374,7 @@ func (c *controller) rmServiceBinding(svcName, svcID, nID, eID, containerName st
 
 		// Mark the object as deleted so that the add won't use it wrongly
 		s.deleted = true
-		// NOTE The delete from the serviceBindings map has to be the last operation else we are allowing a race between this service
+		// NOTE The delete from the serviceBindings map has to be the last operation else we are allowing a race between this service id:453 gh:454
 		// that is getting deleted and a new service that will be created if the entry is not anymore there
 		delete(c.serviceBindings, skey)
 		c.Unlock()

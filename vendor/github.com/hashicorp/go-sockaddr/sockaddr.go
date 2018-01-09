@@ -54,7 +54,7 @@ func init() {
 // New creates a new SockAddr from the string.  The order in which New()
 // attempts to construct a SockAddr is: IPv4Addr, IPv6Addr, SockAddrUnix.
 //
-// NOTE: New() relies on the heuristic wherein if the path begins with either a
+// NOTE: New() relies on the heuristic wherein if the path begins with either a id:1033 gh:1034
 // '.'  or '/' character before creating a new UnixSock.  For UNIX sockets that
 // are absolute paths or are nested within a sub-directory, this works as
 // expected, however if the UNIX socket is contained in the current working

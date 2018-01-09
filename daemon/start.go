@@ -115,7 +115,7 @@ func (daemon *Daemon) containerStart(container *container.Container, checkpoint 
 	}
 
 	if checkpointDir != "" {
-		// TODO(mlaventure): how would we support that?
+		// TODO (mlaventure): how would we support that? id:106 gh:107
 		return notAllowedError{errors.New("custom checkpointdir is not supported")}
 	}
 
@@ -183,7 +183,7 @@ func (daemon *Daemon) containerStart(container *container.Container, checkpoint 
 		return translateContainerdStartErr(container.Path, container.SetExitCode, err)
 	}
 
-	// TODO(mlaventure): we need to specify checkpoint options here
+	// TODO (mlaventure): we need to specify checkpoint options here id:822 gh:823
 	pid, err := daemon.containerd.Start(context.Background(), container.ID, checkpointDir,
 		container.StreamConfig.Stdin() != nil || container.Config.Tty,
 		container.InitializeStdio)
@@ -223,7 +223,7 @@ func (daemon *Daemon) Cleanup(container *container.Container) {
 	}
 
 	if err := daemon.conditionalUnmountOnCleanup(container); err != nil {
-		// FIXME: remove once reference counting for graphdrivers has been refactored
+		// FIXME: remove once reference counting for graphdrivers has been refactored id:109 gh:110
 		// Ensure that all the mounts are gone
 		if mountid, err := daemon.stores[container.OS].layerStore.GetMountID(container.ID); err == nil {
 			daemon.cleanupMountsByID(mountid)

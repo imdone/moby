@@ -72,7 +72,7 @@ func (eq *Queue) run() {
 		}
 
 		if err := eq.dst.Write(event); err != nil {
-			// TODO(aaronl): Dropping events could be bad depending
+			// TODO (aaronl): Dropping events could be bad depending id:461 gh:462
 			// on the application. We should have a way of
 			// communicating this condition. However, logging
 			// at a log level above debug may not be appropriate.

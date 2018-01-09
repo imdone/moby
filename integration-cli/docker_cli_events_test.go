@@ -162,7 +162,7 @@ func (s *DockerSuite) TestEventsImageTag(c *check.C) {
 }
 
 func (s *DockerSuite) TestEventsImagePull(c *check.C) {
-	// TODO Windows: Enable this test once pull and reliable image names are available
+	// TODO Windows: Enable this test once pull and reliable image names are available id:165 gh:166
 	testRequires(c, DaemonIsLinux)
 	since := daemonUnixTime(c)
 	testRequires(c, Network)
@@ -181,7 +181,7 @@ func (s *DockerSuite) TestEventsImagePull(c *check.C) {
 }
 
 func (s *DockerSuite) TestEventsImageImport(c *check.C) {
-	// TODO Windows CI. This should be portable once export/import are
+	// TODO Windows CI. This should be portable once export/import are id:166 gh:167
 	// more reliable (@swernli)
 	testRequires(c, DaemonIsLinux)
 
@@ -477,7 +477,7 @@ func (s *DockerSuite) TestEventsResize(c *check.C) {
 }
 
 func (s *DockerSuite) TestEventsAttach(c *check.C) {
-	// TODO Windows CI: Figure out why this test fails intermittently (TP5).
+	// TODO Windows CI: Figure out why this test fails intermittently (TP5). id:167 gh:168
 	testRequires(c, DaemonIsLinux)
 
 	out := cli.DockerCmd(c, "run", "-di", "busybox", "cat").Combined()

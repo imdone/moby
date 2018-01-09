@@ -15,7 +15,7 @@ import (
 )
 
 func TestLocalSocket(t *testing.T) {
-	// TODO Windows: Enable a similar version for Windows named pipes
+	// TODO Windows: Enable a similar version for Windows named pipes id:305 gh:306
 	tmpdir, unregister := Setup(t)
 	defer unregister()
 

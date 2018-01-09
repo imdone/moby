@@ -141,7 +141,7 @@ func (m *matcher) String() string {
 // Applications should opt to use `Match` over directly parsing specifiers.
 func Parse(specifier string) (Matcher, error) {
 	if strings.Contains(specifier, "*") {
-		// TODO(stevvooe): need to work out exact wildcard handling
+		// TODO (stevvooe): need to work out exact wildcard handling id:382 gh:383
 		return nil, errors.Wrapf(errdefs.ErrInvalidArgument, "%q: wildcards not yet supported", specifier)
 	}
 
@@ -166,7 +166,7 @@ func Parse(specifier string) (Matcher, error) {
 			// picks a default architecture
 			p.Architecture = runtime.GOARCH
 			if p.Architecture == "arm" {
-				// TODO(stevvooe): Resolve arm variant, if not v6 (default)
+				// TODO (stevvooe): Resolve arm variant, if not v6 (default) id:895 gh:896
 				return nil, errors.Wrapf(errdefs.ErrNotImplemented, "arm support not fully implemented")
 			}
 

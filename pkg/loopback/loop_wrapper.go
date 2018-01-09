@@ -3,7 +3,7 @@
 package loopback
 
 /*
-#include <linux/loop.h> // FIXME: present only for defines, maybe we can remove it?
+#include <linux/loop.h> // FIXME: present only for defines, maybe we can remove it? id:252 gh:253
 
 #ifndef LOOP_CTL_GET_FREE
   #define LOOP_CTL_GET_FREE 0x4C82

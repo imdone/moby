@@ -5,9 +5,9 @@ package devicemapper
 /*
 #define _GNU_SOURCE
 #include <libdevmapper.h>
-#include <linux/fs.h>   // FIXME: present only for BLKGETSIZE64, maybe we can remove it?
+#include <linux/fs.h>   // FIXME: present only for BLKGETSIZE64, maybe we can remove it? id:299 gh:300
 
-// FIXME: Can't we find a way to do the logging in pure Go?
+// FIXME: Can't we find a way to do the logging in pure Go? id:329 gh:330
 extern void DevmapperLogCallback(int level, char *file, int line, int dm_errno_or_class, char *str);
 
 static void	log_cb(int level, const char *file, int line, int dm_errno_or_class, const char *f, ...)

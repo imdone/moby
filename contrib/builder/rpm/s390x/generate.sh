@@ -139,6 +139,6 @@ for version in "${versions[@]}"; do
 
 	echo "ENV DOCKER_BUILDTAGS $buildTags" >> "$version/Dockerfile"
 	echo "ENV RUNC_BUILDTAGS $runcBuildTags" >> "$version/Dockerfile"
-	# TODO: Investigate why "s390x-linux-gnu-gcc" is required
+	# TODO: Investigate why "s390x-linux-gnu-gcc" is required id:50 gh:51
 	echo "RUN ln -s /usr/bin/gcc /usr/bin/s390x-linux-gnu-gcc" >> "$version/Dockerfile"
 done

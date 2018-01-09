@@ -22,7 +22,7 @@ type Platform struct {
 
 // Context defines the strict set of values that can be injected into a
 // template expression in SwarmKit data structure.
-// NOTE: Be very careful adding any fields to this structure with types
+// NOTE: Be very careful adding any fields to this structure with types id:935 gh:936
 // that have methods defined on them. The template would be able to
 // invoke those methods.
 type Context struct {
@@ -43,7 +43,7 @@ type Context struct {
 		Name string
 		Slot string
 
-		// NOTE(stevvooe): Why no labels here? Tasks don't actually have labels
+		// NOTE (stevvooe): Why no labels here? Tasks don't actually have labels id:604 gh:605
 		// (from a user perspective). The labels are part of the container! If
 		// one wants to use labels for templating, use service labels!
 	}
@@ -98,7 +98,7 @@ func (ctx *Context) Expand(s string) (string, error) {
 }
 
 // PayloadContext provides a context for expanding a config or secret payload.
-// NOTE: Be very careful adding any fields to this structure with types
+// NOTE: Be very careful adding any fields to this structure with types id:498 gh:499
 // that have methods defined on them. The template would be able to
 // invoke those methods.
 type PayloadContext struct {

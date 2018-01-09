@@ -176,7 +176,7 @@ func (c *Cluster) CreateService(s types.ServiceSpec, encodedAuth string, queryRe
 			}
 
 			// pin image by digest for API versions < 1.30
-			// TODO(nishanttotla): The check on "DOCKER_SERVICE_PREFER_OFFLINE_IMAGE"
+			// TODO (nishanttotla): The check on "DOCKER_SERVICE_PREFER_OFFLINE_IMAGE" id:64 gh:65
 			// should be removed in the future. Since integration tests only use the
 			// latest API version, so this is no longer required.
 			if os.Getenv("DOCKER_SERVICE_PREFER_OFFLINE_IMAGE") != "1" && queryRegistry {
@@ -293,7 +293,7 @@ func (c *Cluster) UpdateService(serviceIDOrName string, version uint64, spec typ
 			}
 
 			// pin image by digest for API versions < 1.30
-			// TODO(nishanttotla): The check on "DOCKER_SERVICE_PREFER_OFFLINE_IMAGE"
+			// TODO (nishanttotla): The check on "DOCKER_SERVICE_PREFER_OFFLINE_IMAGE" id:811 gh:812
 			// should be removed in the future. Since integration tests only use the
 			// latest API version, so this is no longer required.
 			if os.Getenv("DOCKER_SERVICE_PREFER_OFFLINE_IMAGE") != "1" && queryRegistry {

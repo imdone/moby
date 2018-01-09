@@ -35,7 +35,7 @@ func NewClientKeyManager(trustKey PrivateKey, clientFile, clientDir string) (*Cl
 	if err := m.loadKeys(); err != nil {
 		return nil, err
 	}
-	// TODO Start watching file and directory
+	// TODO Start watching file and directory id:572 gh:573
 
 	return m, nil
 }

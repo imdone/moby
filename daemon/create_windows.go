@@ -54,7 +54,7 @@ func (daemon *Daemon) createContainerOSSpecificSettings(container *container.Con
 			return err
 		}
 
-		// FIXME Windows: This code block is present in the Linux version and
+		// FIXME Windows: This code block is present in the Linux version and id:73 gh:74
 		// allows the contents to be copied to the container FS prior to it
 		// being started. However, the function utilizes the FollowSymLinkInScope
 		// path which does not cope with Windows volume-style file paths. There

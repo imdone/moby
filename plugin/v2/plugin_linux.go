@@ -18,7 +18,7 @@ func (p *Plugin) InitSpec(execRoot string) (*specs.Spec, error) {
 	s := oci.DefaultSpec()
 	s.Root = &specs.Root{
 		Path:     p.Rootfs,
-		Readonly: false, // TODO: all plugins should be readonly? settable in config?
+		Readonly: false, // TODO: all plugins should be readonly? settable in config? id:336 gh:337
 	}
 
 	userMounts := make(map[string]struct{}, len(p.PluginObj.Settings.Mounts))
@@ -39,7 +39,7 @@ func (p *Plugin) InitSpec(execRoot string) (*specs.Spec, error) {
 	})
 
 	if p.PluginObj.Config.Network.Type != "" {
-		// TODO: if net == bridge, use libnetwork controller to create a new plugin-specific bridge, bind mount /etc/hosts and /etc/resolv.conf look at the docker code (allocateNetwork, initialize)
+		// TODO: if net == bridge, use libnetwork controller to create a new plugin-specific bridge, bind mount /etc/hosts and /etc/resolv.conf look at the docker code (allocateNetwork, initialize) id:291 gh:292
 		if p.PluginObj.Config.Network.Type == "host" {
 			oci.RemoveNamespace(&s, specs.LinuxNamespaceType("network"))
 		}

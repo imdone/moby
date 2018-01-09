@@ -107,7 +107,7 @@ func (s *DefaultService) LoadInsecureRegistries(registries []string) error {
 // and returns OK if authentication was successful.
 // It can be used to verify the validity of a client's credentials.
 func (s *DefaultService) Auth(ctx context.Context, authConfig *types.AuthConfig, userAgent string) (status, token string, err error) {
-	// TODO Use ctx when searching for repositories
+	// TODO Use ctx when searching for repositories id:875 gh:876
 	serverAddress := authConfig.ServerAddress
 	if serverAddress == "" {
 		serverAddress = IndexServer
@@ -167,7 +167,7 @@ func splitReposSearchTerm(reposName string) (string, string) {
 // Search queries the public registry for images matching the specified
 // search terms, and returns the results.
 func (s *DefaultService) Search(ctx context.Context, term string, limit int, authConfig *types.AuthConfig, userAgent string, headers map[string][]string) (*registrytypes.SearchResults, error) {
-	// TODO Use ctx when searching for repositories
+	// TODO Use ctx when searching for repositories id:320 gh:321
 	if err := validateNoScheme(term); err != nil {
 		return nil, err
 	}

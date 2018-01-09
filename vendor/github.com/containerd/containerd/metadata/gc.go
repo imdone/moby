@@ -153,7 +153,7 @@ func scanRoots(ctx context.Context, tx *bolt.Tx, nc chan<- gc.Node) error {
 					}
 				}
 
-				// TODO: Send additional snapshot refs through labels
+				// TODO: Send additional snapshot refs through labels id:892 gh:893
 				return sendSnapshotRefs(ns, cbkt.Bucket(k), func(n gc.Node) {
 					select {
 					case nc <- n:
@@ -362,7 +362,7 @@ func isRootRef(bkt *bolt.Bucket) bool {
 	if lbkt != nil {
 		rv := lbkt.Get(labelGCRoot)
 		if rv != nil {
-			// TODO: interpret rv as a timestamp and skip if expired
+			// TODO: interpret rv as a timestamp and skip if expired id:491 gh:492
 			return true
 		}
 	}

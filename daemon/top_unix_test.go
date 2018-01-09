@@ -16,7 +16,7 @@ func TestContainerTopValidatePSArgs(t *testing.T) {
 		"ae -O uid=PID":             true,
 		"ae -o pid=PID2 -o uid=PID": true,
 		"ae -o pid=PID":             false,
-		"ae -o pid=PID -o uid=PIDX": true, // FIXME: we do not need to prohibit this
+		"ae -o pid=PID -o uid=PIDX": true, // FIXME: we do not need to prohibit this id:823 gh:824
 		"aeo pid=PID":               false,
 		"ae":                        false,
 		"":                          false,

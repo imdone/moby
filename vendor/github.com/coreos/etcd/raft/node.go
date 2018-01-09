@@ -128,7 +128,7 @@ type Node interface {
 	// Ready returns a channel that returns the current point-in-time state.
 	// Users of the Node must call Advance after retrieving the state returned by Ready.
 	//
-	// NOTE: No committed entries from the next Ready may be applied until all committed entries
+	// NOTE: No committed entries from the next Ready may be applied until all committed entries id:419 gh:420
 	// and snapshots from the previous one have finished.
 	Ready() <-chan Ready
 
@@ -189,7 +189,7 @@ func StartNode(c *Config, peers []Peer) Node {
 		r.raftLog.append(e)
 	}
 	// Mark these initial entries as committed.
-	// TODO(bdarnell): These entries are still unstable; do we need to preserve
+	// TODO (bdarnell): These entries are still unstable; do we need to preserve id:905 gh:906
 	// the invariant that committed < unstable?
 	r.raftLog.committed = r.raftLog.lastIndex()
 	// Now apply them, mainly so that the application can call Campaign
@@ -311,7 +311,7 @@ func (n *node) run(r *raft) {
 		}
 
 		select {
-		// TODO: maybe buffer the config propose if there exists one (the way
+		// TODO: maybe buffer the config propose if there exists one (the way id:541 gh:542
 		// described in raft dissertation)
 		// Currently it is dropped in Step silently.
 		case m := <-propc:
@@ -410,7 +410,7 @@ func (n *node) Propose(ctx context.Context, data []byte) error {
 func (n *node) Step(ctx context.Context, m pb.Message) error {
 	// ignore unexpected local messages receiving over network
 	if IsLocalMsg(m.Type) {
-		// TODO: return an error?
+		// TODO: return an error? id:417 gh:418
 		return nil
 	}
 	return n.step(ctx, m)

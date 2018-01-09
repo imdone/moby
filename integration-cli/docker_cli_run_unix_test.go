@@ -816,7 +816,7 @@ func (s *DockerSuite) TestRunTmpfsMountsEnsureOrdered(c *check.C) {
 }
 
 func (s *DockerSuite) TestRunTmpfsMounts(c *check.C) {
-	// TODO Windows (Post TP5): This test cannot run on a Windows daemon as
+	// TODO Windows (Post TP5): This test cannot run on a Windows daemon as id:850 gh:851
 	// Windows does not support tmpfs mounts.
 	testRequires(c, DaemonIsLinux)
 	if out, _, err := dockerCmdWithError("run", "--tmpfs", "/run", "busybox", "touch", "/run/somefile"); err != nil {
@@ -1206,10 +1206,10 @@ func (s *DockerSuite) TestUserNoEffectiveCapabilitiesFowner(c *check.C) {
 		ExitCode: 1,
 		Err:      "Operation not permitted",
 	})
-	// TODO test that root user can drop default capability CAP_FOWNER
+	// TODO test that root user can drop default capability CAP_FOWNER id:253 gh:254
 }
 
-// TODO CAP_KILL
+// TODO CAP_KILL id:261 gh:262
 
 func (s *DockerSuite) TestUserNoEffectiveCapabilitiesSetuid(c *check.C) {
 	testRequires(c, DaemonIsLinux)
@@ -1247,7 +1247,7 @@ func (s *DockerSuite) TestUserNoEffectiveCapabilitiesSetgid(c *check.C) {
 	})
 }
 
-// TODO CAP_SETPCAP
+// TODO CAP_SETPCAP id:209 gh:210
 
 func (s *DockerSuite) TestUserNoEffectiveCapabilitiesNetBindService(c *check.C) {
 	testRequires(c, DaemonIsLinux)
@@ -1322,8 +1322,8 @@ func (s *DockerSuite) TestUserNoEffectiveCapabilitiesMknod(c *check.C) {
 	})
 }
 
-// TODO CAP_AUDIT_WRITE
-// TODO CAP_SETFCAP
+// TODO CAP_AUDIT_WRITE id:207 gh:208
+// TODO CAP_SETFCAP id:851 gh:852
 
 func (s *DockerSuite) TestRunApparmorProcDirectory(c *check.C) {
 	testRequires(c, SameHostDaemon, Apparmor)

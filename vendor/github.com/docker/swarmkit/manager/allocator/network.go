@@ -876,7 +876,7 @@ func (a *Allocator) allocateNode(ctx context.Context, node *api.Node, existingAd
 		lbAttachment.Network = network.Copy()
 		if err := a.netCtx.nwkAllocator.AllocateAttachment(node, lbAttachment); err != nil {
 			log.G(ctx).WithError(err).Errorf("Failed to allocate network resources for node %s", node.ID)
-			// TODO: Should we add a unallocatedNode and retry allocating resources like we do for network, tasks, services?
+			// TODO: Should we add a unallocatedNode and retry allocating resources like we do for network, tasks, services? id:522 gh:523
 			// right now, we will only retry allocating network resources for the node when the node is updated.
 			continue
 		}

@@ -13,7 +13,7 @@ import (
 	"github.com/stretchr/testify/assert"
 )
 
-// TODO Windows: This will need addressing for a Windows daemon.
+// TODO Windows: This will need addressing for a Windows daemon. id:876 gh:877
 func TestNetworkModeTest(t *testing.T) {
 	networkModes := map[container.NetworkMode][]bool{
 		// private, bridge, host, container, none, default

@@ -26,7 +26,7 @@ func (daemon *Daemon) getSize(containerID string) (int64, int64) {
 	if err != nil {
 		logrus.Errorf("Driver %s couldn't return diff size of container %s: %s",
 			daemon.GraphDriverName(runtime.GOOS), containerID, err)
-		// FIXME: GetSize should return an error. Not changing it now in case
+		// FIXME: GetSize should return an error. Not changing it now in case id:81 gh:82
 		// there is a side-effect.
 		sizeRw = -1
 	}

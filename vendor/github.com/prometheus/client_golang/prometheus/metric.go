@@ -54,7 +54,7 @@ type Metric interface {
 }
 
 // Opts bundles the options for creating most Metric types. Each metric
-// implementation XXX has its own XXXOpts type, but in most cases, it is just be
+// implementation XXX has its own XXXOpts type, but in most cases, it is just be id:663 gh:664
 // an alias of this type (which might change when the requirement arises.)
 //
 // It is mandatory to set Name and Help to a non-empty string. All other fields

@@ -10,7 +10,7 @@ import (
 )
 
 func TestCopyFileWithInvalidDest(t *testing.T) {
-	// TODO Windows: This is currently failing. Not sure what has
+	// TODO Windows: This is currently failing. Not sure what has id:863 gh:864
 	// recently changed in CopyWithTar as used to pass. Further investigation
 	// is required.
 	t.Skip("Currently fails")

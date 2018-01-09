@@ -166,7 +166,7 @@ func (config *serviceConfig) LoadInsecureRegistries(registries []string) error {
 	// Localhost is by default considered as an insecure registry
 	// This is a stop-gap for people who are running a private registry on localhost (especially on Boot2docker).
 	//
-	// TODO: should we deprecate this once it is easier for people to set up a TLS registry or change
+	// TODO: should we deprecate this once it is easier for people to set up a TLS registry or change id:874 gh:875
 	// daemon flags on boot2docker?
 	registries = append(registries, "127.0.0.0/8")
 
@@ -338,7 +338,7 @@ func ValidateMirror(val string) (string, error) {
 
 // ValidateIndexName validates an index name.
 func ValidateIndexName(val string) (string, error) {
-	// TODO: upstream this to check to reference package
+	// TODO: upstream this to check to reference package id:318 gh:319
 	if val == "index.docker.io" {
 		val = "docker.io"
 	}

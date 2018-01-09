@@ -14,7 +14,7 @@ import (
 // the same tag are exported. names is the set of tags to export, and
 // outStream is the writer which the images are written to.
 func (daemon *Daemon) ExportImage(names []string, outStream io.Writer) error {
-	// TODO @jhowardmsft LCOW. This will need revisiting later.
+	// TODO @jhowardmsft LCOW. This will need revisiting later. id:94 gh:95
 	platform := runtime.GOOS
 	if system.LCOWSupported() {
 		platform = "linux"
@@ -27,7 +27,7 @@ func (daemon *Daemon) ExportImage(names []string, outStream io.Writer) error {
 // complement of ImageExport.  The input stream is an uncompressed tar
 // ball containing images and metadata.
 func (daemon *Daemon) LoadImage(inTar io.ReadCloser, outStream io.Writer, quiet bool) error {
-	// TODO @jhowardmsft LCOW. This will need revisiting later.
+	// TODO @jhowardmsft LCOW. This will need revisiting later. id:96 gh:97
 	platform := runtime.GOOS
 	if system.LCOWSupported() {
 		platform = "linux"

@@ -25,7 +25,7 @@ import (
 // the plugin manager do what it already does and monitor the plugin.
 // We'll also end up with many tasks all pointing to the same plugin ID.
 //
-// TODO(@cpuguy83): registry auth is intentionally not supported until we work out
+// TODO (@cpuguy83): registry auth is intentionally not supported until we work out id:808 gh:809
 // the right way to pass registry crednetials via secrets.
 type Controller struct {
 	backend Backend

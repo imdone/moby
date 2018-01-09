@@ -52,7 +52,7 @@ func DeleteConntrackEntries(nlh *netlink.Handle, ipv4List []net.IP, ipv6List []n
 
 func purgeConntrackState(nlh *netlink.Handle, family netlink.InetFamily, ipAddress net.IP) (uint, error) {
 	filter := &netlink.ConntrackFilter{}
-	// NOTE: doing the flush using the ipAddress is safe because today there cannot be multiple networks with the same subnet
+	// NOTE: doing the flush using the ipAddress is safe because today there cannot be multiple networks with the same subnet id:445 gh:446
 	// so it will not be possible to flush flows that are of other containers
 	filter.AddIP(netlink.ConntrackNatAnyIP, ipAddress)
 	return nlh.ConntrackDeleteFilter(netlink.ConntrackTable, family, filter)

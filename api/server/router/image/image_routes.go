@@ -89,7 +89,7 @@ func (s *imageRouter) postImagesCreate(ctx context.Context, w http.ResponseWrite
 
 	version := httputils.VersionFromContext(ctx)
 	if versions.GreaterThanOrEqualTo(version, "1.32") {
-		// TODO @jhowardmsft. The following environment variable is an interim
+		// TODO @jhowardmsft. The following environment variable is an interim id:30 gh:31
 		// measure to allow the daemon to have a default platform if omitted by
 		// the client. This allows LCOW and WCOW to work with a down-level CLI
 		// for a short period of time, as the CLI changes can't be merged
@@ -293,7 +293,7 @@ func (s *imageRouter) getImagesJSON(ctx context.Context, w http.ResponseWriter, 
 	}
 
 	filterParam := r.Form.Get("filter")
-	// FIXME(vdemeester) This has been deprecated in 1.13, and is target for removal for v17.12
+	// FIXME (vdemeester) This has been deprecated in 1.13, and is target for removal for v17.12 id:6 gh:7
 	if filterParam != "" {
 		imageFilters.Add("reference", filterParam)
 	}

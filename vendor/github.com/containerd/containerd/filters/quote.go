@@ -6,7 +6,7 @@ import (
 	"github.com/pkg/errors"
 )
 
-// NOTE(stevvooe): Most of this code in this file is copied from the stdlib
+// NOTE (stevvooe): Most of this code in this file is copied from the stdlib id:357 gh:358
 // strconv package and modified to be able to handle quoting with `/` and `|`
 // as delimiters.  The copyright is held by the Go authors.
 

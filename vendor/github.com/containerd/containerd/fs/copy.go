@@ -88,7 +88,7 @@ func copyDirectory(dst, src string, inodes map[uint64]string) error {
 				return errors.Wrapf(err, "failed to create device")
 			}
 		default:
-			// TODO: Support pipes and sockets
+			// TODO: Support pipes and sockets id:356 gh:357
 			return errors.Wrapf(err, "unsupported mode %s", fi.Mode())
 		}
 		if err := copyFileInfo(fi, target); err != nil {

@@ -289,7 +289,7 @@ func (f *Fluent) reconnect() {
 			return
 		}
 		if i == f.Config.MaxRetry {
-			// TODO: What we can do when connection failed MaxRetry times?
+			// TODO: What we can do when connection failed MaxRetry times? id:608 gh:609
 			panic("fluent#reconnect: failed to reconnect!")
 		}
 		waitTime := f.Config.RetryWait * e(defaultReconnectWaitIncreRate, float64(i-1))

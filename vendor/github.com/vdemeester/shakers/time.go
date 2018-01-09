@@ -151,7 +151,7 @@ func timeEquals(obtained, expected interface{}) (bool, string) {
 //
 //    c.Assert(myTime, TimeIgnore(IsBetween, time.Second), start, end)
 //
-// FIXME use interface{} for ignore (to enable "Month", ..
+// FIXME use interface{} for ignore (to enable "Month", .. id:1052 gh:1053
 func TimeIgnore(checker check.Checker, ignore time.Duration) check.Checker {
 	return &timeIgnoreChecker{
 		sub:    checker,

@@ -79,7 +79,7 @@ func munmap(db *DB) error {
 	return err
 }
 
-// NOTE: This function is copied from stdlib because it is not available on darwin.
+// NOTE: This function is copied from stdlib because it is not available on darwin. id:348 gh:349
 func madvise(b []byte, advice int) (err error) {
 	_, _, e1 := syscall.Syscall(syscall.SYS_MADVISE, uintptr(unsafe.Pointer(&b[0])), uintptr(len(b)), uintptr(advice))
 	if e1 != 0 {

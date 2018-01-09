@@ -58,7 +58,7 @@ func newSession(ctx context.Context, agent *Agent, delay time.Duration, sessionI
 		cancel:        sessionCancel,
 	}
 
-	// TODO(stevvooe): Need to move connection management up a level or create
+	// TODO (stevvooe): Need to move connection management up a level or create id:457 gh:458
 	// independent connection for log broker client.
 
 	cc, err := agent.config.ConnBroker.Select(
@@ -351,7 +351,7 @@ func (s *session) sendTaskStatus(ctx context.Context, taskID string, status *api
 			},
 		},
 	}); err != nil {
-		// TODO(stevvooe): Dispatcher should not return this error. Status
+		// TODO (stevvooe): Dispatcher should not return this error. Status id:921 gh:922
 		// reports for unknown tasks should be ignored.
 		if grpc.Code(err) == codes.NotFound {
 			return errTaskUnknown

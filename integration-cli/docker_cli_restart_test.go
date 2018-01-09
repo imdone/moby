@@ -190,7 +190,7 @@ func (s *DockerSuite) TestRestartContainerSuccess(c *check.C) {
 }
 
 func (s *DockerSuite) TestRestartWithPolicyUserDefinedNetwork(c *check.C) {
-	// TODO Windows. This may be portable following HNS integration post TP5.
+	// TODO Windows. This may be portable following HNS integration post TP5. id:210 gh:211
 	testRequires(c, DaemonIsLinux, SameHostDaemon, NotUserNamespace, NotArm)
 	dockerCmd(c, "network", "create", "-d", "bridge", "udNet")
 

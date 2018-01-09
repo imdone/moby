@@ -70,7 +70,7 @@ func RemoteIP(r *http.Request) string {
 // this method will panic.
 func WithRequest(ctx Context, r *http.Request) Context {
 	if ctx.Value("http.request") != nil {
-		// NOTE(stevvooe): This needs to be considered a programming error. It
+		// NOTE (stevvooe): This needs to be considered a programming error. It id:431 gh:432
 		// is unlikely that we'd want to have more than one request in
 		// context.
 		panic("only one request per context")

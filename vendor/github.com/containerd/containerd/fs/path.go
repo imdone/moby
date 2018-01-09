@@ -31,7 +31,7 @@ func pathChange(lower, upper *currentPath) (ChangeKind, string) {
 	if upper == nil {
 		return ChangeKindDelete, lower.path
 	}
-	// TODO: compare by directory
+	// TODO: compare by directory id:363 gh:364
 
 	switch i := strings.Compare(lower.path, upper.path); {
 	case i < 0:
